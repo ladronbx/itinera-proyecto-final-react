@@ -1,0 +1,10 @@
+.home-style {
+    height: 89vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: black;
+    flex-wrap: wrap;
+  }
