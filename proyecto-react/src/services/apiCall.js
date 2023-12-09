@@ -1,14 +1,14 @@
 import axios from 'axios'
 
-const BASE_URL = 'http://localhost:8000/api/';
+const BASE_URL = 'http://localhost:8001/api/';
 
 export const logUser = async (body) => {
     return await axios.post(`${BASE_URL}login`, body);
 }
 
-// export const registerUser = async (body) => {
-//     return await axios.post(`${BASE_URL}register`, body);
-// }
+export const registerUser = async (body) => {
+    return await axios.post(`${BASE_URL}register`, body);
+}
 
 export const getProfile = (rdxToken) => {
     return axios.get(`${BASE_URL}profile`, {
