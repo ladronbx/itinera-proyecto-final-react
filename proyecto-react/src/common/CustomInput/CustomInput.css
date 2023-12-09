@@ -1,0 +1,16 @@
+.custom-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .login-input {
+    background-color: #f0f0f0;
+  }
+  
+  .register-input {
+    border-color: #00a0d2;
+    color: #00a0d2;
+  }
+  

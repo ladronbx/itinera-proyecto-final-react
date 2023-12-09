@@ -1,0 +1,58 @@
+.login-style-container {
+    border: 0.0625em solid #ccc;
+    border-radius: 0.5em;
+    box-shadow: 0 0 0.625em rgba(0, 0, 0, 0.1);
+    padding: 1.25em;
+    background-color: #fff;
+    width: 18.75em;
+    height: 20em;
+  }
+  
+  .login-style-container-main {
+    height: 89vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(0, 0, 0);
+    color: rgb(184, 194, 203);
+    justify-content: center;
+  }
+  
+  .title-login {
+    margin-bottom: 1em;
+    font-size: 1.5em;
+    font-weight: 500;
+    color: rgb(0, 0, 0);
+  }
+  
+  .input-style {
+    width: 100%;
+    padding: 0.625em;
+    margin-bottom: 1em;
+    border: 0.0625em solid #ccc;
+    border-radius: 0.1875em;
+  }
+  
+  .error-style {
+    color: red;
+    margin-bottom: 1em;
+  }
+  
+  .buttonLogin {
+    text-align: center;
+    background-color: rgb(29, 79, 79);
+    color: white;
+    width: 12.5em;
+    margin: 1em auto;
+    padding: 0.625em 0.9375em;
+    border: none;
+    border-radius: 0.1875em;
+    cursor: pointer;
+    font-size: 1em;
+  }
+  
+  .buttonLogin:hover {
+    background-color: rgb(29, 79, 79);
+  }
+  
