@@ -64,7 +64,7 @@ export const Login = () => {
                     const { message, token } = response.data;
                     setMessage(message);
 
-                    if (message == "Login successful. Token generated.") {
+                    if (message == "User Logged") {
                         dispatch(login(token))
                         navigate("/")
                     }
@@ -79,7 +79,7 @@ export const Login = () => {
     return (
         <div className="login-style-container-main">
             <div className="login-style-container">
-            <h2 class="title-login">Log In!</h2>
+                <h2 className="title-login">Log In!</h2>
                 <CustomInput
                     design={"input-style"}
                     type={"email"}
