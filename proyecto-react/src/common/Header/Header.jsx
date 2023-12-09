@@ -64,8 +64,8 @@ export const Header = () => {
 
                     <div className={`link-buttons ${menuOpened ? 'menu-links' : ''}`}>
                         <LinkButton classButton={"link-button-style"} path={"/"} title={"Home"} />
-                        <LinkButton classButton={"link-button-style"} path={"/"} title={"Home"} />
-                        <LinkButton classButton={"link-button-style"} path={"/"} title={"Home"} />
+                        <LinkButton classButton={"link-button-style"} path={"/"} title={"Locations"} />
+                        <LinkButton classButton={"link-button-style"} path={"/activities"} title={"Activities"} />
 
                         {
 
@@ -74,15 +74,16 @@ export const Header = () => {
                                 ? (
                                     <>
                                         <LinkButton classButton={"link-button-style"} path={"/profile"} title={"Profile"} />
-                                        <LinkButton classButton={"link-button-style"} path={"/appointments"} title={"Appointments"} />
-                                        <LinkButton classButton={"link-button-style"} path={"/update"} title={"Update Profile"} />
+                                        <LinkButton classButton={"link-button-style"} path={"/locations"} title={"Locations"} />
+                                        <LinkButton classButton={"link-button-style"} path={"/my-trips"} title={"My trips"} />
+                                        <LinkButton classButton={"link-button-style"} path={"/user-update"} title={"Update Profile"} />
 
                                         {
                                             decodedToken && decodedToken.role === "super_admin" &&
                                             (
                                                 <>
                                                     <LinkButton classButton={"link-button-style"} path={"/get-all-users"} title={"Get all Users"} />
-                                                    <LinkButton classButton={"link-button-style"} path={"/get-all-appointments"} title={"Get all Appointments"} />
+                                                    <LinkButton classButton={"link-button-style"} path={"/trips"} title={"Get all trips"} />
                                                 </>
                                             )}
                                         <div onClick={logOutMe}>
