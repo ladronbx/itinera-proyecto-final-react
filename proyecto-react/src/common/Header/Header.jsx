@@ -74,6 +74,7 @@ export const Header = () => {
                                 ? (
                                     <>
                                         <LinkButton classButton={"link-button-style"} path={"/profile"} title={"Profile"} />
+                                        <LinkButton classButton={"link-button-style"} path={"/appointments"} title={"Appointments"} />
                                         <LinkButton classButton={"link-button-style"} path={"/update"} title={"Update Profile"} />
 
                                         {
@@ -81,6 +82,7 @@ export const Header = () => {
                                             (
                                                 <>
                                                     <LinkButton classButton={"link-button-style"} path={"/get-all-users"} title={"Get all Users"} />
+                                                    <LinkButton classButton={"link-button-style"} path={"/get-all-appointments"} title={"Get all Appointments"} />
                                                 </>
                                             )}
                                         <div onClick={logOutMe}>
