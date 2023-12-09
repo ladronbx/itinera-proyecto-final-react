@@ -27,26 +27,23 @@ export const updateProfile = (body, rdxToken) => {
 };
 
 export const deleteUser = (body, rdxToken) => {
-    return axios.put(`${BASE_URL}user-delete`, body, {
+    return axios.delete(`${BASE_URL}user-delete`, body, {
         headers: {
             Authorization: `Bearer ${rdxToken}`,
         },
     });
 };
 
-
 export const getAllLocations = async () => {
     return await axios.get(`${BASE_URL}locations`);
 }
 
-//se le pasa el id de la location por params   
-export const getLocationById = async () => {
-    return await axios.get(`${BASE_URL}/location`);
+export const getLocationById = async (id) => {
+    return await axios.get(`${BASE_URL}/location/${id}`);
 }
 
-//se le pasa el id de la location por params
-export const createPersonalTrip = (body, rdxToken) => {
-    return axios.post(`${BASE_URL}/personal-trip-create/{id}`, body, {
+export const createPersonalTrip = (id, body, rdxToken) => {
+    return axios.post(`${BASE_URL}/personal-trip-create/${id}`, body, {
         headers: {
             Authorization: `Bearer ${rdxToken}`,
         },
@@ -61,15 +58,6 @@ export const getAllMyTrips = (rdxToken, page) => {
     });
 };
 
-
-
-
-
-
-
-
-
-//superadmin
 export const getAllUsers = (rdxToken, page) => {
     return axios.get(`${BASE_URL}super/get/all/users?page=${page}&skip=10`, {
         headers: {
@@ -78,9 +66,8 @@ export const getAllUsers = (rdxToken, page) => {
     });
 };
 
-//se le pasa el id del trip por params
 export const deleteTrip = async (id, token) => {
-    return await axios.delete(`${BASE_URL}/trip-delete/{id}`, {
+    return await axios.delete(`${BASE_URL}/trip-delete/${id}`, {
         headers: {
             Authorization: `Bearer ${token}`,
         },
