@@ -70,7 +70,7 @@ export const createPersonalTrip = (id, body, rdxToken) => {
     });
 }
 
-export const getAllMyTrips = (rdxToken, page) => {
+export const getAllMyTrips = (rdxToken) => {
     return axios.get(`${BASE_URL}my-trips`, {
         headers: {
             Authorization: `Bearer ${rdxToken}`,
