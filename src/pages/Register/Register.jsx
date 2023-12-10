@@ -86,7 +86,7 @@ export const Register = () => {
         .then((response) => {
           const { message, token } = response.data;
           setMessage(message);
-          if (message === "User registered") {
+          if (message === "User logged in") {
             dispatch(login(token));
             navigate("/");
           }

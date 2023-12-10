@@ -6,7 +6,7 @@ const token = document.querySelector('meta[name="csrf-token"]').getAttribute('co
 // Configura axios para incluir el token CSRF en las cabeceras de las solicitudes
 axios.defaults.headers.common['X-CSRF-TOKEN'] = token;
 
-const BASE_URL = 'http://localhost:8001/api/';
+const BASE_URL = 'http://localhost:8000/api/';
 
 export const logUser = async (body) => {
     return await axios.post(`${BASE_URL}login`, body);
