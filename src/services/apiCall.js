@@ -40,6 +40,7 @@ export const deleteUser = (body, rdxToken) => {
     });
 };
 
+//LOCATIONS
 export const getAllLocations = async () => {
     return await axios.get(`${BASE_URL}locations`);
 }
@@ -48,6 +49,19 @@ export const getLocationById = async (id) => {
     return await axios.get(`${BASE_URL}/location/${id}`);
 }
 
+//ACTIVITIES
+export const getAllActivities = async () => {
+    return await axios.get(`${BASE_URL}activities`);
+}
+export const getActivityById = async () => {
+    return await axios.get(`${BASE_URL}activities/${id}`);
+}
+
+export const getActivityByLocationId = async (id) => {
+    return await axios.get(`${BASE_URL}activities-location/${id}`);
+}
+
+//TRIPS
 export const createPersonalTrip = (id, body, rdxToken) => {
     return axios.post(`${BASE_URL}/personal-trip-create/${id}`, body, {
         headers: {
@@ -64,6 +78,7 @@ export const getAllMyTrips = (rdxToken, page) => {
     });
 };
 
+//SUPERADMIN
 export const getAllUsers = (rdxToken, page) => {
     return axios.get(`${BASE_URL}super/get/all/users?page=${page}&skip=10`, {
         headers: {
