@@ -28,26 +28,26 @@ export const Home = () => {
   return (
     <div className="cards-locations-container-main">
       <div className="container">
-          {
-            locations.length > 0
-              ? (
-                locations.map((location) => (
-                  <div className="" key={location.id}>
-                    <LocationCard
-                      name={location.name}
-                      description={location.description}
-                      email={location.email}
-                      image_1={location.image_1}
-                    />
-                  </div>
-                ))
-              )
-              : (
-                <div>Loading ...</div>
-              )
-          }
-        </div>
+        {
+          locations.length > 0
+            ? (
+              locations.map((location) => (
+                <div className="" key={location.id}>
+                  <LocationCard
+                    name={location.name}
+                    description={location.description}
+                    email={location.email}
+                    image_1={location.image_1}
+                  />
+                </div>
+              ))
+            )
+            : (
+              <div>Loading ...</div>
+            )
+        }
       </div>
+    </div>
 
   );
 };
