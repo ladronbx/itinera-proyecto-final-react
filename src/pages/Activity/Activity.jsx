@@ -36,7 +36,6 @@ export const Activity = () => {
                                     <ActivityCard
                                         name={activity.name}
                                         description={activity.description}
-                                        email={activity.email}
                                         image_1={activity.image_1}
                                         image_2={activity.image_2}
                                         location_id={activity.location_id}
