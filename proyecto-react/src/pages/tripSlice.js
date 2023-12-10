@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const tripSlice = createSlice({
     name: "trip",
     initialState: {
-        credentials: {}
+        tripId: null
     },
     reducers: {
         tripId: (state, action) => {
