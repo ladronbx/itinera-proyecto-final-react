@@ -1,4 +1,10 @@
-import axios from 'axios'
+import axios from 'axios';
+
+// Obtén el token CSRF de la metaetiqueta
+const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+// Configura axios para incluir el token CSRF en las cabeceras de las solicitudes
+axios.defaults.headers.common['X-CSRF-TOKEN'] = token;
 
 const BASE_URL = 'http://localhost:8001/api/';
 

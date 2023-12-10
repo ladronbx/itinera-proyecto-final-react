@@ -3,15 +3,16 @@ import "./Header.css";
 import { LinkButton } from "../LinkButton/LinkButton";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, selectToken } from "../../pages/userSlice";
-import { Navigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import logoImage from "../../assets/img/logo.png";
+import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
     const dispatch = useDispatch();
     const rdxToken = useSelector(selectToken);
     const [decodedToken, setDecodedToken] = useState(null);
     const [menuOpened, setMenuOpened] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (rdxToken) {
@@ -26,7 +27,7 @@ export const Header = () => {
 
     const logOutMe = () => {
         dispatch(logout());
-        Navigate("/");
+        navigate("/");
     };
 
     const toggleMenu = () => {

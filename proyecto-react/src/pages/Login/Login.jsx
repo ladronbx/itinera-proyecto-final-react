@@ -63,8 +63,9 @@ export const Login = () => {
                 .then((response) => {
                     const { message, token } = response.data;
                     setMessage(message);
+                    console.log(token);
 
-                    if (message == "User Logged") {
+                    if (message == "User logged in") {
                         dispatch(login(token))
                         navigate("/")
                     }

@@ -81,14 +81,14 @@ export const Register = () => {
   };
   
   useEffect(() => {
-    if (message === "User registered successfully") {
+    if (message === "User registered") {
       logUser(credentials)
         .then((response) => {
           const { message, token } = response.data;
           setMessage(message);
-          if (message === "Login successful. Token generated.") {
+          if (message === "User registered") {
             dispatch(login(token));
-            navigate("/profile");
+            navigate("/");
           }
         })
         .catch(error => {
