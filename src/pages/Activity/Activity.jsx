@@ -24,7 +24,6 @@ export const Activity = () => {
       }
     }, []);
 
-
     return (
         <div className="cards-activities-container-main">
             <div className="container">
@@ -38,7 +37,7 @@ export const Activity = () => {
                                         description={activity.description}
                                         image_1={activity.image_1}
                                         image_2={activity.image_2}
-                                        location_id={activity.location_id}
+                                        location={activity.location}
                                     />
                                 </div>
                             ))

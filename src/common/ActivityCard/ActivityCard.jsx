@@ -1,7 +1,7 @@
 import React from "react";
 import "./ActivityCard.css";
 
-export const ActivityCard = ({ name, description, image_1, image_2, location_id }) => {
+export const ActivityCard = ({ name, description, image_1, image_2, location }) => {
     let roleText = "";
 
     return (
@@ -15,7 +15,7 @@ export const ActivityCard = ({ name, description, image_1, image_2, location_id 
             <div className="card-all-activities__content col">
                 <p className="card-all-activities__title">{name}</p>
                 <p className="card-all-activities__description">{description}</p>
-                <p className="card-all-activities__description">{location_id}</p>
+                <p className="card-all-activities__description">{location}</p>
             </div>
         </div>
     );
