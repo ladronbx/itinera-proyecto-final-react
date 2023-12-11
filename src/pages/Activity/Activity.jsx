@@ -31,8 +31,9 @@ export const Activity = () => {
                     activities.length > 0
                         ? (
                             activities.map((activity) => (
-                                <div className="" key={activity.id}>
+                                <div className="container-activities">
                                     <ActivityCard
+                                      key={activity.id}
                                         name={activity.name}
                                         description={activity.description}
                                         image_1={activity.image_1}
@@ -49,4 +50,4 @@ export const Activity = () => {
             </div>
         </div>
     );
-}
+};
