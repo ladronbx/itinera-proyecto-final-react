@@ -4,7 +4,7 @@ import { LinkButton } from "../LinkButton/LinkButton";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, selectToken } from "../../pages/userSlice";
 import { jwtDecode } from "jwt-decode";
-import logoImage from "../../assets/img/logo.png";
+import logo from "../../assets/img/logo.svg";
 import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
@@ -43,9 +43,7 @@ export const Header = () => {
                     classButton={"link-button-logo-style"}
                     path={"/"}
                     title={
-                        <div className="logo-image">
-                            <img src={logoImage} alt="Logo" />
-                        </div>
+                        <img src={logo} alt="Logo" className="logo-image" />
                     }
                 />
             </div>
@@ -64,8 +62,8 @@ export const Header = () => {
 
 
                     <div className={`link-buttons ${menuOpened ? 'menu-links' : ''}`}>
-                        <LinkButton classButton={"link-button-style"} path={"/"} title={"Home"} />
-                        <LinkButton classButton={"link-button-style"} path={"/locations"} title={"Locations"} />
+                        {/* <LinkButton classButton={"link-button-style"} path={"/"} title={"Home"} /> */}
+                        <LinkButton classButton={"link-button-style"} path={"/locations"} title={"Destinos"} />
                         {/* <LinkButton classButton={"link-button-style"} path={"/activities"} title={"Activities"} /> */}
 
                         {
@@ -74,8 +72,8 @@ export const Header = () => {
 
                                 ? (
                                     <>
-                                        <LinkButton classButton={"link-button-style"} path={"/profile"} title={"Profile"} />
-                                        <LinkButton classButton={"link-button-style"} path={"/my-trips"} title={"My trips"} />
+                                        <LinkButton classButton={"link-button-style"} path={"/profile"} title={"Perfil"} />
+                                        <LinkButton classButton={"link-button-style"} path={"/my-trips"} title={"Mis viajes"} />
                                         {/* <LinkButton classButton={"link-button-style"} path={"/user-update"} title={"Update Profile"} /> */}
 
                                         {

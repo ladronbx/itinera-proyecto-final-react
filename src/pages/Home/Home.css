@@ -1,10 +1,21 @@
 .home-style {
     height: 89vh;
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    background-color: black;
+    background-color: rgb(170, 192, 200);
     flex-wrap: wrap;
   }
+
+
+.video-background{
+    width: 100%;
+    background-color: rgb(170, 192, 200);
+}
+
+.video-home{
+  margin: 4em;
+  width: 60%;
+}
