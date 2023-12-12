@@ -32,8 +32,9 @@ export const Home = () => {
           locations.length > 0
             ? (
               locations.map((location) => (
-                <div className="" key={location.id}>
+                <div className="" >
                   <LocationCard
+                    key={location.id}
                     name={location.name}
                     description={location.description}
                     email={location.email}

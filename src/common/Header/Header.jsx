@@ -66,7 +66,7 @@ export const Header = () => {
                     <div className={`link-buttons ${menuOpened ? 'menu-links' : ''}`}>
                         <LinkButton classButton={"link-button-style"} path={"/"} title={"Home"} />
                         <LinkButton classButton={"link-button-style"} path={"/locations"} title={"Locations"} />
-                        <LinkButton classButton={"link-button-style"} path={"/activities"} title={"Activities"} />
+                        {/* <LinkButton classButton={"link-button-style"} path={"/activities"} title={"Activities"} /> */}
 
                         {
 
@@ -76,7 +76,7 @@ export const Header = () => {
                                     <>
                                         <LinkButton classButton={"link-button-style"} path={"/profile"} title={"Profile"} />
                                         <LinkButton classButton={"link-button-style"} path={"/my-trips"} title={"My trips"} />
-                                        <LinkButton classButton={"link-button-style"} path={"/user-update"} title={"Update Profile"} />
+                                        {/* <LinkButton classButton={"link-button-style"} path={"/user-update"} title={"Update Profile"} /> */}
 
                                         {
                                             decodedToken && decodedToken.role === "super_admin" &&
