@@ -32,14 +32,13 @@ export const Location = () => {
           locations.length > 0
             ? (
               locations.map((location) => (
-                <div className="" key={location.id}>
                   <LocationCard
+                    key={location.id}
                     name={location.name}
                     description={location.description}
                     email={location.email}
                     image_1={location.image_1}
                   />
-                </div>
               ))
             )
             : (
