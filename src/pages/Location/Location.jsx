@@ -3,11 +3,27 @@ import "./Location.css";
 import { getAllLocations } from "../../services/apiCall";
 import { useNavigate } from "react-router-dom";
 import { LocationCard } from "../../common/LocationCard/LocationCard";
-
+import { Modal } from 'antd';
+import SelectDate from "../../common/SelectDate/SelectDate";
 
 export const Location = () => {
   const [locations, setLocations] = useState([]);
+  const [selectedLocation, setSelectedLocation] = useState(null);
   const navigate = useNavigate();
+
+  const handleDestinationClick = (location) => {
+    setSelectedLocation(location);
+    Modal.confirm({
+      title: 'Seleccione las fechas de su viaje',
+      content: <SelectDate onDateChange={handleDateChange} />,
+      onCancel: () => {},
+      onOk: () => {},
+    });
+  };
+
+  const handleDateChange = (dates) => {
+    console.log(dates);
+  };
 
   useEffect(() => {
     if (locations || locations.length === 0) {
@@ -38,6 +54,7 @@ export const Location = () => {
                     description={location.description}
                     email={location.email}
                     image_1={location.image_1}
+                    onClick={() => handleDestinationClick(location)}
                   />
               ))
             )
@@ -47,6 +64,5 @@ export const Location = () => {
         }
       </div>
     </div>
-
   );
 };
