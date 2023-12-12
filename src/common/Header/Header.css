@@ -86,3 +86,27 @@
     }
   }
   
+  .link-button-style-profile img {
+    width: 1.5em;
+    margin: auto;
+  }
+  
+  .background-color-profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2em;
+    height: 2em;
+    border: none;
+    border-radius: 0.5em;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0.125em 0.125em 0.625em rgba(0, 0, 0, 0.199);
+    background-color: rgb(239, 239, 239);
+    margin-left: 1em;
+  }
+
+  .background-color-profile:hover {
+    background-color: rgb(170, 192, 200);
+  }

@@ -6,6 +6,8 @@ import { logout, selectToken } from "../../pages/userSlice";
 import { jwtDecode } from "jwt-decode";
 import logo from "../../assets/img/logo.svg";
 import { useNavigate } from "react-router-dom";
+import LogOutButton from "../LogOutButton/LogOutButton";
+import imgProfile from "../../assets/img/img-profile.png";
 
 export const Header = () => {
     const dispatch = useDispatch();
@@ -63,7 +65,7 @@ export const Header = () => {
 
                     <div className={`link-buttons ${menuOpened ? 'menu-links' : ''}`}>
                         {/* <LinkButton classButton={"link-button-style"} path={"/"} title={"Home"} /> */}
-                        <LinkButton classButton={"link-button-style"} path={"/locations"} title={"Destinos"} />
+
                         {/* <LinkButton classButton={"link-button-style"} path={"/activities"} title={"Activities"} /> */}
 
                         {
@@ -72,8 +74,16 @@ export const Header = () => {
 
                                 ? (
                                     <>
-                                        <LinkButton classButton={"link-button-style"} path={"/profile"} title={"Perfil"} />
+                                        <LinkButton classButton={"link-button-style"} path={"/locations"} title={"Destinos"} />
                                         <LinkButton classButton={"link-button-style"} path={"/my-trips"} title={"Mis viajes"} />
+                                        <LinkButton
+                                            classButton={"link-button-style-profile background-color-profile"}
+                                            path={"/profile"}
+                                            title={
+                                                <img src={imgProfile} alt="Perfil" />
+                                            }
+                                        />
+
                                         {/* <LinkButton classButton={"link-button-style"} path={"/user-update"} title={"Update Profile"} /> */}
 
                                         {
@@ -85,7 +95,7 @@ export const Header = () => {
                                                 </>
                                             )}
                                         <div onClick={logOutMe}>
-                                            <LinkButton classButton={"link-button-style"} path={"/"} title={"Log Out"} />
+                                            <LogOutButton classButton={"link-button-style"} path={"/"} title={"Log Out"} />
                                         </div>
 
                                         {decodedToken && decodedToken.role === "super_admin" && (
