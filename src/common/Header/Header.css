@@ -1,112 +1,112 @@
-/* Header.css */
+.navbar-header-style{ 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+}
 
-.navbar-header-style {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #fff; /* Ajusta el color de fondo según tu diseño */
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Añade sombra según tu diseño */
-    padding: 10px 20px;
-  }
-  
-  .logo-container-header {
-    flex-shrink: 0;
-    width: 4em;
-  }
-  
-  .logo-image {
-    max-width: 100%; /* Ajusta el tamaño máximo del logo según tu diseño */
-    height: auto;
-  }
-  
-  .navbar-container-header {
-    display: flex;
-    align-items: center;
-  }
-  
-  .link-buttons {
-    display: flex;
-    align-items: center;
-  }
-  
-  .link-button-style {
-    margin-left: 20px; /* Ajusta el espacio entre los botones según tu diseño */
-    text-decoration: none;
-    color: #333; /* Ajusta el color del texto según tu diseño */
-    font-weight: bold;
-    transition: color 0.3s ease;
-  }
-  
-  .link-button-style:hover {
-    color: #007bff; /* Ajusta el color al pasar el ratón por encima según tu diseño */
-  }
-  
-  .superadmin-style {
-    color: #ff0000; /* Ajusta el color del texto según tu diseño */
-    font-weight: bold;
-    margin-left: 20px; /* Ajusta el espacio izquierdo según tu diseño */
-  }
-  
+.logo-container-header {
+  flex-shrink: 0;
+  width: 4em;
+  cursor: pointer;
+}
+
+.logo-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.navbar-container-header {
+  display: flex;
+  align-items: center;
+}
+
+.link-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.link-button-style {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.link-button-style:hover {
+  color: rgb(170, 192, 200);
+  cursor: pointer;
+}
+
+.superadmin-style {
+  color: #ff0000;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+.burger-icon {
+  cursor: pointer;
+  display: none;
+}
+
+@media (max-width: 768px) {
   .burger-icon {
-    cursor: pointer;
-    display: none; /* Oculta el icono de hamburguesa por defecto */
-  }
-  
-  @media (max-width: 768px) {
-    .burger-icon {
-      display: block; /* Muestra el icono de hamburguesa en dispositivos móviles */
-    }
-  
-    .link-buttons {
-      display: none; /* Oculta los botones de navegación en dispositivos móviles por defecto */
-      flex-direction: column;
-      position: absolute;
-      top: 60px; /* Ajusta la distancia desde la parte superior según tu diseño */
-      right: 20px; /* Ajusta la distancia desde la derecha según tu diseño */
-      background-color: #fff; /* Ajusta el color de fondo del menú según tu diseño */
-      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Añade sombra al menú según tu diseño */
-      z-index: 1;
-    }
-  
-    .menu-icon {
-      display: flex;
-      flex-direction: column;
-      cursor: pointer;
-    }
-  
-    .menu-icon span {
-      height: 3px;
-      width: 25px;
-      background-color: #333; /* Ajusta el color de las barras del menú según tu diseño */
-      margin: 4px 0;
-    }
-  
-    .menu-opened .link-buttons {
-      display: flex; /* Muestra los botones cuando el menú está abierto */
-    }
-  }
-  
-  .link-button-style-profile img {
-    width: 1.5em;
-    margin: auto;
-  }
-  
-  .background-color-profile {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2em;
-    height: 2em;
-    border: none;
-    border-radius: 0.5em;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0.125em 0.125em 0.625em rgba(0, 0, 0, 0.199);
-    background-color: rgb(239, 239, 239);
-    margin-left: 1em;
+    display: block;
   }
 
-  .background-color-profile:hover {
-    background-color: rgb(170, 192, 200);
+  .link-buttons {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: #fff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1;
   }
+
+  .menu-icon {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+
+  .menu-icon span {
+    height: 3px;
+    width: 25px;
+    background-color: #333;
+    margin: 4px 0;
+  }
+
+  .menu-opened .link-buttons {
+    display: flex;
+  }
+}
+
+.link-button-style-profile img {
+  width: 1.5em;
+  margin: auto;
+}
+
+.background-color-profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2em;
+  height: 2em;
+  border: none;
+  border-radius: 0.5em;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0.125em 0.125em 0.625em rgba(0, 0, 0, 0.199);
+  background-color: rgb(239, 239, 239);
+  margin-left: 1em;
+}
+
+.background-color-profile:hover {
+  background-color: rgb(170, 192, 200);
+}
