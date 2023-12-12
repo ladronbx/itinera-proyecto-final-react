@@ -5,24 +5,39 @@ import { useNavigate } from "react-router-dom";
 import { LocationCard } from "../../common/LocationCard/LocationCard";
 import { Modal } from 'antd';
 import SelectDate from "../../common/SelectDate/SelectDate";
+import { useDispatch } from 'react-redux';
+import { setLocation, setDates, setTripId } from '../tripSlice';
 
 export const Location = () => {
   const [locations, setLocations] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState(null);
+  const [dates, setTripDates] = useState(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleDestinationClick = (location) => {
     setSelectedLocation(location);
+    dispatch(setLocation(location));
+    console.log("Location seleccionada: ", location);
     Modal.confirm({
       title: 'Seleccione las fechas de su viaje',
       content: <SelectDate onDateChange={handleDateChange} />,
       onCancel: () => {},
-      onOk: () => {},
+      onOk: handleOk,
     });
   };
-
+  
   const handleDateChange = (dates) => {
-    console.log(dates);
+    setTripDates(dates);
+    dispatch(setDates(dates));
+    console.log("Fechas seleccionadas: ", dates);
+  };
+
+  const handleOk = () => {
+    if (selectedLocation && dates) {
+      dispatch(setTripId(selectedLocation.id));
+      navigate(`/activities/${selectedLocation.id}`);
+    }
   };
 
   useEffect(() => {
