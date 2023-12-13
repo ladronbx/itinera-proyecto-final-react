@@ -41,8 +41,12 @@ export const deleteUser = (body, rdxToken) => {
 };
 
 //LOCATIONS
-export const getAllLocations = async () => {
-    return await axios.get(`${BASE_URL}locations`);
+export const getAllLocations = async (rdxToken) => {
+    return axios.get(`${BASE_URL}locations`, {
+        headers: {
+            Authorization: `Bearer ${rdxToken}`,
+        },
+    });
 }
 
 export const getLocationById = async (id) => {
@@ -57,9 +61,13 @@ export const getActivityById = async () => {
     return await axios.get(`${BASE_URL}activities/${id}`);
 }
 
-export const getActivityByLocationId = async (id) => {
-    return await axios.get(`${BASE_URL}activities-location/${id}`);
-}
+export const getActivityByLocationId = (id, token) => {
+    return axios.get(`http://localhost:8000/api/activities-location/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  };
 
 //TRIPS
 export const createPersonalTrip = (id, body, rdxToken) => {

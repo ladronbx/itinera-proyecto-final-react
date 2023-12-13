@@ -15,6 +15,22 @@ export const Location = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    if (locations || locations.length === 0) {
+      getAllLocations()
+        .then((response) => {
+          if (Array.isArray(response.data.data)) {
+            setTimeout(() => {
+              setLocations(response.data.data);
+            }, 200)
+          }
+        })
+        .catch((error) => console.log(error));
+    } else {
+      navigate("/");
+    }
+  }, []);
+
   const handleDestinationClick = (location) => {
     setSelectedLocation(location);
     dispatch(setLocation(location));
@@ -40,21 +56,7 @@ export const Location = () => {
     }
   };
 
-  useEffect(() => {
-    if (locations || locations.length === 0) {
-      getAllLocations()
-        .then((response) => {
-          if (Array.isArray(response.data.data)) {
-            setTimeout(() => {
-              setLocations(response.data.data);
-            }, 200)
-          }
-        })
-        .catch((error) => console.log(error));
-    } else {
-      navigate("/");
-    }
-  }, []);
+
 
   return (
     <div className="cards-locations-container-main">
