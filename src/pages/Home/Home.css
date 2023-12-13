@@ -1,21 +1,52 @@
 .home-style {
-    height: 89vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    background-color: rgb(170, 192, 200);
-    flex-wrap: wrap;
-  }
+  height: 89vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: rgb(17, 83, 107);
+  flex-wrap: wrap;
+}
 
 
 .video-background{
-    width: 100%;
-    background-color: rgb(170, 192, 200);
+  width: 50%;
+  background-color: rgb(170, 192, 200);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0px 0px 400px rgb(0, 0, 0);
 }
 
 .video-home{
-  margin: 4em;
-  width: 60%;
+margin: 4em;
+width: 97%;
+}
+
+.link-button-style-home{
+margin: 1em;
+width: 50%;
+height: 10%;
+background-color: rgb(17, 83, 107);
+box-shadow: 0px 0px 400px rgb(0, 0, 0);
+border-radius: 5px;
+color: white;
+font-size: 1.5em;
+font-weight: bold;
+text-decoration: none;
+text-align: center;
+display: flex;
+justify-content: center;
+align-items: center;
+transition: 1s;
+cursor: pointer;
+}
+
+.link-button-style-home:hover{
+background-color: rgb(170, 192, 200);
+color: rgb(17, 83, 107);
+box-shadow: 0px 0px 10px rgb(17, 83, 107);
+transition: 1s;
 }

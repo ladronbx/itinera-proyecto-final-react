@@ -61,11 +61,6 @@ export const Header = () => {
               <>
                 <LinkButton
                   classButton={"link-button-style"}
-                  path={"/locations"}
-                  title={"Destinos"}
-                />
-                <LinkButton
-                  classButton={"link-button-style"}
                   path={"/my-trips"}
                   title={"Mis viajes"}
                 />
