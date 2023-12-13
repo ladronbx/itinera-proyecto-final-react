@@ -1,10 +1,14 @@
 import axios from 'axios';
 
-// Obtén el token CSRF de la metaetiqueta
-const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+// to do : averiguar si es necesario o no en mi caso
 
 // Configura axios para incluir el token CSRF en las cabeceras de las solicitudes
-axios.defaults.headers.common['X-CSRF-TOKEN'] = token;
+// Obtén el token CSRF de la metaetiqueta
+// const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+// Configura axios para incluir el token CSRF en las cabeceras de las solicitudes
+// axios.defaults.headers.common['X-CSRF-TOKEN'] = token;
+
+
 
 const BASE_URL = 'http://localhost:8000/api/';
 
@@ -61,10 +65,10 @@ export const getActivityById = async () => {
     return await axios.get(`${BASE_URL}activities/${id}`);
 }
 
-export const getActivityByLocationId = (id, token) => {
-    return axios.get(`http://localhost:8000/api/activities-location/${id}`, {
+export const getActivityByLocationId = (id, rdxToken) => {
+    return axios.get(`${BASE_URL}activities-location/${id}`, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${rdxToken}`,
       },
     });
   };
