@@ -15,6 +15,7 @@ export const Activity = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const selectedActivities = useSelector(selectActivities);
+
   useEffect(() => {
     if (dates && selectedLocation.id) {
       getActivityByLocationId(selectedLocation.id, rdxToken)
@@ -46,17 +47,28 @@ export const Activity = () => {
         {
           activities.length > 0
             ? (
-              activities.map((activity) => (
-                <ActivityCard
-                  key={activity.id}
-                  name={activity.name}
-                  description={activity.description}
-                  image_1={activity.image_1}
-                  image_2={activity.image_2}
-                  location={activity.location}
-                  onClick={() => handleAddActivity(activity)}
-                />
-              ))
+              activities.map((activity) => {
+                let isSelected = false;
+                for (let i = 0; i < selectedActivities.length; i++) {
+                  if (selectedActivities[i].id === activity.id) {
+                    isSelected = true;
+                    break;
+                  }
+                }
+              
+                return (
+                  <ActivityCard
+                    key={activity.id}
+                    name={activity.name}
+                    description={activity.description}
+                    image_1={activity.image_1}
+                    image_2={activity.image_2}
+                    location={activity.location}
+                    onClick={() => handleAddActivity(activity)}
+                    isSelected={isSelected}
+                  />
+                );
+              })
             )
             : (
               <div>Loading ...</div>
