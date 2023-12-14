@@ -47,7 +47,8 @@ export const Activity = () => {
 
   return (
     <div className="cards-activities-container-main">
-      <button onClick={handleResetActivities}>Reiniciar actividades</button>
+      <h2>¡Es hora de seleccionar las actividades que te gustaría realizar en {selectedLocation.name}!</h2>
+      <button className="button-reset-activities" onClick={handleResetActivities}>Reiniciar actividades</button>
       <div className="container container-activities">
         {
           activities.length > 0
@@ -80,6 +81,8 @@ export const Activity = () => {
             )
         }
       </div>
+
+      <button className="button-reset-activities" onClick={handleResetActivities}>Reiniciar actividades</button>
     </div>
   );
 };

@@ -36,17 +36,20 @@ export const ActivityCard = ({ name, description, image_1, image_2, location }) 
             <div className="card-all-activities-container-image">
                 <img className="card-all-activities-image" src={image_1} alt={name} />
                 <img className="card-all-activities-image" src={image_2} alt={name} />
+                {isSelected
+                    ? <div className="selected-message">Actividad seleccionada</div>
+                    : <button className="button-activities" onClick={handleAddActivity}>Agregar</button>
+                }
             </div>
+
 
             <div className="card-all-activities__content col">
                 <p className="card-all-activities__title">{name}</p>
                 <p className="card-all-activities__description">{description}</p>
-                <p className="card-all-activities__description">{location}</p>
-                {isSelected
-                    ? <div className="selected-message">Actividad seleccionada</div>
-                    : <button onClick={handleAddActivity}>Agregar actividad</button>
-                }
+
             </div>
+
+            <p className="card-all-activities__location">{location}</p>
         </div>
     );
 };
