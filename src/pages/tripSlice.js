@@ -21,6 +21,9 @@ export const tripSlice = createSlice({
       addActivity: (state, action) => {
         state.activities.push(action.payload);
       },
+      resetActivities: (state) => {
+        state.activities = [];
+      },
     },
   });
   
@@ -28,5 +31,5 @@ export const tripSlice = createSlice({
   export const selectLocation = (state) => state.trip.location;
   export const selectDates = (state) => state.trip.dates;
   export const selectActivities = (state) => state.trip.activities; 
-  export const { setTripId, setLocation, setDates, addActivity } = tripSlice.actions;
+  export const { setTripId, setLocation, setDates, addActivity, resetActivities } = tripSlice.actions;
   export default tripSlice.reducer;

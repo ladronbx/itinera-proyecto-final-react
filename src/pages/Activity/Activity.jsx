@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { ActivityCard } from "../../common/ActivityCard/ActivityCard";
 import { getActivityByLocationId } from "../../services/apiCall";
 import { selectToken } from "../userSlice";
-import { addActivity, selectActivities, selectLocation, selectDates } from '../../pages/tripSlice';
+import { addActivity, selectActivities, selectLocation, selectDates, resetActivities } from '../../pages/tripSlice';
 import { useSelector, useDispatch } from 'react-redux';
 
 export const Activity = () => {
@@ -37,12 +37,17 @@ export const Activity = () => {
     dispatch(addActivity(activity));
   };
 
+  const handleResetActivities = () => {
+    dispatch(resetActivities());
+  };
+
   useEffect(() => {
     console.log('Selected activities:', selectedActivities);
   }, [selectedActivities]);
 
   return (
     <div className="cards-activities-container-main">
+      <button onClick={handleResetActivities}>Reiniciar actividades</button>
       <div className="container container-activities">
         {
           activities.length > 0
