@@ -4,10 +4,13 @@ import { getAllLocations } from "../../services/apiCall";
 import { useNavigate } from "react-router-dom";
 import videoHome from "../../assets/img/img-home/video-home.mp4";
 import { LinkButton } from "../../common/LinkButton/LinkButton";
+import { selectToken } from "../../pages/userSlice";
+import { useSelector } from "react-redux";
 
 export const Home = () => {
   const [locations, setLocations] = useState([]);
   const navigate = useNavigate();
+  const rdxToken = useSelector(selectToken);
 
   useEffect(() => {
     if (locations || locations.length === 0) {
@@ -32,13 +35,21 @@ export const Home = () => {
           <source src={videoHome} type="video/mp4" />
         </video>
       </div>
-
-      {/* to do : si la persona está logeada tiene acceso al botón. Si no el LinkButton llevará al user al Login */}
+      {rdxToken ? (
       <LinkButton
         classButton={"link-button-style-home"}
         path={"/locations"}
         title={"Explora los destinos, y comienza aquí tu aventura"}
       />
+      ) : (
+        <>
+      <LinkButton
+        classButton={"link-button-style-home"}
+        path={"/login"}
+        title={"Explora los destinos, y comienza aquí tu aventura"}
+      />
+      </>
+    )}
     </div>
   );
 };
