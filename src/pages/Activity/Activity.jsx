@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { ActivityCard } from "../../common/ActivityCard/ActivityCard";
 import { getActivityByLocationId } from "../../services/apiCall";
 import { selectToken } from "../userSlice";
-import { addActivity, selectLocation, selectDates } from '../../pages/tripSlice';
+import { addActivity, selectActivities, selectLocation, selectDates } from '../../pages/tripSlice';
 import { useSelector, useDispatch } from 'react-redux';
 
 export const Activity = () => {
@@ -14,7 +14,7 @@ export const Activity = () => {
   const [activities, setActivities] = useState([]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const selectedActivities = useSelector(selectActivities);
   useEffect(() => {
     if (dates && selectedLocation.id) {
       getActivityByLocationId(selectedLocation.id, rdxToken)
@@ -35,6 +35,10 @@ export const Activity = () => {
     console.log('Adding activity:', activity);
     dispatch(addActivity(activity));
   };
+
+  useEffect(() => {
+    console.log('Selected activities:', selectedActivities);
+  }, [selectedActivities]);
 
   return (
     <div className="cards-activities-container-main">
