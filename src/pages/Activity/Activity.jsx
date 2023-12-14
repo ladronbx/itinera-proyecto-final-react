@@ -32,20 +32,19 @@ export const Activity = () => {
 
   return (
     <div className="cards-activities-container-main">
-      <div className="container">
+      <div className="container container-activities">
         {
           activities.length > 0
             ? (
-              activities.map((activity, index) => (
-                <div key={index} className="container-activities">
-                  <ActivityCard
-                    name={activity.name}
-                    description={activity.description}
-                    image_1={activity.image_1}
-                    image_2={activity.image_2}
-                    location={activity.location}
-                  />
-                </div>
+              activities.map((activity) => (
+                <ActivityCard
+                  key={activity.id}
+                  name={activity.name}
+                  description={activity.description}
+                  image_1={activity.image_1}
+                  image_2={activity.image_2}
+                  location={activity.location}
+                />
               ))
             )
             : (

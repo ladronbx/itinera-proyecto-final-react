@@ -22,20 +22,19 @@ export const Location = () => {
         .then((response) => {
           if (Array.isArray(response.data.data)) {
             setTimeout(() => {
-              console.log("Ubicaciones obtenidas: ", response.data.data);
+              console.log("ubicciones: ", response.data.data);
               setLocations(response.data.data);
             }, 200)
           }
         })
         .catch((error) => console.log(error));
     } else {
-      console.log("Redirigiendo a la página de inicio");
       navigate("/");
     }
   }, [rdxToken, navigate]);
 
   const handleDestinationClick = (location) => {
-    console.log("ID de la ubicación seleccionada: ", location.id); 
+    console.log("id de la ubicación seleccionada: ", location.id); 
     dispatch(setLocation(location));
     Modal.confirm({
       title: 'Seleccione las fechas de su viaje',

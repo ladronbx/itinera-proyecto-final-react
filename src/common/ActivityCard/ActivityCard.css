@@ -9,7 +9,7 @@
   align-items: stretch;
   transition: box-shadow 0.3s ease;
   height: 40em;
-  background-color: rgb(72, 105, 222);
+  background-color: rgb(17, 83, 107);
 }
 
 .card-all-activities:hover {

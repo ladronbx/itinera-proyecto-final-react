@@ -33,6 +33,7 @@ export const Home = () => {
         </video>
       </div>
 
+      {/* to do : si la persona está logeada tiene acceso al botón. Si no el LinkButton llevará al user al Login */}
       <LinkButton
         classButton={"link-button-style-home"}
         path={"/locations"}
