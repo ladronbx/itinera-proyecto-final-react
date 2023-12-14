@@ -1,11 +1,12 @@
-.container-profile {
-    margin: 0em;
-    height: 89vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    background-color: rgb(29, 79, 79);
+.container-main-profile {
+  height: 89vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: rgb(17, 83, 107);
+  flex-wrap: wrap;
   }
   
   .container-left-img-profile {
@@ -33,7 +34,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    background-color: rgb(29, 79, 79);
+    background-color: rgb(17, 83, 107);
   }
   
   

@@ -12,8 +12,8 @@ export const TripCard = ({location, membersCount, start_date, end_date}) => {
             </div>
 
             <div className="card-all-trips__content col">
-            <p className="card-all-trips__title">{start_date}</p>
-                <p className="card-all-trips__title">{end_date}</p>
+            <p className="card-all-trips__date">{start_date}</p>
+                <p className="card-all-trips__date">{end_date}</p>
                 <p className="card-all-trips__description">Viajeros : {membersCount}</p>
             </div>
         </div>

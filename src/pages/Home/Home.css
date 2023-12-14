@@ -5,14 +5,14 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  background-color: rgb(17, 83, 107);
+  background-color: rgb(0, 0, 0);
   flex-wrap: wrap;
 }
 
 
 .video-background{
   width: 50%;
-  background-color: rgb(170, 192, 200);
+  background-color:rgb(17, 83, 107);
   display: flex;
   justify-content: center;
   align-items: center;

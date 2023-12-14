@@ -10,7 +10,7 @@
 
 .login-style-container-main {
   height: 89vh;
-  width: 100vw;
+  width: 80vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,7 +41,7 @@
 
 .buttonLogin {
   text-align: center;
-  background-color: rgb(29, 79, 79);
+  background-color: rgb(17, 83, 107);
   color: white;
   width: 12.5em;
   margin: 1em auto;
@@ -53,5 +53,5 @@
 }
 
 .buttonLogin:hover {
-  background-color: rgb(29, 79, 79);
+  background-color: rgb(17, 83, 107);
 }
