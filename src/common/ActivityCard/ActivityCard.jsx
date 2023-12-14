@@ -7,6 +7,7 @@ export const ActivityCard = ({ name, description, image_1, image_2, location }) 
     const dispatch = useDispatch();
 
     const handleAddActivity = () => {
+        console.log('Adding activity:', { name, description, image_1, image_2, location });
         dispatch(addActivity({ name, description, image_1, image_2, location }));
     };
 

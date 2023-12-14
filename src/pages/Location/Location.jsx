@@ -34,24 +34,24 @@ export const Location = () => {
   }, [rdxToken, navigate]);
 
   const handleDestinationClick = (location) => {
-    console.log("id de la ubicación seleccionada: ", location.id); 
+    console.log("id de la ubicación seleccionada: ", location.id);
     dispatch(setLocation(location));
     Modal.confirm({
       title: 'Seleccione las fechas de su viaje',
-      content: <SelectDate onDateChange={handleDateChange} />,
+      content: <SelectDate onDateChange={(dates) => handleDateChange(dates, location)} />,
       onCancel: () => { },
-      onOk: handleOk,
+      onOk: () => handleOk(location),
     });
   };
 
-  const handleDateChange = (dates) => {
+  const handleDateChange = (dates, location) => {
     dispatch(setDates(dates));
   };
 
-  const handleOk = async () => {
-    if (selectedLocation.id && dates) {
+  const handleOk = async (location) => {
+    if (location.id && dates) {
       await dispatch(setDates(dates));
-      navigate(`/activities-location/${selectedLocation.id}`);
+      navigate(`/activities-location/${location.id}`);
     }
   };
 
