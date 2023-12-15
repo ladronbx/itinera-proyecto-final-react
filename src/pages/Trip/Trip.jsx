@@ -30,7 +30,7 @@ export const Trip = () => {
   }
     , []);
 
-
+    console.log(trips);
   return (
     <div className="cards-trips-container-main">
       <div className="container">
@@ -38,14 +38,14 @@ export const Trip = () => {
           trips.length > 0
             ? (
               trips.map((trip) => (
-                <div className="" key={trip.id}>
-                  <TripCard
-                    location={trip.location}
-                    start_date={trip.start_date}
-                    end_date={trip.end_date}
-                    membersCount={trip.membersCount}
-                  />
-                </div>
+                <TripCard
+                  key={trip.id}
+                  id={trip.id}
+                  location={trip.location}
+                  start_date={trip.start_date}
+                  end_date={trip.end_date}
+                  membersCount={trip.membersCount}
+                />
               ))
             )
             : (
