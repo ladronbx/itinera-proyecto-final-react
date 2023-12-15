@@ -99,7 +99,6 @@ export const getMyTripById = (id, rdxToken) => {
 
 };
 
-
 //SUPERADMIN
 export const getAllUsers = (rdxToken, page) => {
     return axios.get(`${BASE_URL}super/get/all/users?page=${page}&skip=10`, {
