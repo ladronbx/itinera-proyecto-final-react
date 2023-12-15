@@ -22,7 +22,7 @@ export const TripDetail = () => {
                     setTrip(response.data.data);
                 })
                 .catch((error) => console.log(error));
-        }else{
+        } else {
             navigate("/");
         }
     }, [id, rdxToken]);
@@ -33,33 +33,39 @@ export const TripDetail = () => {
 
     return (
         <div>
-            <h1>Viaje a {trip.location}</h1>
+            <h1>Viaje a {trip.locations[0].name}</h1>
+            <img className="location_image" src={trip.locations[0].image} alt={trip.locations[0].name} />
             <p>Fecha de inicio: {new Date(trip.start_date).toLocaleDateString()} - Fecha de fin: {new Date(trip.end_date).toLocaleDateString()}</p>
             <p>Número de viajeros: {trip.members_group}</p>
             <h2>Miembros del grupo:</h2>
             {
-                trip.members_name.length > 0
-                ? (
-                    trip.members_name.map((name, index) => (
-                        <TripCardDetailMember
-                            key={index}
-                            name={name}
-                            email={trip.members_email[index]}
-                            image={trip.members_image[index]}
-                        />
-                    ))
-                )
-                : (
-                    <div>No hay miembros en el grupo</div>
-                )
+                trip.members.length > 0
+                    ? (
+                        <div className="trip-members">
+                            {
+                                trip.members.map((member, index) => (
+                                    <TripCardDetailMember
+                                        key={index}
+                                        name={member.name}
+                                        email={member.email}
+                                        image={member.image}
+                                    />
+                                ))
+                            }
+                        </div>
+                    )
+                    : (
+                        <div>No hay miembros en el grupo</div>
+                    )
             }
             <h2>Actividades:</h2>
-            {trip.activity_name.map((activity, index) => (
+            {trip.activities.map((activity, index) => (
                 <div key={index}>
-                    <p>Actividad: {activity}</p>
-                    <img src={trip.activity_image[index]} alt={activity} />
+                    <p>Actividad: {activity.name}</p>
+                    <img src={activity.image} alt={activity.name} />
+                    <div>Duration : {activity.duration}H</div>
                 </div>
             ))}
         </div>
-    )
+    );
 }
