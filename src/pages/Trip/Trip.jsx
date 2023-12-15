@@ -10,6 +10,10 @@ import { TripCard } from "../../common/TripCard/TripCard";
 export const Trip = () => {
   const rdxToken = useSelector(selectToken);
 
+  if (!rdxToken) {
+    navigate("/");
+  }
+
   const [trips, setTrips] = useState([]);
   const navigate = useNavigate();
 
@@ -30,7 +34,7 @@ export const Trip = () => {
   }
     , []);
 
-    console.log(trips);
+  console.log(trips);
   return (
     <div className="cards-trips-container-main">
       <div className="container">
