@@ -74,13 +74,13 @@ export const getActivityByLocationId = (id, rdxToken) => {
   };
 
 //TRIPS
-export const createPersonalTrip = (id, body, rdxToken) => {
-    return axios.post(`${BASE_URL}/personal-trip-create/${id}`, body, {
+export const createTrip = (body, rdxToken) => {
+    return axios.post(`${BASE_URL}create-trip`, body, {
         headers: {
             Authorization: `Bearer ${rdxToken}`,
         },
     });
-}
+};
 
 export const getAllMyTrips = (rdxToken) => {
     return axios.get(`${BASE_URL}my-trips`, {
