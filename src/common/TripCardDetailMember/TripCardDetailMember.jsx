@@ -1,6 +1,7 @@
 import React from "react";
 import "./TripCardDetailMember.css";
 
+
 export const TripCardDetailMember = ({ name, image, email }) => {
     let roleText = "";
 

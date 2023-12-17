@@ -5,6 +5,8 @@ import { useSelector } from 'react-redux';
 import { getMyTripById } from "../../services/apiCall";
 import { useParams } from "react-router-dom";
 import { TripCardDetailMember } from "../../common/TripCardDetailMember/TripCardDetailMember";
+import TripCalendar from "../../common/TripCalendar/TripCalendar";
+
 
 export const TripDetail = () => {
     const rdxToken = useSelector(selectToken);
@@ -36,6 +38,9 @@ export const TripDetail = () => {
             <h1>Viaje a {trip.locations[0].name}</h1>
             <img className="location_image" src={trip.locations[0].image} alt={trip.locations[0].name} />
             <p>Fecha de inicio: {new Date(trip.start_date).toLocaleDateString()} - Fecha de fin: {new Date(trip.end_date).toLocaleDateString()}</p>
+    
+            <TripCalendar trip={trip} />
+    
             <p>Número de viajeros: {trip.members_group}</p>
             <h2>Miembros del grupo:</h2>
             {
