@@ -49,6 +49,7 @@ export const Trip = () => {
                   start_date={trip.start_date}
                   end_date={trip.end_date}
                   membersCount={trip.membersCount}
+                  image_1={trip.image_1}
                 />
               ))
             )
