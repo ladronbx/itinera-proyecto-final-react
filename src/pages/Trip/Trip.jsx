@@ -33,8 +33,6 @@ export const Trip = () => {
     }
   }
     , []);
-
-  console.log(trips);
   return (
     <div className="cards-trips-container-main">
       <div className="container">
