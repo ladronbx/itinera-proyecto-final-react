@@ -2,11 +2,7 @@ import React from 'react'; import FullCalendar from '@fullcalendar/react'; impor
 
 export default class TripCalendar extends React.Component {
     render() {
-        console.log('Rendering TripCalendar');
-        // Mapear las actividades a eventos
         const { trip } = this.props;
-
-        console.log('Trip:', trip); // Verificar los datos del viaje
         const startDate = new Date(trip.start_date);
         const endDate = new Date(trip.end_date);
         const oneDay = 24 * 60 * 60 * 1000; // horas*minutos*segundos*milliseconds
@@ -38,7 +34,7 @@ export default class TripCalendar extends React.Component {
             };
         });
 
-        console.log('Events:', events); // Verificar los eventos generados
+        // console.log('Events:', events); // Verificar los eventos generados
 
         return (
             <FullCalendar
