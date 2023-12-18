@@ -7,6 +7,7 @@ import { getMyTripById, addMemberToTrip } from "../../services/apiCall";
 import { useParams } from "react-router-dom";
 import { TripCardDetailMember } from "../../common/TripCardDetailMember/TripCardDetailMember";
 import TripCalendar from "../../common/TripCalendar/TripCalendar";
+import { ActivityCardDetail } from "../../common/ActivityCardDetail/ActivityCardDetail";
 
 export const TripDetail = () => {
     const rdxToken = useSelector(selectToken);
@@ -44,26 +45,26 @@ export const TripDetail = () => {
     useEffect(() => {
         if (isAddingMember) {
             addMemberToTrip(id, emailInput, rdxToken)
-            .then(response => {
-                if (response.data.success) {
-                    setTrip(prevTrip => ({
-                        ...prevTrip,
-                        members: [...prevTrip.members, { email: emailInput }]
-                    }));
-                    setEmailInput("");
-                }
-            })
-            .catch(error => {
-                console.error(error.response);
-                if (error.response.status === 500) {
-                    setErrorMessage('Error del servidor');
-                } else if (error.response.data.message === 'The email field must be a valid email address') {
-                    setErrorMessage('Por favor, introduce un correo electrónico válido');
-                } else {
-                    setErrorMessage('Error añadiendo acompañante');
-                }
-            });
-        setIsAddingMember(false);
+                .then(response => {
+                    if (response.data.success) {
+                        setTrip(prevTrip => ({
+                            ...prevTrip,
+                            members: [...prevTrip.members, { email: emailInput }]
+                        }));
+                        setEmailInput("");
+                    }
+                })
+                .catch(error => {
+                    console.error(error.response);
+                    if (error.response.status === 500) {
+                        setErrorMessage('Error del servidor');
+                    } else if (error.response.data.message === 'The email field must be a valid email address') {
+                        setErrorMessage('Por favor, introduce un correo electrónico válido');
+                    } else {
+                        setErrorMessage('Error añadiendo acompañante');
+                    }
+                });
+            setIsAddingMember(false);
         }
     }, [isAddingMember, id, emailInput, rdxToken]);
     const handleAddMembers = () => {
@@ -81,7 +82,6 @@ export const TripDetail = () => {
 
                 <p>Número de viajeros: {trip.members_group}</p>
                 <h2>Miembros del grupo:</h2>
-                {/* TO DO : VALIDACIONES INPUTS*/}
                 <input type="email" value={emailInput} onChange={e => setEmailInput(e.target.value)} />
                 {errorMessage && <div className="error-message">{errorMessage}</div>}
                 <button onClick={handleAddMembers}>Añadir viajero</button>
@@ -106,13 +106,23 @@ export const TripDetail = () => {
                         )
                 }
                 <h2>Actividades:</h2>
-                {trip.activities.map((activity, index) => (
-                    <div key={index}>
-                        <p>Actividad: {activity.name}</p>
-                        <img src={activity.image} alt={activity.name} />
-                        <div>Duration : {activity.duration}H</div>
-                    </div>
-                ))}
+                {console.log(trip.activities)}
+
+                <div className="trip-detail-activities-container">
+                    {
+                        trip.activities.map((activity, index) => (
+                            <ActivityCardDetail
+                                key={index}
+                                name={activity.name}
+                                description={activity.description}
+                                image_1={activity.image_1}
+                                image_2={activity.image_2}
+                                location={activity.location}
+                                duration={activity.duration}
+                            />
+                        ))
+                    }
+                </div>
             </div>
         ) : (
             <div>Loading...</div>
