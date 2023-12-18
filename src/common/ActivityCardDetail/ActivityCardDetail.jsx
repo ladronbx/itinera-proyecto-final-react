@@ -1,14 +1,11 @@
 import React from "react";
-import "./ActivityCardDetail.css";
+import './ActivityCardDetail.css';
 import { Carousel } from 'react-bootstrap';
-
-
 
 export const ActivityCardDetail = ({ name, description, image_1, image_2, location, duration }) => {
     return (
         <div className="detail-card-all-activities">
-            <Carousel
-            className="detail-card-all-activities-carousel">
+            <Carousel interval={null}>
                 <Carousel.Item>
                     <img className="detail-card-all-activities-image" src={image_1} alt={name} />
                 </Carousel.Item>
