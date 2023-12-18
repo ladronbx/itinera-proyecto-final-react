@@ -16,7 +16,7 @@ export const Trip = () => {
 
   const [trips, setTrips] = useState([]);
   const navigate = useNavigate();
-
+//to do: si no trae ningún viaje, mostrar un mensaje de que no hay viajes
   useEffect(() => {
     if (trips.length === 0) {
       getAllMyTrips(rdxToken)

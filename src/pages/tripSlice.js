@@ -1,35 +1,35 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export const tripSlice = createSlice({
-    name: "trip",
-    initialState: {
-      tripId: null,
-      location: null,
-      dates: null,
-      activities: [],
+  name: "trip",
+  initialState: {
+    tripId: null,
+    location: null,
+    dates: null,
+    activities: [],
+  },
+  reducers: {
+    setTripId: (state, action) => {
+      state.tripId = action.payload;
     },
-    reducers: {
-      setTripId: (state, action) => {
-        state.tripId = action.payload;
-      },
-      setLocation: (state, action) => {
-        state.location = action.payload;
-      },
-      setDates: (state, action) => {
-        state.dates = action.payload;
-      },
-      addActivity: (state, action) => {
-        state.activities.push(action.payload);
-      },
-      resetActivities: (state) => {
-        state.activities = [];
-      },
+    setLocation: (state, action) => {
+      state.location = action.payload;
     },
-  });
-  
-  export const selectTripId = (state) => state.trip.tripId;
-  export const selectLocation = (state) => state.trip.location;
-  export const selectDates = (state) => state.trip.dates;
-  export const selectActivities = (state) => state.trip.activities; 
-  export const { setTripId, setLocation, setDates, addActivity, resetActivities } = tripSlice.actions;
-  export default tripSlice.reducer;
+    setDates: (state, action) => {
+      state.dates = action.payload;
+    },
+    addActivity: (state, action) => {
+      state.activities.push(action.payload);
+    },
+    resetActivities: (state) => {
+      state.activities = [];
+    },
+  },
+});
+
+export const selectTripId = (state) => state.trip.tripId;
+export const selectLocation = (state) => state.trip.location;
+export const selectDates = (state) => state.trip.dates;
+export const selectActivities = (state) => state.trip.activities;
+export const { setTripId, setLocation, setDates, addActivity, resetActivities } = tripSlice.actions;
+export default tripSlice.reducer;

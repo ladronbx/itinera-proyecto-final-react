@@ -82,6 +82,14 @@ export const createTrip = (body, rdxToken) => {
     });
 };
 
+export const addMemberToTrip = (tripId, email, rdxToken) => {
+    return axios.post(`${BASE_URL}my-trip/${tripId}/add-member`, { email }, {
+        headers: {
+            Authorization: `Bearer ${rdxToken}`,
+        },
+    });
+};
+
 export const getAllMyTrips = (rdxToken) => {
     return axios.get(`${BASE_URL}my-trips`, {
         headers: {
@@ -96,7 +104,6 @@ export const getMyTripById = (id, rdxToken) => {
             Authorization: `Bearer ${rdxToken}`,
         },
     });
-
 };
 
 //SUPERADMIN

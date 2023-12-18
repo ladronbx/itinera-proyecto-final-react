@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Activity.css";
 import { useNavigate } from "react-router-dom";
 import { ActivityCard } from "../../common/ActivityCard/ActivityCard";
-import { getActivityByLocationId } from "../../services/apiCall";
+import { createTrip, getActivityByLocationId } from "../../services/apiCall";
 import { selectToken } from "../userSlice";
 import { addActivity, selectActivities, selectLocation, selectDates, resetActivities } from '../../pages/tripSlice';
 import { useSelector, useDispatch } from 'react-redux';
@@ -45,11 +45,29 @@ export const Activity = () => {
     console.log('Selected activities:', selectedActivities);
   }, [selectedActivities]);
 
+  const handleCreateTrip = () => {
+    const tripData = {
+      start_date: dates.start_date,
+      end_date: dates.end_date,
+      location_id: selectedLocation.id,
+      activities: selectedActivities.map(activity => activity.id)
+    };
+  
+    createTrip(tripData, rdxToken)
+      .then(response => {
+        console.log('Trip created successfully:', response.data);
+        navigate("/my-trips");
+      })
+      .catch(error => {
+        console.error('Error creating trip:', error);
+      });
+  };
+
   return (
     <div className="cards-activities-container-main">
       <h2>¡Es hora de seleccionar las actividades que te gustaría realizar en {selectedLocation.name}!</h2>
       <button className="button-reset-activities" onClick={handleResetActivities}>Reiniciar actividades</button>
-      <button className="button-select-activities">Ya tengo todas mis actividades CONTINUAR</button>
+      <button className="button-select-activities" onClick={handleCreateTrip}>Ya tengo todas mis actividades CONTINUAR</button>
       <div className="container container-activities">
         {
           activities.length > 0
@@ -84,7 +102,7 @@ export const Activity = () => {
       </div>
 
       <button className="button-reset-activities" onClick={handleResetActivities}>Reiniciar actividades</button>
-      <button className="button-select-activities">Ya tengo todas mis actividades CONTINUAR</button>
+      <button className="button-select-activities" onClick={handleCreateTrip}>Ya tengo todas mis actividades CONTINUAR</button>
     </div>
   );
 };
