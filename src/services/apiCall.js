@@ -45,6 +45,14 @@ export const deleteUser = (body, rdxToken) => {
     });
 };
 
+export const verifyPassword = (body, rdxToken) => {
+    return axios.post(`${BASE_URL}verify-password`, body, {
+        headers: {
+            Authorization: `Bearer ${rdxToken}`,
+        },
+    });
+};
+
 //LOCATIONS
 export const getAllLocations = async (rdxToken) => {
     return axios.get(`${BASE_URL}locations`, {
