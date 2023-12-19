@@ -46,7 +46,7 @@ export const PasswordChange = ({ user, rdxToken, setEditingField }) => {
                         updateProfile(updatedUser, rdxToken)
                             .then((response) => {
                                 console.log(response.data);
-                                setEditingField(null); // Dejar de editar después de actualizar
+                                setEditingField(null);
                                 setShouldUpdate(false);
                             })
                             .catch((error) => {
