@@ -8,14 +8,18 @@ const SelectDate = ({ onDateChange }) => {
   const [value, setValue] = useState(null);
 
   const disabledDate = (current) => {
-    if (!dates) {
-      return false;
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const isBeforeToday = current && current.valueOf() < today.valueOf();
+  
+    if (!dates || isBeforeToday) {
+      return isBeforeToday;
     }
+  
     const tooLate = dates[0] && current.diff(dates[0], 'days') >= 7;
     const tooEarly = dates[1] && dates[1].diff(current, 'days') >= 7;
     return !!tooEarly || !!tooLate;
   };
-
   const onOpenChange = (open) => {
     if (open) {
       setDates([null, null]);
