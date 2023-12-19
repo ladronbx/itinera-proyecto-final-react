@@ -2,7 +2,7 @@ import React from "react";
 import "./TripCardDetailMember.css";
 import { RemoveButton } from "../RemoveButton/RemoveButton";
 
-export const TripCardDetailMember = ({ name, image, email, tripId, userId, rdxToken }) => {
+export const TripCardDetailMember = ({ name, image, email, tripId, userId, rdxToken, onMemberRemoved = () => {} }) => {
     let roleText = "";
 
     return (
@@ -17,7 +17,7 @@ export const TripCardDetailMember = ({ name, image, email, tripId, userId, rdxTo
             </div>
 
             <div className="remove-button">
-                <RemoveButton tripId={tripId} userId={userId} rdxToken={rdxToken} />
+                <RemoveButton tripId={tripId} userId={userId} rdxToken={rdxToken} onMemberRemoved={onMemberRemoved} />
             </div>
         </div>
     );

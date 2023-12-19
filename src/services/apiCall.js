@@ -1,4 +1,5 @@
 import axios from 'axios';
+import e from 'cors';
 
 // to do : averiguar si es necesario o no en mi caso
 
@@ -67,11 +68,11 @@ export const getActivityById = async () => {
 
 export const getActivityByLocationId = (id, rdxToken) => {
     return axios.get(`${BASE_URL}activities-location/${id}`, {
-      headers: {
-        Authorization: `Bearer ${rdxToken}`,
-      },
+        headers: {
+            Authorization: `Bearer ${rdxToken}`,
+        },
     });
-  };
+};
 
 //TRIPS
 export const createTrip = (body, rdxToken) => {
@@ -90,7 +91,6 @@ export const addMemberToTrip = (tripId, email, rdxToken) => {
     });
 };
 
-//deleteMemberFromTrip($tripId, $userId)
 export const deleteMemberFromTrip = (tripId, userId, rdxToken) => {
     return axios.delete(`${BASE_URL}my-trip/${tripId}/delete-member/${userId}`, {
         headers: {
@@ -98,6 +98,16 @@ export const deleteMemberFromTrip = (tripId, userId, rdxToken) => {
         },
     });
 };
+
+// getMembersTrip
+export const getMembersTrip = (tripId, rdxToken) => {
+    return axios.get(`${BASE_URL}my-trip/${tripId}/get-members`, {
+        headers: {
+            Authorization: `Bearer ${rdxToken}`,
+        },
+    });
+};
+
 
 export const getAllMyTrips = (rdxToken) => {
     return axios.get(`${BASE_URL}my-trips`, {

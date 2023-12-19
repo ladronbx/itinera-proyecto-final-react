@@ -47,10 +47,17 @@ export const TripDetail = () => {
             addMemberToTrip(id, emailInput, rdxToken)
                 .then(response => {
                     if (response.data.success) {
-                        setTrip(prevTrip => ({
-                            ...prevTrip,
-                            members: [...prevTrip.members, { email: emailInput }]
-                        }));
+                        getMyTripById(id, rdxToken)
+                            .then((response) => {
+                                setTrip(response.data.data);
+                            })
+                            .catch(error => {
+                                if (error.response && error.response.status === 404) {
+                                    navigate("/");
+                                } else {
+                                    console.error('Error:', error);
+                                };
+                            })
                         setEmailInput("");
                     }
                 })
@@ -67,8 +74,24 @@ export const TripDetail = () => {
             setIsAddingMember(false);
         }
     }, [isAddingMember, id, emailInput, rdxToken]);
+
     const handleAddMembers = () => {
         setIsAddingMember(true);
+    };
+
+
+    const handleMemberRemoved = () => {
+        getMyTripById(id, rdxToken)
+            .then((response) => {
+                setTrip(response.data.data);
+            })
+            .catch(error => {
+                if (error.response && error.response.status === 404) {
+                    navigate("/");
+                } else {
+                    console.error('Error:', error);
+                };
+            })
     };
 
     return (
@@ -99,6 +122,7 @@ export const TripDetail = () => {
                                             tripId={id}
                                             userId={member.id}
                                             rdxToken={rdxToken}
+                                            onMemberRemoved={handleMemberRemoved}
                                         />
                                     ))
                                 }
