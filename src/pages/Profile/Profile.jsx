@@ -6,6 +6,7 @@ import { selectToken } from "../userSlice";
 import { getProfile, updateProfile } from "../../services/apiCall";
 import { PasswordChange } from "../../common/PasswordChange/PasswordChange";
 import { Modal } from "antd";
+import { EditButton } from "../../common/EditButton/EditButton";
 
 export const Profile = () => {
     const rdxToken = useSelector(selectToken);
@@ -103,8 +104,8 @@ export const Profile = () => {
                                             {errorMessages.name && <div className="error-message-style">{errorMessages.name}</div>}
                                         </div>
                                         : <>
-                                            {user.name}
-                                            <button className="button-edit" onClick={() => handleEditClick('name')}>Edit</button>
+                                            <div className="name-profile-style">{user.name}</div>
+                                            <EditButton fieldName='name' handleEditClick={handleEditClick} />
                                         </>
                                     }
                                 </div>
@@ -117,7 +118,7 @@ export const Profile = () => {
                                         </div>
                                         : <>
                                             {user.email}
-                                            <button className="button-edit" onClick={() => handleEditClick('email')}>Edit</button>
+                                            <EditButton fieldName='email' handleEditClick={handleEditClick} />
                                         </>
                                     }
                                 </div>

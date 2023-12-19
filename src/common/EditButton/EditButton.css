@@ -1,0 +1,64 @@
+.common-edit-button {
+    width: 160px;
+    height: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background: #093c38;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+    margin-left: 4em;
+}
+
+.common-edit-button,
+.common-edit-button span {
+    transition: 200ms;
+}
+
+.common-edit-text {
+    transform: translateX(35px);
+    color: white;
+    font-weight: bold;
+    font-size: 0.4em;
+}
+
+.common-edit-icon {
+    position: absolute;
+    border-left: 1px solid rgb(18, 97, 85);
+    transform: translateX(110px);
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 10PX;
+}
+
+.common-edit-svgIcon {
+    width: 15px;
+    fill: #eee;
+}
+
+.common-edit-button:hover {
+    background: rgba(161, 200, 200, 0.769);
+}
+
+.common-edit-button:hover .common-edit-text {
+    color: transparent;
+}
+
+.common-edit-button:hover .common-edit-icon {
+    width: 150px;
+    border-left: none;
+    transform: translateX(0);
+}
+
+.common-edit-button:focus {
+    outline: none;
+}
+
+.common-edit-button:active .common-edit-icon .common-edit-svgIcon {
+    transform: scale(0.8);
+}

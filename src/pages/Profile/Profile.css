@@ -5,7 +5,8 @@
   justify-content: center;
   position: relative;
   flex-wrap: wrap;
-  background-color: rgb(96, 150, 170);
+  /* background: #093c38; */
+  background: rgb(0, 0, 0);
 }
 
 .container-left-img-profile{
@@ -31,22 +32,31 @@
 }
 
 .full-name-profile, .email-name-profile {
-  font-size: 2em;
+  font-size:2em;
   margin-bottom: 2em;
-  color: black;
+  color: rgb(255, 255, 255);
+  display: flex;
+  align-items: center; 
+  justify-content: space-between; 
 }
 
 .full-name-profile-input, .email-profile-input{
-  font-size:1em;
-  margin-bottom: 2em;
-  color: black;
+  font-size: 1.5em;
   border: none;
-  background-color: rgb(255, 255, 255);
-  border-radius: 0.5em;
-  width: 100%;
+  border-bottom: 2px solid rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  margin-bottom: 1em;
 }
 
-.button-edit, .button-update-profile{
+.name-profile-style{
+  font-size: 3em;
+  color: #15786f;
+  margin-bottom: 1em;
+
+}
+
+.button-update-profile{
   font-size: 20px;
   background-color: rgb(0, 0, 0);
   color: aliceblue;
@@ -54,10 +64,10 @@
   cursor: pointer;
   border: none;
   width: 10em;
-  margin-top: 2em;
+  margin-left: 2em;
 }
 
-.button-edit:hover, .button-update-profile:hover, .button-update-password:hover{
+.button-update-profile:hover{
   background-color: rgb(255, 255, 255);
   color: black;
 }
