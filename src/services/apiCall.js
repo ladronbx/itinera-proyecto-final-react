@@ -90,6 +90,15 @@ export const addMemberToTrip = (tripId, email, rdxToken) => {
     });
 };
 
+//deleteMemberFromTrip($tripId, $userId)
+export const deleteMemberFromTrip = (tripId, userId, rdxToken) => {
+    return axios.delete(`${BASE_URL}my-trip/${tripId}/delete-member/${userId}`, {
+        headers: {
+            Authorization: `Bearer ${rdxToken}`,
+        },
+    });
+};
+
 export const getAllMyTrips = (rdxToken) => {
     return axios.get(`${BASE_URL}my-trips`, {
         headers: {

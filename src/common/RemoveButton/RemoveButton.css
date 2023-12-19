@@ -1,0 +1,61 @@
+.common-remove-button {
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background: #7a1717;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.common-remove-button,
+.common-remove-button span {
+    transition: 200ms;
+}
+
+.common-remove-text {
+    transform: translateX(35px);
+    color: white;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.common-remove-icon {
+    position: absolute;
+    border-left: 1px solid #3e0606da;
+    transform: translateX(110px);
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.common-remove-icon svg {
+    width: 15px;
+    fill: #eee;
+}
+
+.common-remove-button:hover {
+    background: #9e5b5b;
+}
+
+.common-remove-button:hover .common-remove-text {
+    color: transparent;
+}
+
+.common-remove-button:hover .common-remove-icon {
+    width: 150px;
+    border-left: none;
+    transform: translateX(0);
+}
+
+.common-remove-button:focus {
+    outline: none;
+}
+
+.common-remove-button:active .common-remove-icon svg {
+    transform: scale(0.8);
+}

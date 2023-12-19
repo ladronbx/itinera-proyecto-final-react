@@ -96,6 +96,9 @@ export const TripDetail = () => {
                                             name={member.name}
                                             email={member.email}
                                             image={member.image}
+                                            tripId={id}
+                                            userId={member.id}
+                                            rdxToken={rdxToken}
                                         />
                                     ))
                                 }
