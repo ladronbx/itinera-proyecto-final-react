@@ -122,7 +122,7 @@ export const Profile = () => {
                                     }
                                 </div>
 
-                                <button className="button-update-password" onClick={openModal}>Change Password</button>
+                                <button className="button-update-password" onClick={openModal}>Cambiar mi contraseña</button>
                                 <Modal
                                     visible={isModalOpen}
                                     onCancel={closeModal}
