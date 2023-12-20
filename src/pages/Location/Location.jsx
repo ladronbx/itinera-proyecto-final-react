@@ -4,9 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { LocationCard } from "../../common/LocationCard/LocationCard";
 import { Modal } from 'antd';
 import SelectDate from "../../common/SelectDate/SelectDate";
-import { useDispatch, useSelector } from 'react-redux';
 import { setLocation, setDates, selectLocation, selectDates } from '../tripSlice';
 import { selectToken } from "../userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { format } from 'date-fns';
 
 export const Location = () => {
   const rdxToken = useSelector(selectToken);
@@ -34,23 +35,35 @@ export const Location = () => {
   }, [rdxToken, navigate]);
 
   const handleDestinationClick = (location) => {
-    console.log("id de la ubicación seleccionada: ", location.id);
+    console.log("id de lea ubicación seleccionada: ", location.id);
     dispatch(setLocation(location));
     Modal.confirm({
       title: 'Seleccione las fechas de su viaje',
-      content: <SelectDate onDateChange={(dates) => handleDateChange(dates, location)} />,
+      content: <SelectDate dates={dates} onDateChange={(dates) => handleDateChange(dates, location)} />,
       onCancel: () => { },
       onOk: () => handleOk(location),
     });
   };
 
   const handleDateChange = (dates, location) => {
-    dispatch(setDates(dates));
+    console.log('dates:', dates);
+    // Guardar las fechas como objetos Date en Redux
+    const dateObjects = {
+      start_date: dates.start_date ? new Date(dates.start_date) : null,
+      end_date: dates.end_date ? new Date(dates.end_date) : null
+    };
+    dispatch(setDates(dateObjects));
   };
-
+  
   const handleOk = async (location) => {
+    console.log('dates:', dates);
     if (location.id && dates) {
-      await dispatch(setDates(dates));
+      // Formatear las fechas antes de utilizarlas
+      const formattedDates = {
+        start_date: dates.start_date ? format(dates.start_date, 'yyyy-MM-dd') : null,
+        end_date: dates.end_date ? format(dates.end_date, 'yyyy-MM-dd') : null
+      };
+      await dispatch(setDates(formattedDates));
       navigate(`/activities-location/${location.id}`);
     }
   };

@@ -91,8 +91,8 @@ export const getActivityByLocationId = (id, rdxToken) => {
 };
 
 //TRIPS
-export const createTrip = (body, rdxToken) => {
-    return axios.post(`${BASE_URL}create-trip`, body, {
+export const createTrip = (tripData, rdxToken) => {
+    return axios.post(`${BASE_URL}create-trip`, tripData, {
         headers: {
             Authorization: `Bearer ${rdxToken}`,
         },

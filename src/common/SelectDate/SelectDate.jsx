@@ -35,7 +35,11 @@ const SelectDate = ({ onDateChange }) => {
       onCalendarChange={(val) => {
         setDates(val);
         if (onDateChange) {
-          onDateChange(val);
+          const formattedDates = {
+            start_date: val[0] ? val[0].format('YYYY-MM-DD') : null,
+            end_date: val[1] ? val[1].format('YYYY-MM-DD') : null
+          };
+          onDateChange(formattedDates);
         }
       }}
       onChange={(val) => {

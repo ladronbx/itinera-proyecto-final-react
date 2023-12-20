@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import "./ActivityCard.css";
 import { addActivity, selectActivities } from "../../pages/tripSlice";
 
-export const ActivityCard = ({ name, description, image_1, image_2, location }) => {
+export const ActivityCard = ({ id, name, description, image_1, image_2, location }) => {
     const dispatch = useDispatch();
     const selectedActivities = useSelector(selectActivities);
 
@@ -16,11 +16,11 @@ export const ActivityCard = ({ name, description, image_1, image_2, location }) 
             }
         }
         if (isSelected) {
-            console.log('Activity already selected:', { name, description, image_1, image_2, location });
+            console.log('Activity already selected:', { id, name, description, image_1, image_2, location });
             return;
         }
-        console.log('Adding activity:', { name, description, image_1, image_2, location });
-        dispatch(addActivity({ name, description, image_1, image_2, location }));
+        console.log('Adding activity:', { id, name, description, image_1, image_2, location });
+        dispatch(addActivity(id));
     };
 
     let isSelected = false;

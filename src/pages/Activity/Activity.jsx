@@ -32,10 +32,11 @@ export const Activity = () => {
     }
   }, [dates, selectedLocation.id, navigate, rdxToken]);
 
-  const handleAddActivity = (activity) => {
-    console.log('Adding activity:', activity);
-    dispatch(addActivity(activity));
+  const handleAddActivity = (activityId) => {
+    console.log('Adding activity ID:', activityId);
+    dispatch(addActivity(activityId));
   };
+
 
   const handleResetActivities = () => {
     dispatch(resetActivities());
@@ -46,13 +47,30 @@ export const Activity = () => {
   }, [selectedActivities]);
 
   const handleCreateTrip = () => {
+    if (!dates.start_date || !dates.end_date) {
+      console.error('Start date or end date is missing');
+      return;
+    }
+    
+    const startDate = new Date(dates.start_date);
+    const endDate = new Date(dates.end_date);
+    
+    if (isNaN(startDate) || isNaN(endDate)) {
+      console.error('Start date or end date is invalid');
+      return;
+    }
+    
+    const formattedStartDate = `${startDate.getFullYear()}-${startDate.getMonth()+1}-${startDate.getDate()} ${startDate.getHours()}:${startDate.getMinutes()}:${startDate.getSeconds()}`;
+    const formattedEndDate = `${endDate.getFullYear()}-${endDate.getMonth()+1}-${endDate.getDate()} ${endDate.getHours()}:${endDate.getMinutes()}:${endDate.getSeconds()}`;
+    
     const tripData = {
-      start_date: dates.start_date,
-      end_date: dates.end_date,
+      start_date: formattedStartDate,
+      end_date: formattedEndDate,
       location_id: selectedLocation.id,
-      activities: selectedActivities.map(activity => activity.id)
+      activities: selectedActivities // Ya es un array de IDs de actividades
     };
   
+    console.log('tripData:', tripData);
     createTrip(tripData, rdxToken)
       .then(response => {
         console.log('Trip created successfully:', response.data);
@@ -83,13 +101,14 @@ export const Activity = () => {
               
                 return (
                   <ActivityCard
-                    key={activity.id}
+                    key={activity.id} // Añade esta línea
+                    id={activity.id}
                     name={activity.name}
                     description={activity.description}
                     image_1={activity.image_1}
                     image_2={activity.image_2}
                     location={activity.location}
-                    onClick={() => handleAddActivity(activity)}
+                    onClick={() => handleAddActivity(activity.id)}
                     isSelected={isSelected}
                   />
                 );
