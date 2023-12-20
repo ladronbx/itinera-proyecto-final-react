@@ -1,88 +1,103 @@
-.container-profile {
-  height: 89vh;
-  width: 100%;
+.container-main-profile {
   display: flex;
   justify-content: center;
-  position: relative;
-  flex-wrap: wrap;
-  background-color: rgb(96, 150, 170);
-}
-
-.container-left-img-profile{
-  width: 50%;
-  display: flex;
-  justify-content:center;
   align-items: center;
-  background-color: rgb(255, 255, 255);
+  padding: 20px;
 }
 
-.profile-image{
-  width: 70%;
+.container-profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80%;
+  margin: auto;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 10px;
 }
 
-.profile-column{
-  padding: 2em;
-  width: 100%;
-  box-sizing: border-box;
+.container-left-img-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-column {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: space-between;
 }
 
-.full-name-profile, .email-name-profile {
-  font-size: 2em;
-  margin-bottom: 2em;
-  color: black;
+.full-name-profile,
+.email-name-profile,
+.password-profile {
+  margin-bottom: 20px;
 }
 
-.full-name-profile-input, .email-profile-input{
-  font-size:1em;
-  margin-bottom: 2em;
-  color: black;
-  border: none;
-  background-color: rgb(255, 255, 255);
-  border-radius: 0.5em;
-  width: 100%;
+.full-name-profile-input,
+.email-profile-input,
+.password-profile-input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
 
-.button-edit, .button-update-profile{
-  font-size: 20px;
-  background-color: rgb(0, 0, 0);
-  color: aliceblue;
-  border-radius: 0.3em;
-  cursor: pointer;
-  border: none;
-  width: 10em;
-  margin-top: 2em;
+.button-edit {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
 
-.button-edit:hover, .button-update-profile:hover, .button-update-password:hover{
-  background-color: rgb(255, 255, 255);
-  color: black;
+.button-edit:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
 }
 
-
-.button-update-password{
-  font-size: 20px;
-  color: rgb(0, 0, 0);
-  border-radius: 0.3em;
-  cursor: pointer;
-  border: none;
-  margin-top: 2em;
-  margin-bottom: 2em;
-  background-color: rgb(96, 150, 170);
+.button-update-profile,
+.button-update-password {
+    background-color: #008CBA;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
 
-.button-update-password:hover{
-  background-color: rgb(96, 150, 170);
-  text-decoration:underline;
-  color: black;
+.button-update-profile:hover,
+.button-update-password:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid #008CBA;
 }
 
-.error-message-style{
-  color: rgb(139, 10, 10);
-  font-size: 20px;
-  margin-bottom: 1em;
+.error-message-style {
+  color: red;
+  font-size: 14px;
 }
-
