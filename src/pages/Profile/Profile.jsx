@@ -3,9 +3,7 @@ import "./Profile.css";
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import { selectToken } from "../userSlice";
-import { getProfile, updateProfile } from "../../services/apiCall";
-import { PasswordChange } from "../../common/PasswordChange/PasswordChange";
-import { Modal } from "antd";
+import { getProfile, updateProfile, updatePassword } from "../../services/apiCall";
 
 export const Profile = () => {
     const rdxToken = useSelector(selectToken);
@@ -23,7 +21,6 @@ export const Profile = () => {
         imageError: "",
     });
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -51,35 +48,50 @@ export const Profile = () => {
         setUser({ ...user, [name]: value });
     };
 
-    const openModal = () => {
-        setIsModalOpen(true);
-    };
-
-    const closeModal = () => {
-        setIsModalOpen(false);
-    };
-
     const handleUpdateProfile = () => {
         const updatedUser = { [editingField]: user[editingField] };
-        updateProfile(updatedUser, rdxToken)
-            .then((response) => {
-                console.log(response.data);
-                setIsModalOpen(false);
-                setEditingField(null);
+        //si los campos son name, email o image = updateProfile
+        if (editingField === 'name' || editingField === 'email' || editingField === 'image') {
+            updateProfile(updatedUser, rdxToken)
+                .then((response) => {
+                    console.log(response.data);
+                    setEditingField(null);
 
-                getProfile(rdxToken)
-                    .then((response) => {
-                        setUser(response.data.data);
-                    })
-                    .catch((error) => {
-                        console.log(error);
-                    });
+                    getProfile(rdxToken)
+                        .then((response) => {
+                            setUser(response.data.data);
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                        });
 
-            })
-            .catch((error) => {
-                console.log(error.response.data);
-                setErrorMessages(error.response.data.error);
-            });
+                })
+                .catch((error) => {
+                    console.log(error.response.data);
+                    setErrorMessages(error.response.data.error);
+                });
+        }
+        //si el campo es password = updatePassword
+        if (editingField === 'password') {
+            updatePassword({ currentPassword: user.currentPassword, newPassword: user.password }, rdxToken)
+                .then((response) => {
+                    console.log(response.data);
+                    setEditingField(null);
+
+                    getProfile(rdxToken)
+                        .then((response) => {
+                            setUser(response.data.data);
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                        });
+
+                })
+                .catch((error) => {
+                    console.log(error.response.data);
+                    setErrorMessages(error.response.data.error);
+                });
+        }
     };
 
     return (
@@ -122,16 +134,7 @@ export const Profile = () => {
                                     }
                                 </div>
 
-                                <button className="button-update-password" onClick={openModal}>Cambiar mi contraseña</button>
-                                <Modal
-                                    visible={isModalOpen}
-                                    onCancel={closeModal}
-                                    onOk={handleUpdateProfile}
-                                    okText="Actualizar"
-                                    cancelText="Cancelar"
-                                >
-                                    <PasswordChange user={user} rdxToken={rdxToken} setEditingField={setEditingField} />
-                                </Modal>
+                                <button className="button-update-password">Cambiar mi contraseña</button>
 
 
                                 <div className="button-update-profile-container">
