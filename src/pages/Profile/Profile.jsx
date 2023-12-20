@@ -21,6 +21,11 @@ export const Profile = () => {
         imageError: "",
     });
 
+    const [password, setPassword] = useState({
+        currentPassword: "",
+        newPassword: "",
+    });
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -48,6 +53,12 @@ export const Profile = () => {
         setUser({ ...user, [name]: value });
     };
 
+    //handleUpdatePassword
+    const handleUpdatePassword = (event) => {
+        const { name, value } = event.target;
+        setPassword({ ...password, [name]: value });
+    }
+
     const handleUpdateProfile = () => {
         const updatedUser = { [editingField]: user[editingField] };
         //si los campos son name, email o image = updateProfile
@@ -71,27 +82,27 @@ export const Profile = () => {
                     setErrorMessages(error.response.data.error);
                 });
         }
-        //si el campo es password = updatePassword
-        if (editingField === 'password') {
-            updatePassword({ currentPassword: user.currentPassword, newPassword: user.password }, rdxToken)
-                .then((response) => {
-                    console.log(response.data);
-                    setEditingField(null);
+    };
 
-                    getProfile(rdxToken)
-                        .then((response) => {
-                            setUser(response.data.data);
-                        })
-                        .catch((error) => {
-                            console.log(error);
-                        });
+    const handleUpdatePasswordClick = () => {
+        updatePassword(password, rdxToken)
+            .then((response) => {
+                console.log(response.data);
+                setEditingField(null);
 
-                })
-                .catch((error) => {
-                    console.log(error.response.data);
-                    setErrorMessages(error.response.data.error);
-                });
-        }
+                getProfile(rdxToken)
+                    .then((response) => {
+                        setUser(response.data.data);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+
+            })
+            .catch((error) => {
+                console.log(error.response.data);
+                setErrorMessages(error.response.data.error);
+            });
     };
 
     return (
@@ -134,12 +145,28 @@ export const Profile = () => {
                                     }
                                 </div>
 
-                                <button className="button-update-password">Cambiar mi contraseña</button>
-
-
                                 <div className="button-update-profile-container">
                                     <button className="button-update-profile" onClick={handleUpdateProfile}>Update my profile</button>
                                 </div>
+
+
+                                <div className="password-profile">
+                                    {editingField === 'password'
+                                        ? <div>
+                                            <input className="password-profile-input" type="password" name="currentPassword" placeholder="Current Password" value={password.currentPassword} onChange={handleUpdatePassword} />
+                                            <input className="password-profile-input" type="password" name="newPassword" placeholder="New Password" value={password.newPassword} onChange={handleUpdatePassword} />
+                                            {errorMessages.password && <div className="error-message-style">{errorMessages.password}</div>}
+                                            <button className="button-update-password" onClick={handleUpdatePasswordClick}>Update Password</button>
+                                        </div>
+                                        : <>
+                                            <button className="button-edit" onClick={() => handleEditClick('password')}>Change Password</button>
+                                        </>
+                                    }
+                                </div>
+
+
+
+
                             </div>
                         </div>
                     )
