@@ -30,7 +30,15 @@ export const getProfile = (rdxToken) => {
 };
 
 export const updateProfile = (body, rdxToken) => {
-    return axios.put(`${BASE_URL}profile-update`, body, {
+    return axios.put(`${BASE_URL}update-profile`, body, {
+        headers: {
+            Authorization: `Bearer ${rdxToken}`,
+        },
+    });
+};
+
+export const updatePassword = (body, rdxToken) => {
+    return axios.put(`${BASE_URL}update-password`, body, {
         headers: {
             Authorization: `Bearer ${rdxToken}`,
         },
