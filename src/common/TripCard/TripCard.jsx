@@ -2,10 +2,7 @@ import React from "react";
 import "./TripCard.css";
 import { useNavigate } from "react-router-dom";
 
-
-export const TripCard = ({ id, location, membersCount, start_date, end_date, image_1 }) => {
-    let roleText = "";
-    // to do : role text
+export const TripCard = ({ id, location, memberscount, start_date, end_date, image_1 }) => {
 
     const navigate = useNavigate();
     const handleClick = () => {
@@ -18,13 +15,10 @@ export const TripCard = ({ id, location, membersCount, start_date, end_date, ima
                 <p className="card-all-trips__title">{location}</p>
                 <img className="card-all-trips__image" src={image_1} alt={image_1} />
             </div>
-
-
             <div className="card-all-trips__content col">
-
                 <p className="card-all-trips__date">{start_date}</p>
                 <p className="card-all-trips__date">{end_date}</p>
-                <p className="card-all-trips__description">Viajeros : {membersCount}</p>
+                <p className="card-all-trips__description">Viajeros : {memberscount}</p>
             </div>
         </div>
     );

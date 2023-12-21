@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectToken } from "../userSlice";
 import { TripCard } from "../../common/TripCard/TripCard";
+import { LinkButton } from "../../common/LinkButton/LinkButton";
 
 export const Trip = () => {
   const rdxToken = useSelector(selectToken);
@@ -16,7 +17,6 @@ export const Trip = () => {
 
   const [trips, setTrips] = useState([]);
   const navigate = useNavigate();
-//to do: si no trae ningún viaje, mostrar un mensaje de que no hay viajes
   useEffect(() => {
     if (trips.length === 0) {
       getAllMyTrips(rdxToken)
@@ -35,7 +35,7 @@ export const Trip = () => {
     , []);
   return (
     <div className="cards-trips-container-main">
-      <div className="container">
+      <div className="trip-style">
         {
           trips.length > 0
             ? (
@@ -46,16 +46,40 @@ export const Trip = () => {
                   location={trip.location}
                   start_date={trip.start_date}
                   end_date={trip.end_date}
-                  membersCount={trip.membersCount}
+                  memberscount={trip.memberscount}
                   image_1={trip.image_1}
                 />
               ))
             )
             : (
-              <div>Loading ...</div>
+              <div className="container-without-trips">
+                <h1 className="without-trips-style">¡No tienes ningún viaje!</h1>
+                <h1 className="without-trips-style">Comienza a planificar tu viaje</h1>
+
+                {rdxToken ? (
+                  <LinkButton
+                    classButton={"link-button-style-home"}
+                    path={"/locations"}
+                    title={"Explora los destinos, y comienza aquí tu aventura"}
+                  />
+                ) : (
+                  <>
+                    <LinkButton
+                      classButton={"link-button-style-home"}
+                      path={"/login"}
+                      title={"Explora los destinos, y comienza aquí tu aventura"}
+                    />
+                  </>
+                )}
+              </div>
             )
         }
+
       </div>
     </div>
+
+
+
+
   );
 };
