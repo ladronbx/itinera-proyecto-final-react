@@ -63,14 +63,23 @@ export const Login = () => {
                 .then((response) => {
                     const { message, token } = response.data;
                     setMessage(message);
-
+        
                     if (message == "User logged in") {
                         dispatch(login(token))
                         navigate("/")
                     }
                 })
-
                 .catch(error => {
+                    if (error.response) {
+                        const { message } = error.response.data;
+    
+                        if (message === 'Email o contraseña incorrecta') {
+                            setCredentialsError({
+                                emailError: message,
+                                passwordError: message,
+                            });
+                        }
+                    }
                     console.log(error);
                 });
         };
@@ -88,7 +97,6 @@ export const Login = () => {
                     functionProp={functionHandler}
                     functionBlur={errorCheck}
                 />
-                <div className='error-style'>{credentialsError.emailError}</div>
                 <CustomInput
                     design={"input-style"}
                     type={"password"}
