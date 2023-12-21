@@ -30,7 +30,10 @@ export const Activity = () => {
       console.log("Redirigiendo a la página de inicio");
       navigate("/");
     }
-  }, [dates, selectedLocation.id, navigate, rdxToken]);
+    return () => {
+      dispatch(resetActivities());
+    };
+  }, [dates, selectedLocation.id, navigate, rdxToken, dispatch]);
 
   const handleAddActivity = (activityId) => {
     console.log('Adding activity ID:', activityId);
