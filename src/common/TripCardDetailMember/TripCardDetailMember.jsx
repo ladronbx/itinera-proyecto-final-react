@@ -1,6 +1,6 @@
 import React from "react";
 import "./TripCardDetailMember.css";
-import { RemoveButton } from "../RemoveButton/RemoveButton";
+import { RemoveButtonMemberGroup } from "../RemoveButtonMemberGroup/RemoveButtonMemberGroup";
 
 export const TripCardDetailMember = ({ name, image, email, tripId, userId, rdxToken, onMemberRemoved = () => {} }) => {
     let roleText = "";
@@ -17,7 +17,7 @@ export const TripCardDetailMember = ({ name, image, email, tripId, userId, rdxTo
             </div>
 
             <div className="remove-button">
-                <RemoveButton tripId={tripId} userId={userId} rdxToken={rdxToken} onMemberRemoved={onMemberRemoved} />
+                <RemoveButtonMemberGroup tripId={tripId} userId={userId} rdxToken={rdxToken} onMemberRemoved={onMemberRemoved} />
             </div>
         </div>
     );
