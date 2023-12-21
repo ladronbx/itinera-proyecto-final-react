@@ -40,7 +40,6 @@ export const Activity = () => {
     dispatch(addActivity(activityId));
   };
 
-
   const handleResetActivities = () => {
     dispatch(resetActivities());
   };
@@ -54,25 +53,25 @@ export const Activity = () => {
       console.error('Start date or end date is missing');
       return;
     }
-    
+
     const startDate = new Date(dates.start_date);
     const endDate = new Date(dates.end_date);
-    
+
     if (isNaN(startDate) || isNaN(endDate)) {
       console.error('Start date or end date is invalid');
       return;
     }
-    
-    const formattedStartDate = `${startDate.getFullYear()}-${startDate.getMonth()+1}-${startDate.getDate()} ${startDate.getHours()}:${startDate.getMinutes()}:${startDate.getSeconds()}`;
-    const formattedEndDate = `${endDate.getFullYear()}-${endDate.getMonth()+1}-${endDate.getDate()} ${endDate.getHours()}:${endDate.getMinutes()}:${endDate.getSeconds()}`;
-    
+
+    const formattedStartDate = `${startDate.getFullYear()}-${startDate.getMonth() + 1}-${startDate.getDate()} ${startDate.getHours()}:${startDate.getMinutes()}:${startDate.getSeconds()}`;
+    const formattedEndDate = `${endDate.getFullYear()}-${endDate.getMonth() + 1}-${endDate.getDate()} ${endDate.getHours()}:${endDate.getMinutes()}:${endDate.getSeconds()}`;
+
     const tripData = {
       start_date: formattedStartDate,
       end_date: formattedEndDate,
       location_id: selectedLocation.id,
-      activities: selectedActivities // Ya es un array de IDs de actividades
+      activities: selectedActivities
     };
-  
+
     console.log('tripData:', tripData);
     createTrip(tripData, rdxToken)
       .then(response => {
@@ -101,10 +100,9 @@ export const Activity = () => {
                     break;
                   }
                 }
-              
                 return (
                   <ActivityCard
-                    key={activity.id} // Añade esta línea
+                    key={activity.id}
                     id={activity.id}
                     name={activity.name}
                     description={activity.description}
@@ -122,7 +120,6 @@ export const Activity = () => {
             )
         }
       </div>
-
       <button className="button-reset-activities" onClick={handleResetActivities}>Reiniciar actividades</button>
       <button className="button-select-activities" onClick={handleCreateTrip}>Ya tengo todas mis actividades CONTINUAR</button>
     </div>

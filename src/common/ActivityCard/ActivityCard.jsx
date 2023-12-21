@@ -29,14 +29,11 @@ export const ActivityCard = ({ id, name, description, image_1, image_2, location
                     : <button className="button-activities" onClick={handleAddActivity}>Agregar</button>
                 }
             </div>
-
-
             <div className="card-all-activities__content col">
                 <p className="card-all-activities__title">{name}</p>
                 <p className="card-all-activities__description">{description}</p>
 
             </div>
-
             <p className="card-all-activities__location">{location}</p>
         </div>
     );
