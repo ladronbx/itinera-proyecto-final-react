@@ -36,5 +36,6 @@ export const ActivityCard = ({ id, name, description, image_1, image_2, location
             </div>
             <p className="card-all-activities__location">{location}</p>
         </div>
+
     );
 };
