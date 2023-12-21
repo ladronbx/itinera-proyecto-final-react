@@ -8,28 +8,16 @@ export const ActivityCard = ({ id, name, description, image_1, image_2, location
     const selectedActivities = useSelector(selectActivities);
 
     const handleAddActivity = () => {
-        let isSelected = false;
-        for (let i = 0; i < selectedActivities.length; i++) {
-            if (selectedActivities[i].name === name) {
-                isSelected = true;
-                break;
-            }
-        }
+        let isSelected = selectedActivities.includes(id);
         if (isSelected) {
-            console.log('Activity already selected:', { id, name, description, image_1, image_2, location });
+            console.log('Activity already selected:', id);
             return;
         }
-        console.log('Adding activity:', { id, name, description, image_1, image_2, location });
+        console.log('Adding activity:', id);
         dispatch(addActivity(id));
     };
 
-    let isSelected = false;
-    for (let i = 0; i < selectedActivities.length; i++) {
-        if (selectedActivities[i].name === name) {
-            isSelected = true;
-            break;
-        }
-    }
+    let isSelected = selectedActivities.includes(id);
 
     return (
         <div className={`card-all-activities row ${isSelected ? 'selected' : ''}`}>
