@@ -44,14 +44,6 @@ export const updatePassword = (body, rdxToken) => {
     });
 };
 
-export const deleteUser = (body, rdxToken) => {
-    return axios.delete(`${BASE_URL}user-delete`, body, {
-        headers: {
-            Authorization: `Bearer ${rdxToken}`,
-        },
-    });
-};
-
 export const verifyPassword = (body, rdxToken) => {
     return axios.post(`${BASE_URL}verify-password`, body, {
         headers: {

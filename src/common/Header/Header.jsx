@@ -101,7 +101,13 @@ export const Header = () => {
                     <LinkButton
                       classButton={"link-button-style"}
                       path={"/trips"}
-                      title={"Get all trips"}
+                      title={"All trips"}
+                    />
+
+                    <LinkButton
+                      classButton={"link-button-style"}
+                      path={"/users"}
+                      title={"All users"}
                     />
                   </>
                 )}
@@ -117,7 +123,7 @@ export const Header = () => {
                 {decodedToken && decodedToken.role === "is_super_admin" && (
                   <div className="superadmin-style">Panel de Control del Superadministrador</div>
                 )}
-                </>
+              </>
             ) : (
               <>
                 <LinkButton

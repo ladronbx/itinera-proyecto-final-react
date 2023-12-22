@@ -24,6 +24,7 @@ export const Body = () => {
                 <Route path="/my-trips" element={<Trip />}/>
                 <Route path="/trips" element={<TripSuper />}/>
                 <Route path='/my-trip/:id' element={<TripDetail />}/>
+                <Route path='/users' element={<GetAllUsers />}/>
             </Routes>
          </>
      )
