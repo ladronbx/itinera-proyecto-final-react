@@ -129,7 +129,6 @@ export const deleteMemberFromTrip = (tripId, userId, rdxToken) => {
     });
 };
 
-// getMembersTrip
 export const getMembersTrip = (tripId, rdxToken) => {
     return axios.get(`${BASE_URL}my-trip/${tripId}/get-members`, {
         headers: {
@@ -154,6 +153,15 @@ export const getMyTripById = (id, rdxToken) => {
         },
     });
 };
+
+export const deleteMyTripById = (id, rdxToken) => {
+    return axios.delete(`${BASE_URL}my-trip/${id}`, {
+        headers: {
+            Authorization: `Bearer ${rdxToken}`,
+        },
+    });
+}
+
 
 //SUPERADMIN
 export const getAllUsers = (rdxToken, page) => {

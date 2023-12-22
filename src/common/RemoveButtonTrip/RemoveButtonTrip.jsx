@@ -1,25 +1,25 @@
 import React from 'react';
-import './RemoveButtonMemberGroup.css';
-import { deleteMemberFromTrip } from '../../services/apiCall';
+import './RemoveButtonTrip.css';
+import { deleteMyTripById } from '../../services/apiCall';
 import { Modal } from 'antd';
 
-export const RemoveButtonMemberGroup = ({ tripId, userId, rdxToken, onMemberRemoved }) => {
-    const handleRemove = async () => {
+export const RemoveButtonTrip = ({ tripId, rdxToken, onTripRemoved }) => {
+    const handleRemoveTrip = async () => {
         try {
-            await deleteMemberFromTrip(tripId, userId, rdxToken);
+            await deleteMyTripById(tripId, rdxToken);
             Modal.success({
-                content: 'Miembro eliminado exitosamente',
+                content: 'Viaje eliminado con éxito',
             });
-            onMemberRemoved();
+            onTripRemoved();
         } catch (error) {
             Modal.error({
-                content: 'Error al eliminar miembro',
+                content: 'Error al eliminar viaje',
             });
         }
     };
 
     return (
-        <div className="common-remove-button" onClick={handleRemove}>
+        <div className="common-remove-button" onClick={handleRemoveTrip}>
             <span className="common-remove-text">Remove</span>
             <span className="common-remove-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">

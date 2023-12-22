@@ -9,7 +9,7 @@ export const RemoveButtonActivity = ({ tripId, activityId, rdxToken, onActivityR
         try {
             await deleteActivityFromTrip(tripId, activityId, rdxToken);
             Modal.success({
-                content: 'Actividad eliminada exitosamente',
+                content: 'Actividad eliminada con éxito',
             });
             onActivityRemoved();
         } catch (error) {

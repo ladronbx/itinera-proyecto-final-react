@@ -33,6 +33,21 @@ export const Trip = () => {
     }
   }
     , []);
+
+  const handleActivityRemoved = () => {
+    getAllMyTrips(rdxToken)
+    .then((response) => {
+        setTrips(response.data.data);
+    })
+    .catch(error => {
+        if (error.response && error.response.status === 404) {
+            navigate("/");
+        } else {
+            console.error('Error:', error);
+        };
+    })
+};
+
   return (
     <div className="cards-trips-container-main">
       <div className="trip-style">
@@ -48,6 +63,9 @@ export const Trip = () => {
                   end_date={trip.end_date}
                   memberscount={trip.memberscount}
                   image_1={trip.image_1}
+                  tripId={trip.id}
+                  rdxToken={rdxToken}
+                  onTripRemoved={handleActivityRemoved}
                 />
               ))
             )

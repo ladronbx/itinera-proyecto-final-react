@@ -8,7 +8,7 @@ export const RemoveButtonMemberGroup = ({ tripId, userId, rdxToken, onMemberRemo
         try {
             await deleteMemberFromTrip(tripId, userId, rdxToken);
             Modal.success({
-                content: 'Miembro eliminado exitosamente',
+                content: 'Miembro eliminado con éxito',
             });
             onMemberRemoved();
         } catch (error) {
