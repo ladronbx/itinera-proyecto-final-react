@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import './TripDetail.css';
 import { selectToken } from '../userSlice';
 import { useSelector } from 'react-redux';
-import { getMyTripById, addMemberToTrip, getActivityByLocationId } from "../../services/apiCall";
+import { getMyTripById, addMemberToTrip, getActivityByLocationId, addActivityFromTrip } from "../../services/apiCall";
 import { useParams } from "react-router-dom";
 import { TripCardDetailMember } from "../../common/TripCardDetailMember/TripCardDetailMember";
 import TripCalendar from "../../common/TripCalendar/TripCalendar";
@@ -16,8 +16,8 @@ export const TripDetail = () => {
     const [emailInput, setEmailInput] = useState("");
     const [errorMessage, setErrorMessage] = useState(null);
     const [isAddingMember, setIsAddingMember] = useState(false);
-    const [isAddingActivity, setIsAddingActivity] = useState(false);
-
+    const [activitiesByLocation, setActivitiesByLocation] = useState([]);
+    const [selectedActivity, setSelectedActivity] = useState("");
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -77,15 +77,35 @@ export const TripDetail = () => {
         }
     }, [isAddingMember, id, emailInput, rdxToken]);
 
+    useEffect(() => {
+        if (trip && rdxToken) {
+            getActivityByLocationId(trip.locations[0].id, rdxToken)
+                .then((response) => {
+                    setActivitiesByLocation(response.data.data);
+                })
+                .catch(error => {
+                    if (error.response && error.response.status === 404) {
+                        navigate("/");
+                    } else {
+                        console.error('Error:', error);
+                    };
+                })
+        }
+    }, [trip, rdxToken, navigate]);
+
     const handleAddMembers = () => {
         setIsAddingMember(true);
     };
 
-    const handleAddActivity = () => {
-        getActivityByLocationId(id, rdxToken)
+const handleAddActivity = () => {
+    const activityId = selectedActivity;
+    const tripId = id;
+    addActivityFromTrip(tripId, activityId, rdxToken)
+        .then(response => {
+            console.log(response);
+            getMyTripById(id, rdxToken)
             .then((response) => {
                 setTrip(response.data.data);
-                setIsAddingActivity(true);
             })
             .catch(error => {
                 if (error.response && error.response.status === 404) {
@@ -94,9 +114,11 @@ export const TripDetail = () => {
                     console.error('Error:', error);
                 };
             })
-    };
-
-
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+};
     const handleMemberRemoved = () => {
         getMyTripById(id, rdxToken)
             .then((response) => {
@@ -110,7 +132,7 @@ export const TripDetail = () => {
                 };
             })
     };
-    
+
     const handleActivityRemoved = () => {
         getMyTripById(id, rdxToken)
             .then((response) => {
@@ -167,32 +189,18 @@ export const TripDetail = () => {
                 {console.log(trip.activities)}
 
                 {
-                    //aquí el usuario podrá ver en un desplegable un listado de las actividades disponibles para la location
-                    // y podrán añadir las que quieran a su viaje
+                    <div>
+                        <select name="activities" onChange={e => setSelectedActivity(e.target.value)}>
+                            <option>Agrega actividades</option>
+                            {
+                                activitiesByLocation.map((activity, index) => (
+                                    <option key={index} value={activity.id}>{activity.name}</option>
+                                ))
+                            }
+                        </select>
 
-                    //esta es la ruta : export const deleteActivityFromTrip = (tripId, activityId, rdxToken) => {
-                    //     return axios.delete(`${BASE_URL}activities-my-trip/${tripId}/activity/${activityId}`, {
-                    //         headers: {
-                    //             Authorization: `Bearer ${rdxToken}`,
-                    //         },
-                    //     });
-                    // };
-
-                    <select name="activities" onChange={handleAddActivity}>
-
-                        <option>Agrega actividades</option>
-                        {
-                            //ejecuta el mapeo a getActivityByLocationId
-
-
-
-
-
-
-
-                        }
-                    </select>
-
+                        <button onClick={handleAddActivity}>Añadir actividad</button>
+                    </div>
 
                 }
 
@@ -211,7 +219,6 @@ export const TripDetail = () => {
                                 activityId={activity.trip_activity_id}
                                 rdxToken={rdxToken}
                                 onActivityRemoved={handleActivityRemoved}
-
                             />
                         ))
                     }

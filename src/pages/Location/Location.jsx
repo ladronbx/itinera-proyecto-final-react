@@ -47,7 +47,7 @@ export const Location = () => {
 
   const handleDateChange = (dates, location) => {
     console.log('dates:', dates);
-    // Guardar las fechas como objetos Date en Redux
+    // Guardo las fechas como objetos Date en Redux
     const dateObjects = {
       start_date: dates.start_date ? new Date(dates.start_date) : null,
       end_date: dates.end_date ? new Date(dates.end_date) : null
@@ -58,7 +58,7 @@ export const Location = () => {
   const handleOk = async (location) => {
     console.log('dates:', dates);
     if (location.id && dates) {
-      // Formatear las fechas antes de utilizarlas
+      // Formateo las fechas antes de utilizarlas
       const formattedDates = {
         start_date: dates.start_date ? format(dates.start_date, 'yyyy-MM-dd') : null,
         end_date: dates.end_date ? format(dates.end_date, 'yyyy-MM-dd') : null

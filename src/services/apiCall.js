@@ -98,14 +98,13 @@ export const deleteActivityFromTrip = (tripId, activityId, rdxToken) => {
     });
 }
 
-export const addActivitiesFromTrip = (tripId, activities, rdxToken) => {
-    return axios.post(`${BASE_URL}activities-add-my-trip/${tripId}`, { activities }, {
+export const addActivityFromTrip = (tripId, activityId, rdxToken) => {
+    return axios.post(`${BASE_URL}activities-add-my-trip/${tripId}/${activityId}`, {}, {
         headers: {
             Authorization: `Bearer ${rdxToken}`,
         },
     });
 };
-
 //TRIPS
 export const createTrip = (tripData, rdxToken) => {
     return axios.post(`${BASE_URL}create-trip`, tripData, {

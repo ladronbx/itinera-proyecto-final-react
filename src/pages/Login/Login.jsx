@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./Login.css";
 import { useNavigate } from 'react-router-dom';
-
-//Rdx escritura
 import { useDispatch } from "react-redux";
 import { login } from "../userSlice";
-
-//Rdx
 import { useSelector } from "react-redux";
 import { selectToken } from "../userSlice";
 import { checker } from "../../services/checker";
