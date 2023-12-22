@@ -104,6 +104,7 @@ export const addActivityFromTrip = (tripId, activityId, rdxToken) => {
         },
     });
 };
+
 //TRIPS
 export const createTrip = (tripData, rdxToken) => {
     return axios.post(`${BASE_URL}create-trip`, tripData, {
@@ -174,6 +175,14 @@ export const getAllTrips = (rdxToken) => {
 
 export const getAllUsers = (rdxToken) => {
     return axios.get(`${BASE_URL}users`, {
+        headers: {
+            Authorization: `Bearer ${rdxToken}`,
+        },
+    });
+}
+
+export const deleteTrip = (id, rdxToken) => {
+    return axios.delete(`${BASE_URL}trip-delete/${id}`, {
         headers: {
             Authorization: `Bearer ${rdxToken}`,
         },
