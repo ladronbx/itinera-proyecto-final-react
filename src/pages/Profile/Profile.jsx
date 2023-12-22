@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { selectToken } from "../userSlice";
 import { countDelete, getProfile, updateProfile } from "../../services/apiCall";
 import PasswordModal from "../../common/PasswordModal/PasswordModal";
+import { Modal } from 'antd';
 
 export const Profile = () => {
     const rdxToken = useSelector(selectToken);
@@ -47,15 +48,24 @@ export const Profile = () => {
     };
 
     const handleDeleteAccount = () => {
-        countDelete(rdxToken)
-            .then((response) => {
-                if (response.data.success) {
-                    navigate("/");
-                }
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
+        Modal.confirm({
+            title: '¿Estás seguro de que quieres eliminar tu cuenta?',
+            content: 'Esta acción no puede deshacerse.',
+            okText: 'Sí',
+            okType: 'danger',
+            cancelText: 'No',
+            onOk() {
+                countDelete(rdxToken)
+                    .then((response) => {
+                        if (response.data.success) {
+                            navigate("/");
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+            },
+        });
     };
 
     const handleUpdateProfile = () => {
