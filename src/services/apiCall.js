@@ -43,7 +43,7 @@ export const updatePassword = (body, rdxToken) => {
         },
     });
 };
-
+//to do : implementar en profile
 export const countDelete = (rdxToken) => {
     return axios.delete(`${BASE_URL}count-delete`, {
         headers: {
@@ -52,15 +52,6 @@ export const countDelete = (rdxToken) => {
     });
 };
 
-export const verifyPassword = (body, rdxToken) => {
-    return axios.post(`${BASE_URL}verify-password`, body, {
-        headers: {
-            Authorization: `Bearer ${rdxToken}`,
-        },
-    });
-};
-
-//LOCATIONS
 export const getAllLocations = async (rdxToken) => {
     return axios.get(`${BASE_URL}locations`, {
         headers: {
@@ -69,18 +60,7 @@ export const getAllLocations = async (rdxToken) => {
     });
 }
 
-export const getLocationById = async (id) => {
-    return await axios.get(`${BASE_URL}/location/${id}`);
-}
-
 //ACTIVITIES
-export const getAllActivities = async () => {
-    return await axios.get(`${BASE_URL}activities`);
-}
-export const getActivityById = async () => {
-    return await axios.get(`${BASE_URL}activities/${id}`);
-}
-
 export const getActivityByLocationId = (id, rdxToken) => {
     return axios.get(`${BASE_URL}activities-location/${id}`, {
         headers: {
@@ -130,14 +110,6 @@ export const deleteMemberFromTrip = (tripId, userId, rdxToken) => {
     });
 };
 
-export const getMembersTrip = (tripId, rdxToken) => {
-    return axios.get(`${BASE_URL}my-trip/${tripId}/get-members`, {
-        headers: {
-            Authorization: `Bearer ${rdxToken}`,
-        },
-    });
-};
-
 export const getAllMyTrips = (rdxToken) => {
     return axios.get(`${BASE_URL}my-trips`, {
         headers: {
@@ -162,9 +134,7 @@ export const deleteMyTripById = (id, rdxToken) => {
     });
 }
 
-
 //SUPERADMIN
-
 export const getAllTrips = (rdxToken) => {
     return axios.get(`${BASE_URL}trips`, {
         headers: {
@@ -188,3 +158,13 @@ export const deleteTrip = (id, rdxToken) => {
         },
     });
 }
+
+
+//no la he usado 
+export const getMembersTrip = (tripId, rdxToken) => {
+    return axios.get(`${BASE_URL}my-trip/${tripId}/get-members`, {
+        headers: {
+            Authorization: `Bearer ${rdxToken}`,
+        },
+    });
+};
