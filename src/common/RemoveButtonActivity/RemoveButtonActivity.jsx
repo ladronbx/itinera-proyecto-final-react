@@ -1,21 +1,21 @@
 import React from 'react';
-import './RemoveButtonMemberGroup.css';
-import { deleteMemberFromTrip } from '../../services/apiCall';
+import './RemoveButtonActivity.css';
+import { deleteActivityFromTrip } from '../../services/apiCall';
 
 
-export const RemoveButtonMemberGroup = ({ tripId, userId, rdxToken, onMemberRemoved }) => {
-    const handleRemove = async () => {
+export const RemoveButtonActivity = ({ tripId, activityId, rdxToken, onActivityRemoved }) => {
+    const handleDelete = async () => {
         try {
-            await deleteMemberFromTrip(tripId, userId, rdxToken);
-            alert('Miembro eliminado exitosamente');
-            onMemberRemoved();
+            await deleteActivityFromTrip(tripId, activityId, rdxToken);
+            alert('Actividad eliminado exitosamente');
+            onActivityRemoved();
         } catch (error) {
-            alert('Error al eliminar miembro');
+            alert('Error al eliminar actividad');
         }
     };
 
     return (
-        <div className="common-remove-button" onClick={handleRemove}>
+        <div className="common-remove-button" onClick={handleDelete}>
             <span className="common-remove-text">Remove</span>
             <span className="common-remove-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">

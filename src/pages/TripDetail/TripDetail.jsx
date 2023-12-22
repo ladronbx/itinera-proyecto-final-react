@@ -93,6 +93,20 @@ export const TripDetail = () => {
                 };
             })
     };
+    
+    const handleActivityRemoved = () => {
+        getMyTripById(id, rdxToken)
+            .then((response) => {
+                setTrip(response.data.data);
+            })
+            .catch(error => {
+                if (error.response && error.response.status === 404) {
+                    navigate("/");
+                } else {
+                    console.error('Error:', error);
+                };
+            })
+    };
 
     return (
         trip ? (
@@ -146,6 +160,11 @@ export const TripDetail = () => {
                                 image_2={activity.image_2}
                                 location={activity.location}
                                 duration={activity.duration}
+                                tripId={id}
+                                activityId={activity.trip_activity_id}
+                                rdxToken={rdxToken}
+                                onActivityRemoved={handleActivityRemoved}
+
                             />
                         ))
                     }

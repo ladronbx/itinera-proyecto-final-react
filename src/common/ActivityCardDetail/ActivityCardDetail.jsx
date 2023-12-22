@@ -1,8 +1,9 @@
 import React from "react";
 import './ActivityCardDetail.css';
 import { Carousel } from 'react-bootstrap';
+import { RemoveButtonActivity } from "../RemoveButtonActivity/RemoveButtonActivity";
 
-export const ActivityCardDetail = ({ name, description, image_1, image_2, location, duration }) => {
+export const ActivityCardDetail = ({ name, description, image_1, image_2, location, duration, tripId, activityId, rdxToken, onActivityRemoved}) => {
     return (
         <div className="detail-card-all-activities">
             <Carousel interval={null}>
@@ -21,6 +22,10 @@ export const ActivityCardDetail = ({ name, description, image_1, image_2, locati
             </div>
 
             <p className="detail-card-all-activities__location">{location}</p>
+
+            <div className="remove-button">
+                <RemoveButtonActivity tripId={tripId} activityId={activityId} rdxToken={rdxToken} onActivityRemoved={onActivityRemoved} />
+            </div>
         </div>
     );
 };

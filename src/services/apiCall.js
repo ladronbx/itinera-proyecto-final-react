@@ -90,13 +90,11 @@ export const getActivityByLocationId = (id, rdxToken) => {
     });
 };
 
-export const deleteActivityFromTrip = async (tripId, activityId, token) => {
-    return await axios.delete(`${BASE_URL}activities-delete-my-trip/${tripId}/delete-activity/${activityId}`, {
+///activities-my-trip/{tripId}/activity/{activityId}
+export const deleteActivityFromTrip = (tripId, activityId, rdxToken) => {
+    return axios.delete(`${BASE_URL}activities-my-trip/${tripId}/activity/${activityId}`, {
         headers: {
-            Authorization: `Bearer ${token}`,
-        },
-        data: {
-            id: activityId,
+            Authorization: `Bearer ${rdxToken}`,
         },
     });
 }
