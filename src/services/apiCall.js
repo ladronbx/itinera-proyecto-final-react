@@ -43,7 +43,7 @@ export const updatePassword = (body, rdxToken) => {
         },
     });
 };
-//to do : implementar en profile
+
 export const countDelete = (rdxToken) => {
     return axios.delete(`${BASE_URL}count-delete`, {
         headers: {
@@ -153,6 +153,14 @@ export const getAllUsers = (rdxToken) => {
 
 export const deleteTrip = (id, rdxToken) => {
     return axios.delete(`${BASE_URL}trip-delete/${id}`, {
+        headers: {
+            Authorization: `Bearer ${rdxToken}`,
+        },
+    });
+}
+
+export const createActivity = (body, rdxToken) => {
+    return axios.post(`${BASE_URL}activity-create`, body, {
         headers: {
             Authorization: `Bearer ${rdxToken}`,
         },

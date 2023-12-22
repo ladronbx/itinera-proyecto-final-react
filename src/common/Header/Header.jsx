@@ -109,6 +109,12 @@ export const Header = () => {
                       path={"/users"}
                       title={"All users"}
                     />
+
+                    <LinkButton
+                      classButton={"link-button-style"}
+                      path={"/activity-create"}
+                      title={"Create activity"}
+                    />
                   </>
                 )}
 

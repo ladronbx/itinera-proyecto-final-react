@@ -9,6 +9,7 @@ import { Location } from '../Location/Location';
 import { TripDetail } from '../TripDetail/TripDetail';
 import { TripSuper } from '../TripSuper/TripSuper';
 import { GetAllUsers } from '../GetAllUsers/GetAllUsers';
+import { CreateActivitySuper } from '../CreateActivitySuper/CreateActivitySuper';
 
 export const Body = () => {
      return (
@@ -25,6 +26,7 @@ export const Body = () => {
                 <Route path="/trips" element={<TripSuper />}/>
                 <Route path='/my-trip/:id' element={<TripDetail />}/>
                 <Route path='/users' element={<GetAllUsers />}/>
+                <Route path="/activity-create" element={<CreateActivitySuper/>}/>
             </Routes>
          </>
      )
