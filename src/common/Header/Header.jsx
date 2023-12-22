@@ -3,7 +3,7 @@ import "./Header.css";
 import { LinkButton } from "../LinkButton/LinkButton";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, selectToken } from "../../pages/userSlice";
-import { jwtDecode } from "jwt-decode";
+import { jwtDecode } from 'jwt-decode';
 import logo from "../../assets/img/logo.svg";
 import { useNavigate } from "react-router-dom";
 import LogOutButton from "../LogOutButton/LogOutButton";
@@ -17,7 +17,33 @@ export const Header = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (rdxToken) {
+    if (rdxToken !== null) {
+      if (rdxToken && typeof rdxToken === 'string') {
+        try {
+          const decoded = jwtDecode(rdxToken);
+          setDecodedToken(decoded);
+          if (decoded.exp < Date.now() / 1000) {
+            dispatch(logout());
+            navigate("/");
+          }
+
+        } catch (error) {
+          console.error("Error decoding token:", error);
+        }
+
+      } else {
+        navigate("/");
+        dispatch(logout());
+      }
+    } else {
+      navigate("/");
+      dispatch(logout());
+    }
+
+  }, [rdxToken]);
+
+  useEffect(() => {
+    if (rdxToken && typeof rdxToken === 'string') {
       try {
         const decoded = jwtDecode(rdxToken);
         setDecodedToken(decoded);
@@ -70,13 +96,8 @@ export const Header = () => {
                   title={<img src={imgProfile} alt="Perfil" />}
                 />
 
-                {decodedToken && decodedToken.role === "super_admin" && (
+                {decodedToken && decodedToken.role === "is_super_admin" && (
                   <>
-                    <LinkButton
-                      classButton={"link-button-style"}
-                      path={"/get-all-users"}
-                      title={"Get all Users"}
-                    />
                     <LinkButton
                       classButton={"link-button-style"}
                       path={"/trips"}
@@ -93,10 +114,10 @@ export const Header = () => {
                   />
                 </div>
 
-                {decodedToken && decodedToken.role === "super_admin" && (
-                  <div className="superadmin-style">SUPER ADMIN</div>
+                {decodedToken && decodedToken.role === "is_super_admin" && (
+                  <div className="superadmin-style">Panel de Control del Superadministrador</div>
                 )}
-              </>
+                </>
             ) : (
               <>
                 <LinkButton
