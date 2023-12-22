@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import { TripCardDetailMember } from "../../common/TripCardDetailMember/TripCardDetailMember";
 import TripCalendar from "../../common/TripCalendar/TripCalendar";
 import { ActivityCardDetail } from "../../common/ActivityCardDetail/ActivityCardDetail";
+import { Modal } from 'antd';
 
 export const TripDetail = () => {
     const rdxToken = useSelector(selectToken);
@@ -97,28 +98,34 @@ export const TripDetail = () => {
         setIsAddingMember(true);
     };
 
-const handleAddActivity = () => {
-    const activityId = selectedActivity;
-    const tripId = id;
-    addActivityFromTrip(tripId, activityId, rdxToken)
-        .then(response => {
-            console.log(response);
-            getMyTripById(id, rdxToken)
-            .then((response) => {
-                setTrip(response.data.data);
+    const handleAddActivity = () => {
+        const activityId = selectedActivity;
+        const tripId = id;
+        addActivityFromTrip(tripId, activityId, rdxToken)
+            .then(response => {
+                console.log(response);
+                getMyTripById(id, rdxToken)
+                    .then((response) => {
+                        setTrip(response.data.data);
+                        Modal.success({
+                            content: 'Actividad agregada con éxito',
+                        });
+                    })
+                    .catch(error => {
+                        if (error.response && error.response.status === 404) {
+                            navigate("/");
+                        } else {
+                            console.error('Error:', error);
+                        };
+                    })
             })
             .catch(error => {
-                if (error.response && error.response.status === 404) {
-                    navigate("/");
-                } else {
-                    console.error('Error:', error);
-                };
-            })
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-};
+                console.error('Error:', error);
+                Modal.error({
+                    content: 'Error al agregar actividad',
+                });
+            });
+    };
     const handleMemberRemoved = () => {
         getMyTripById(id, rdxToken)
             .then((response) => {
