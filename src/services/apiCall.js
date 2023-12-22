@@ -167,6 +167,13 @@ export const createActivity = (body, rdxToken) => {
     });
 }
 
+export const createLocation = (body, rdxToken) => {
+    return axios.post(`${BASE_URL}location-create`, body, {
+        headers: {
+            Authorization: `Bearer ${rdxToken}`,
+        },
+    });
+}
 
 //no la he usado 
 export const getMembersTrip = (tripId, rdxToken) => {
