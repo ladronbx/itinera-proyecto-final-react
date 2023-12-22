@@ -7,6 +7,7 @@ import { Trip } from '../Trip/Trip';
 import { Profile } from '../Profile/Profile';
 import { Location } from '../Location/Location';
 import { TripDetail } from '../TripDetail/TripDetail';
+import { TripSuper } from '../TripSuper/TripSuper';
 
 export const Body = () => {
      return (
@@ -20,6 +21,7 @@ export const Body = () => {
                 <Route path="/profile" element={<Profile />}/>
                 <Route path="/activities-location/:id" element={<Activity />}/>
                 <Route path="/my-trips" element={<Trip />}/>
+                <Route path="/trips" element={<TripSuper />}/>
                 <Route path='/my-trip/:id' element={<TripDetail />}/>
             </Routes>
          </>

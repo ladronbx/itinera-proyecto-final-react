@@ -164,21 +164,11 @@ export const deleteMyTripById = (id, rdxToken) => {
 
 
 //SUPERADMIN
-export const getAllUsers = (rdxToken, page) => {
-    return axios.get(`${BASE_URL}super/get/all/users?page=${page}&skip=10`, {
+
+export const getAllTrips = (rdxToken) => {
+    return axios.get(`${BASE_URL}trips`, {
         headers: {
             Authorization: `Bearer ${rdxToken}`,
         },
     });
-};
-
-export const deleteTrip = async (id, token) => {
-    return await axios.delete(`${BASE_URL}/trip-delete/${id}`, {
-        headers: {
-            Authorization: `Bearer ${token}`,
-        },
-        data: {
-            id: id,
-        },
-    });
-};
+}
