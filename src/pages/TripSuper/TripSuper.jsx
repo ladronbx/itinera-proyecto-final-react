@@ -34,7 +34,7 @@ export const TripSuper = () => {
   }
     , []);
 
-  const handleActivityRemoved = () => {
+  const handleRemoveTrip = () => {
     getAllTrips(rdxToken)
     .then((response) => {
         setTrips(response.data.data);
@@ -65,7 +65,7 @@ export const TripSuper = () => {
                   image_1={trip.image_1}
                   tripId={trip.id}
                   rdxToken={rdxToken}
-                  onTripRemoved={handleActivityRemoved}
+                  onTripRemoved={handleRemoveTrip}
                 />
               ))
             )

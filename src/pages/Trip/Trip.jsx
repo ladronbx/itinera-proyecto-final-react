@@ -34,7 +34,7 @@ export const Trip = () => {
   }
     , []);
 
-  const handleActivityRemoved = () => {
+  const handleRemoveTrip = () => {
     getAllMyTrips(rdxToken)
     .then((response) => {
         setTrips(response.data.data);
@@ -54,9 +54,9 @@ export const Trip = () => {
         {
           trips.length > 0
             ? (
-              trips.map((trip) => (
+              trips.map((trip, index) => (
                 <TripCard
-                  key={trip.id}
+                  key={index}
                   id={trip.id}
                   location={trip.location}
                   start_date={trip.start_date}
@@ -65,7 +65,7 @@ export const Trip = () => {
                   image_1={trip.image_1}
                   tripId={trip.id}
                   rdxToken={rdxToken}
-                  onTripRemoved={handleActivityRemoved}
+                  onTripRemoved={handleRemoveTrip}
                 />
               ))
             )

@@ -137,7 +137,6 @@ export const getMembersTrip = (tripId, rdxToken) => {
     });
 };
 
-
 export const getAllMyTrips = (rdxToken) => {
     return axios.get(`${BASE_URL}my-trips`, {
         headers: {
@@ -167,6 +166,14 @@ export const deleteMyTripById = (id, rdxToken) => {
 
 export const getAllTrips = (rdxToken) => {
     return axios.get(`${BASE_URL}trips`, {
+        headers: {
+            Authorization: `Bearer ${rdxToken}`,
+        },
+    });
+}
+
+export const getAllUsers = (rdxToken) => {
+    return axios.get(`${BASE_URL}users`, {
         headers: {
             Authorization: `Bearer ${rdxToken}`,
         },

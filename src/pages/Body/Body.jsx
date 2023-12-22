@@ -8,6 +8,7 @@ import { Profile } from '../Profile/Profile';
 import { Location } from '../Location/Location';
 import { TripDetail } from '../TripDetail/TripDetail';
 import { TripSuper } from '../TripSuper/TripSuper';
+import { GetAllUsers } from '../GetAllUsers/GetAllUsers';
 
 export const Body = () => {
      return (
