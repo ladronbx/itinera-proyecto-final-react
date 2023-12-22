@@ -1,16 +1,20 @@
 import React from 'react';
 import './RemoveButtonMemberGroup.css';
 import { deleteMemberFromTrip } from '../../services/apiCall';
-
+import { Modal } from 'antd';
 
 export const RemoveButtonMemberGroup = ({ tripId, userId, rdxToken, onMemberRemoved }) => {
     const handleRemove = async () => {
         try {
             await deleteMemberFromTrip(tripId, userId, rdxToken);
-            alert('Miembro eliminado exitosamente');
+            Modal.success({
+                content: 'Miembro eliminado exitosamente',
+            });
             onMemberRemoved();
         } catch (error) {
-            alert('Error al eliminar miembro');
+            Modal.error({
+                content: 'Error al eliminar miembro',
+            });
         }
     };
 

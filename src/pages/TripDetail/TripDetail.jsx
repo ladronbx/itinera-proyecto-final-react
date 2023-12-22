@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import './TripDetail.css';
 import { selectToken } from '../userSlice';
 import { useSelector } from 'react-redux';
-import { getMyTripById, addMemberToTrip } from "../../services/apiCall";
+import { getMyTripById, addMemberToTrip, getActivityByLocationId } from "../../services/apiCall";
 import { useParams } from "react-router-dom";
 import { TripCardDetailMember } from "../../common/TripCardDetailMember/TripCardDetailMember";
 import TripCalendar from "../../common/TripCalendar/TripCalendar";
@@ -16,6 +16,8 @@ export const TripDetail = () => {
     const [emailInput, setEmailInput] = useState("");
     const [errorMessage, setErrorMessage] = useState(null);
     const [isAddingMember, setIsAddingMember] = useState(false);
+    const [isAddingActivity, setIsAddingActivity] = useState(false);
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -77,6 +79,21 @@ export const TripDetail = () => {
 
     const handleAddMembers = () => {
         setIsAddingMember(true);
+    };
+
+    const handleAddActivity = () => {
+        getActivityByLocationId(id, rdxToken)
+            .then((response) => {
+                setTrip(response.data.data);
+                setIsAddingActivity(true);
+            })
+            .catch(error => {
+                if (error.response && error.response.status === 404) {
+                    navigate("/");
+                } else {
+                    console.error('Error:', error);
+                };
+            })
     };
 
 
@@ -148,6 +165,36 @@ export const TripDetail = () => {
                 }
                 <h2>Actividades:</h2>
                 {console.log(trip.activities)}
+
+                {
+                    //aquí el usuario podrá ver en un desplegable un listado de las actividades disponibles para la location
+                    // y podrán añadir las que quieran a su viaje
+
+                    //esta es la ruta : export const deleteActivityFromTrip = (tripId, activityId, rdxToken) => {
+                    //     return axios.delete(`${BASE_URL}activities-my-trip/${tripId}/activity/${activityId}`, {
+                    //         headers: {
+                    //             Authorization: `Bearer ${rdxToken}`,
+                    //         },
+                    //     });
+                    // };
+
+                    <select name="activities" onChange={handleAddActivity}>
+
+                        <option>Agrega actividades</option>
+                        {
+                            //ejecuta el mapeo a getActivityByLocationId
+
+
+
+
+
+
+
+                        }
+                    </select>
+
+
+                }
 
                 <div className="trip-detail-activities-container">
                     {

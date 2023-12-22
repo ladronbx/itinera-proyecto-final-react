@@ -90,7 +90,6 @@ export const getActivityByLocationId = (id, rdxToken) => {
     });
 };
 
-///activities-my-trip/{tripId}/activity/{activityId}
 export const deleteActivityFromTrip = (tripId, activityId, rdxToken) => {
     return axios.delete(`${BASE_URL}activities-my-trip/${tripId}/activity/${activityId}`, {
         headers: {
@@ -98,6 +97,14 @@ export const deleteActivityFromTrip = (tripId, activityId, rdxToken) => {
         },
     });
 }
+
+export const addActivitiesFromTrip = (tripId, activities, rdxToken) => {
+    return axios.post(`${BASE_URL}activities-add-my-trip/${tripId}`, { activities }, {
+        headers: {
+            Authorization: `Bearer ${rdxToken}`,
+        },
+    });
+};
 
 //TRIPS
 export const createTrip = (tripData, rdxToken) => {

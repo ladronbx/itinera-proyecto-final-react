@@ -1,16 +1,21 @@
 import React from 'react';
 import './RemoveButtonActivity.css';
 import { deleteActivityFromTrip } from '../../services/apiCall';
+import { Modal } from 'antd';
 
 
 export const RemoveButtonActivity = ({ tripId, activityId, rdxToken, onActivityRemoved }) => {
     const handleDelete = async () => {
         try {
             await deleteActivityFromTrip(tripId, activityId, rdxToken);
-            alert('Actividad eliminado exitosamente');
+            Modal.success({
+                content: 'Actividad eliminada exitosamente',
+            });
             onActivityRemoved();
         } catch (error) {
-            alert('Error al eliminar actividad');
+            Modal.error({
+                content: 'Error al eliminar actividad',
+            });
         }
     };
 
