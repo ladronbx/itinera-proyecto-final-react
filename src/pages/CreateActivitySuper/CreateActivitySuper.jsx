@@ -44,11 +44,12 @@ export const CreateActivitySuper = () => {
             [e.target.name]: e.target.value
         }));
     };
-
     const errorCheck = (e) => {
         let error = "";
-        error = checker(e.target.name, e.target.value);
-
+        if (e.target.name !== "image_1" && e.target.name !== "image_2") {
+            error = checker(e.target.name, e.target.value);
+        }
+        
         setElementsError((prevState) => ({
             ...prevState,
             [e.target.name + 'Error']: error,
