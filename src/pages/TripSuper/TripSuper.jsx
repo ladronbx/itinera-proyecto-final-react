@@ -54,9 +54,9 @@ export const TripSuper = () => {
         {
           trips.length > 0
             ? (
-              trips.map((trip) => (
+              trips.map((trip, index) => (
                 <TripCard
-                  key={trip.id}
+                  key={index}
                   id={trip.id}
                   location={trip.location}
                   start_date={trip.start_date}
