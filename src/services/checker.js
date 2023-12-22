@@ -108,5 +108,21 @@ export const checker = (type, value) => {
             } else {
                 return ``
             }
+
+        case 'image_1':
+        case 'image_2':
+        case 'image_3':
+            return '';
+
+        case 'description':
+            if (!value) {
+                return 'You must insert a description';
+            } else if (typeof (value) !== 'string') {
+                return 'Incorrect description, it should only contain strings';
+            } else if (value.length > 250) {
+                return 'Description is too long, max 250 characters';
+            } else {
+                return '';
+            }
     }
 }
