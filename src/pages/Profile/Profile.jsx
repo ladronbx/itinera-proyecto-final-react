@@ -3,7 +3,7 @@ import "./Profile.css";
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import { selectToken } from "../userSlice";
-import { getProfile, updateProfile, updatePassword } from "../../services/apiCall";
+import { countDelete, getProfile, updateProfile } from "../../services/apiCall";
 import PasswordModal from "../../common/PasswordModal/PasswordModal";
 
 export const Profile = () => {
@@ -19,12 +19,6 @@ export const Profile = () => {
         emailError: "",
         imageError: "",
     });
-
-    const [password, setPassword] = useState({
-        currentPassword: "",
-        newPassword: "",
-    });
-
     const navigate = useNavigate();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingField, setEditingField] = useState(null);
@@ -50,6 +44,18 @@ export const Profile = () => {
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setUser({ ...user, [name]: value });
+    };
+
+    const handleDeleteAccount = () => {
+        countDelete(rdxToken)
+            .then((response) => {
+                if (response.data.success) {
+                    navigate("/");
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
     };
 
     const handleUpdateProfile = () => {
@@ -139,8 +145,7 @@ export const Profile = () => {
                                     />
                                 </div>
 
-
-
+                                <button onClick={handleDeleteAccount}>Eliminar cuenta</button>
 
                             </div>
                         </div>
