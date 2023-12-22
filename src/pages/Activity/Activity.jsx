@@ -6,6 +6,7 @@ import { createTrip, getActivityByLocationId } from "../../services/apiCall";
 import { selectToken } from "../userSlice";
 import { addActivity, selectActivities, selectLocation, selectDates, resetActivities } from '../../pages/tripSlice';
 import { useSelector, useDispatch } from 'react-redux';
+import { Modal } from 'antd';
 
 export const Activity = () => {
   const rdxToken = useSelector(selectToken);
@@ -49,38 +50,46 @@ export const Activity = () => {
   }, [selectedActivities]);
 
   const handleCreateTrip = () => {
-    if (!dates.start_date || !dates.end_date) {
-      console.error('Start date or end date is missing');
-      return;
-    }
-
-    const startDate = new Date(dates.start_date);
-    const endDate = new Date(dates.end_date);
-
-    if (isNaN(startDate) || isNaN(endDate)) {
-      console.error('Start date or end date is invalid');
-      return;
-    }
-
-    const formattedStartDate = `${startDate.getFullYear()}-${startDate.getMonth() + 1}-${startDate.getDate()} ${startDate.getHours()}:${startDate.getMinutes()}:${startDate.getSeconds()}`;
-    const formattedEndDate = `${endDate.getFullYear()}-${endDate.getMonth() + 1}-${endDate.getDate()} ${endDate.getHours()}:${endDate.getMinutes()}:${endDate.getSeconds()}`;
-
-    const tripData = {
-      start_date: formattedStartDate,
-      end_date: formattedEndDate,
-      location_id: selectedLocation.id,
-      activities: selectedActivities
-    };
-
-    console.log('tripData:', tripData);
-    createTrip(tripData, rdxToken)
-      .then(response => {
-        console.log('Trip created successfully:', response.data);
-        navigate("/my-trips");
-      })
-      .catch(error => {
-        console.error('Error creating trip:', error);
+    if (selectedActivities.length === 0) {
+      Modal.warning({
+        title: 'Atención',
+        content: 'Selecciona al menos una actividad',
       });
+    } else {
+
+      if (!dates.start_date || !dates.end_date) {
+        console.error('Start date or end date is missing');
+        return;
+      }
+      
+      const startDate = new Date(dates.start_date);
+      const endDate = new Date(dates.end_date);
+
+      if (isNaN(startDate) || isNaN(endDate)) {
+        console.error('Start date or end date is invalid');
+        return;
+      }
+
+      const formattedStartDate = `${startDate.getFullYear()}-${startDate.getMonth() + 1}-${startDate.getDate()} ${startDate.getHours()}:${startDate.getMinutes()}:${startDate.getSeconds()}`;
+      const formattedEndDate = `${endDate.getFullYear()}-${endDate.getMonth() + 1}-${endDate.getDate()} ${endDate.getHours()}:${endDate.getMinutes()}:${endDate.getSeconds()}`;
+
+      const tripData = {
+        start_date: formattedStartDate,
+        end_date: formattedEndDate,
+        location_id: selectedLocation.id,
+        activities: selectedActivities
+      };
+
+      console.log('tripData:', tripData);
+      createTrip(tripData, rdxToken)
+        .then(response => {
+          console.log('Trip created successfully:', response.data);
+          navigate("/my-trips");
+        })
+        .catch(error => {
+          console.error('Error creating trip:', error);
+        });
+    }
   };
 
   return (
