@@ -10,7 +10,6 @@ import e from 'cors';
 // axios.defaults.headers.common['X-CSRF-TOKEN'] = token;
 
 
-
 const BASE_URL = 'http://localhost:8000/api/';
 
 export const logUser = async (body) => {
