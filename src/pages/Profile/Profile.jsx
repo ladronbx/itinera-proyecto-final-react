@@ -1,14 +1,23 @@
 import React, { useState, useEffect } from "react";
 import "./Profile.css";
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from "react-redux";
-import { selectToken } from "../userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { logout, selectToken } from "../userSlice";
 import { countDelete, getProfile, updateProfile } from "../../services/apiCall";
 import PasswordModal from "../../common/PasswordModal/PasswordModal";
 import { Modal } from 'antd';
 
 export const Profile = () => {
     const rdxToken = useSelector(selectToken);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (!rdxToken) {
+            navigate("/");
+        }
+    }, [rdxToken, navigate]);
+
     const [user, setUser] = useState({
         name: "",
         email: "",
@@ -20,7 +29,7 @@ export const Profile = () => {
         emailError: "",
         imageError: "",
     });
-    const navigate = useNavigate();
+
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingField, setEditingField] = useState(null);
 
@@ -47,27 +56,27 @@ export const Profile = () => {
         setUser({ ...user, [name]: value });
     };
 
-    const handleDeleteAccount = () => {
-        Modal.confirm({
-            title: '¿Estás seguro de que quieres eliminar tu cuenta?',
-            content: 'Esta acción no puede deshacerse.',
-            okText: 'Sí',
-            okType: 'danger',
-            cancelText: 'No',
-            onOk() {
-                countDelete(rdxToken)
-                    .then((response) => {
-                        if (response.data.success) {
-                            navigate("/");
-                        }
-                    })
-                    .catch((error) => {
-                        console.error('Error:', error);
-                    });
-            },
-        });
-    };
-
+const handleDeleteAccount = () => {
+    Modal.confirm({
+        title: '¿Estás seguro de que quieres eliminar tu cuenta?',
+        content: 'Esta acción no puede deshacerse.',
+        okText: 'Sí',
+        okType: 'danger',
+        cancelText: 'No',
+        onOk() {
+            countDelete(rdxToken)
+                .then((response) => {
+                    if (response.data.success) {
+                        dispatch(logout());
+                        navigate("/");
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        },
+    });
+};
     const handleUpdateProfile = () => {
         const updatedUser = { [editingField]: user[editingField] };
         if (editingField === 'name' || editingField === 'email' || editingField === 'image') {
