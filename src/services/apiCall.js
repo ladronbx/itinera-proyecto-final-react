@@ -183,8 +183,8 @@ export const getAllActivitiesSuper = (rdxToken, page = 1) => {
     });
 }
 
-export const getAllLocationsSuper = (rdxToken) => {
-    return axios.get(`${BASE_URL}locations-super`, {
+export const getAllLocationsSuper = (rdxToken, page = 1) => {
+    return axios.get(`${BASE_URL}locations-super?page=${page}`, {
         headers: {
             Authorization: `Bearer ${rdxToken}`,
         },

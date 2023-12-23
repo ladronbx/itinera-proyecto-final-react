@@ -7,18 +7,24 @@ import { useNavigate } from "react-router-dom";
 import { CreateLocationSuper } from "../../common/CreateLocationSuper/CreateLocationSuper";
 import { getAllLocationsSuper } from "../../services/apiCall";
 import { LocationCard } from "../../common/LocationCard/LocationCard";
+import { PaginationButton } from "../../common/PaginationButton/PaginationButton";
 
 export const LocationSuper = () => {
   const rdxToken = useSelector(selectToken);
   const navigate = useNavigate();
   const [locations, setLocations] = useState([])
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const decoded = jwtDecode(rdxToken);
     if (rdxToken && decoded.role === "is_super_admin") {
-      getAllLocationsSuper(rdxToken)
+      getAllLocationsSuper(rdxToken, currentPage)
         .then((res) => {
-          setLocations(res.data.data)
+          if (Array.isArray(res.data.data) && res.data.data.length > 0) {
+            setLocations(res.data.data)
+          } else {
+            setCurrentPage(currentPage - 1)
+          }
         })
         .catch((err) => {
           console.log('err:', err);
@@ -26,10 +32,10 @@ export const LocationSuper = () => {
     } else {
       navigate("/");
     }
-  }, [rdxToken]);
+  }, [rdxToken, currentPage]);
 
   const handleLocationRemoved = () => {
-    getAllLocationsSuper(rdxToken)
+    getAllLocationsSuper(rdxToken, currentPage)
       .then((res) => {
         setLocations(res.data.data)
       })
@@ -38,12 +44,28 @@ export const LocationSuper = () => {
       })
   };
 
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+  };
 
   return (
     <div className="location-super-container-main">hola
 
       <CreateLocationSuper />
       <div className="container">
+
+        <div className="pagination-container">
+          <PaginationButton
+            classPagination="previous-location"
+            text={"<< Previous"}
+            changePagination={() => handlePageChange(currentPage - 1)}
+          />
+          <PaginationButton
+            classPagination="next-location"
+            text={"Next >>"}
+            changePagination={() => handlePageChange(currentPage + 1)}
+          />
+        </div>
         {
           locations.length > 0
             ? (
