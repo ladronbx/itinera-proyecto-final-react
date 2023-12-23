@@ -7,17 +7,19 @@ import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { jwtDecode } from 'jwt-decode';
 import { createLocation } from "../../services/apiCall";
 import { selectToken } from "../../pages/userSlice";
+import { Modal, message } from 'antd';
 
 export const CreateLocationSuper = () => {
     const rdxToken = useSelector(selectToken);
     const navigate = useNavigate();
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
 
     useEffect(() => {
         if (!rdxToken) {
             navigate("/");
         }
     }, []);
-
 
     const [elements, setElements] = useState({
         name: "",
@@ -33,9 +35,7 @@ export const CreateLocationSuper = () => {
         image_1Error: "",
         image_2Error: "",
         image_3Error: "",
-    })
-
-    const [message, setMessage] = useState("");
+    });
 
     const functionHandler = (e) => {
         setElements((prevState) => ({
@@ -55,11 +55,10 @@ export const CreateLocationSuper = () => {
             [e.target.name + 'Error']: error,
         }));
     };
+
     useEffect(() => {
         if (rdxToken) {
             const decoded = jwtDecode(rdxToken);
-            // console.log('rdxToken:', rdxToken);
-            // console.log('decoded.role:', decoded.role);
             if (decoded.role !== "is_super_admin") {
                 navigate("/");
             }
@@ -70,12 +69,22 @@ export const CreateLocationSuper = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (!elements.name || !elements.description) {
+            setErrorMessage("Por favor, completa todos los campos requeridos.");
+            return;
+        }
+
         createLocation(elements, rdxToken)
             .then((response) => {
-                console.log(response)
+                console.log(response);
+                setIsModalVisible(true);
             })
-            .catch((error) => console.log(error));
+            .catch((error) => {
+                console.log(error);
+                message.error('Hubo un error al crear la ubicación.');
+            });
     };
+
     return (
         <div className="login-style-container-create-activity">
             <CustomInput
@@ -86,6 +95,7 @@ export const CreateLocationSuper = () => {
                 functionProp={functionHandler}
                 functionBlur={errorCheck}
             />
+            <div className='error-style'>{elementsError.nameError}</div>
 
             <CustomInput
                 design={"inputStyle"}
@@ -95,6 +105,7 @@ export const CreateLocationSuper = () => {
                 functionProp={functionHandler}
                 functionBlur={errorCheck}
             />
+            <div className='error-style'>{elementsError.descriptionError}</div>
 
             <CustomInput
                 design={"inputStyle"}
@@ -104,6 +115,7 @@ export const CreateLocationSuper = () => {
                 functionProp={functionHandler}
                 functionBlur={errorCheck}
             />
+            <div className='error-style'>{elementsError.image_1Error}</div>
 
             <CustomInput
                 design={"inputStyle"}
@@ -113,6 +125,7 @@ export const CreateLocationSuper = () => {
                 functionProp={functionHandler}
                 functionBlur={errorCheck}
             />
+            <div className='error-style'>{elementsError.image_2Error}</div>
 
             <CustomInput
                 design={"inputStyle"}
@@ -122,8 +135,15 @@ export const CreateLocationSuper = () => {
                 functionProp={functionHandler}
                 functionBlur={errorCheck}
             />
+            <div className='error-style'>{elementsError.image_3Error}</div>
 
-            <button onClick={handleSubmit}>Crear actividad</button>
+            <button onClick={handleSubmit}>Crear ubicación</button>
+            <Modal title="Ubicación creada" visible={isModalVisible} onOk={() => setIsModalVisible(false)} onCancel={() => setIsModalVisible(false)}>
+                <p>La ubicación se ha creado con éxito.</p>
+            </Modal>
+            {
+                errorMessage && <p className="error-message">{errorMessage}</p>
+            }
         </div>
     )
 }
