@@ -7,10 +7,13 @@ import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { jwtDecode } from 'jwt-decode';
 import { createActivity } from "../../services/apiCall";
 import { selectToken } from "../../pages/userSlice";
+import { Modal, message } from 'antd';
 
 export const CreateActivitySuper = () => {
     const rdxToken = useSelector(selectToken);
     const navigate = useNavigate();
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
 
     useEffect(() => {
         if (!rdxToken) {
@@ -24,7 +27,7 @@ export const CreateActivitySuper = () => {
         image_1: "",
         image_2: "",
         duration: "",
-        location_id: "",
+        location_name: "",
     });
 
     const [elementsError, setElementsError] = useState({
@@ -33,8 +36,10 @@ export const CreateActivitySuper = () => {
         image_1Error: "",
         image_2Error: "",
         durationError: "",
-        location_idError: "",
+        location_nameError: "",
     })
+
+
 
     const [message, setMessage] = useState("");
 
@@ -49,34 +54,43 @@ export const CreateActivitySuper = () => {
         if (e.target.name !== "image_1" && e.target.name !== "image_2") {
             error = checker(e.target.name, e.target.value);
         }
-        
+
         setElementsError((prevState) => ({
             ...prevState,
             [e.target.name + 'Error']: error,
         }));
     };
 
-useEffect(() => {
-    if (rdxToken) {
-        const decoded = jwtDecode(rdxToken);
-        console.log('rdxToken:', rdxToken);
-        console.log('decoded.role:', decoded.role);
-        if (decoded.role !== "is_super_admin") {
+    useEffect(() => {
+        if (rdxToken) {
+            const decoded = jwtDecode(rdxToken);
+            // console.log('rdxToken:', rdxToken);
+            // console.log('decoded.role:', decoded.role);
+            if (decoded.role !== "is_super_admin") {
+                navigate("/");
+            }
+        } else {
             navigate("/");
         }
-    } else {
-        navigate("/");
-    }
-}, [rdxToken]);
+    }, [rdxToken]);
 
-const handleSubmit = (e) => {
-    e.preventDefault();
-    createActivity(elements, rdxToken)
-        .then((response) => {
-            console.log(response)
-        })
-        .catch((error) => console.log(error));
-};
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!elements.name || !elements.description || !elements.duration || !elements.location_name) {
+            setErrorMessage("Por favor, completa todos los campos requeridos.");
+            return;
+        }
+
+        createActivity(elements, rdxToken)
+            .then((response) => {
+                console.log(response);
+                setIsModalVisible(true);
+            })
+            .catch((error) => {
+                console.log(error);
+                message.error('Hubo un error al crear la actividad.');
+            });
+    };
     return (
         <div className="login-style-container-create-activity">
             <CustomInput
@@ -87,6 +101,7 @@ const handleSubmit = (e) => {
                 functionProp={functionHandler}
                 functionBlur={errorCheck}
             />
+            <div className='error-style'>{elementsError.nameError}</div>
 
             <CustomInput
                 design={"inputStyle"}
@@ -96,6 +111,7 @@ const handleSubmit = (e) => {
                 functionProp={functionHandler}
                 functionBlur={errorCheck}
             />
+            <div className='error-style'>{elementsError.descriptionError}</div>
 
             <CustomInput
                 design={"inputStyle"}
@@ -105,6 +121,8 @@ const handleSubmit = (e) => {
                 functionProp={functionHandler}
                 functionBlur={errorCheck}
             />
+                <div className='error-style'>{elementsError.image_1Error}</div>
+
 
             <CustomInput
                 design={"inputStyle"}
@@ -114,6 +132,8 @@ const handleSubmit = (e) => {
                 functionProp={functionHandler}
                 functionBlur={errorCheck}
             />
+                <div className='error-style'>{elementsError.image_2Error}</div>
+
 
             <CustomInput
                 design={"inputStyle"}
@@ -123,16 +143,25 @@ const handleSubmit = (e) => {
                 functionProp={functionHandler}
                 functionBlur={errorCheck}
             />
+                <div className='error-style'>{elementsError.durationError}</div>
+
 
             <CustomInput
                 design={"inputStyle"}
-                type={"location_id"}
-                name={"location_id"}
-                placeholder={"Location ID"}
+                type={"name"}
+                name={"location_name"}
+                placeholder={"Location name"}
                 functionProp={functionHandler}
                 functionBlur={errorCheck}
             />
+                <div className='error-style'>{elementsError.location_nameError}</div>
             <button onClick={handleSubmit}>Crear actividad</button>
+            <Modal title="Actividad creada" visible={isModalVisible} onOk={() => setIsModalVisible(false)} onCancel={() => setIsModalVisible(false)}>
+                <p>La actividad se ha creado con éxito.</p>
+            </Modal>
+            {
+                errorMessage && <p className="error-message">{errorMessage}</p>
+            }
         </div>
     )
 }

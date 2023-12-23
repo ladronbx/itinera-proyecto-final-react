@@ -124,5 +124,15 @@ export const checker = (type, value) => {
             } else {
                 return '';
             }
+        
+        case 'duration':
+            const numberValue = parseInt(value);
+            if (!value) {
+                return `You must insert a ${type}`;
+            } else if (isNaN(numberValue)) {
+                return `${type} must be a number`;
+            } else {
+                return '';
+            }
     }
 }
