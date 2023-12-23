@@ -9,19 +9,19 @@ export const LocationCard = ({ id, name, description, image_1, image_2, image_3,
     return (
         <div className="card-all-locations row">
 
-                <div className="card-all-location-container-image">
-                    <Carousel interval={null}>
-                        <Carousel.Item>
-                            <img className="card-all-locations-image" src={image_1} alt={name} />
-                        </Carousel.Item>
-                        <Carousel.Item>
-                            <img className="card-all-locations-image" src={image_2} alt={name} />
-                        </Carousel.Item>
-                        <Carousel.Item>
-                            <img className="card-all-locations-image" src={image_3} alt={name} />
-                        </Carousel.Item>
-                    </Carousel>
-                </div>
+            <div className="card-all-location-container-image">
+                <Carousel interval={null}>
+                    <Carousel.Item>
+                        <img className="card-all-locations-image" src={image_1} alt={name} />
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img className="card-all-locations-image" src={image_2} alt={name} />
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img className="card-all-locations-image" src={image_3} alt={name} />
+                    </Carousel.Item>
+                </Carousel>
+            </div>
 
 
 

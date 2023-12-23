@@ -7,7 +7,6 @@
 
 }
 
-
 .card-all-locations {
   margin: 1em;
   border: 1px solid #ccc;
@@ -18,10 +17,9 @@
   justify-content: space-between;
   align-items: stretch;
   transition: box-shadow 0.3s ease;
-  height: 41em;
+  height: 48em;
   background-color: rgb(255, 255, 255);
 }
-
 
 .card-all-locations:hover {
   box-shadow: 0 0 0.625em rgba(0, 0, 0, 0.1);
@@ -33,12 +31,12 @@
   align-items: center;
   position: relative;
   border-radius: 0.5em;
-  height: 17em;
+  height: 24em;
   width: 100%;
 }
 
 .card-all-locations-image {
-  max-height: 10%;
+  max-height: 24em;
   width: 100%;
   border-radius: 0.5em;
 }
@@ -86,7 +84,6 @@
 
 }
 
-/*diseño responsice para smartphone*/
 @media screen and (max-width: 768px) {
   .container-location {
     grid-template-columns: repeat(1, 1fr);

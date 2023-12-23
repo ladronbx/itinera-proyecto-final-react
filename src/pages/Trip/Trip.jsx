@@ -63,6 +63,8 @@ export const Trip = () => {
                   end_date={trip.end_date}
                   memberscount={trip.memberscount}
                   image_1={trip.image_1}
+                  image_2={trip.image_2}
+                  image_3={trip.image_3}
                   tripId={trip.id}
                   rdxToken={rdxToken}
                   onTripRemoved={handleRemoveTrip}
