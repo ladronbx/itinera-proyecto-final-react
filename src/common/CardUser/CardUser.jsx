@@ -1,7 +1,8 @@
 import React from "react";
 import "./CardUser.css";
+import { RemoveButtonUserSuper } from "../RemoveButtonUserSuper/RemoveButtonUserSuper";
 
-export const CardUser = ({ name, image, email, is_active, role_id }) => {
+export const CardUser = ({ name, image, email, is_active, role_id, userId, rdxToken, onUserRemoved }) => {
     let roleText = "";
     let activeText = "";
 
@@ -30,6 +31,7 @@ export const CardUser = ({ name, image, email, is_active, role_id }) => {
                 <p className="card-allusers__description">{email}</p>
                 <p className="card-allusers__description">{activeText}</p>
                 <p className="card-allusers__description">{roleText}</p>
+                <RemoveButtonUserSuper userId={userId} rdxToken={rdxToken} onUserRemoved={onUserRemoved} />
             </div>
         </div>
     );

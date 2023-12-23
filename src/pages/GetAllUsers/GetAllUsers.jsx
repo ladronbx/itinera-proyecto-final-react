@@ -30,6 +30,15 @@ export const GetAllUsers = () => {
     }
   }, [rdxToken]);
 
+  const handleRemoveUser = () => {
+    getAllUsers(rdxToken)
+      .then(
+        user => {
+            setusers(user.data.data)
+        })
+      .catch((error) => console.log(error));
+  }
+
   return (
     <div className="card-user-container-main">
 
@@ -46,6 +55,10 @@ export const GetAllUsers = () => {
                   email={user.email}
                   is_active={user.is_active}
                   role_id={user.role_id}
+                  userId={user.id}
+                  rdxToken={rdxToken}
+                  onUserRemoved={handleRemoveUser}
+
                 />
               ))}
             </div>
