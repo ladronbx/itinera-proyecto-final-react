@@ -11,6 +11,8 @@ export const Profile = () => {
     const rdxToken = useSelector(selectToken);
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const [isNameButtonClicked, setIsNameButtonClicked] = useState(false);
+    const [isEmailButtonClicked, setIsEmailButtonClicked] = useState(false);
 
     useEffect(() => {
         if (!rdxToken) {
@@ -49,6 +51,11 @@ export const Profile = () => {
 
     const handleEditClick = (fieldName) => {
         setEditingField(fieldName);
+        if (fieldName === 'name') {
+            setIsNameButtonClicked(prevState => !prevState);
+        } else if (fieldName === 'email') {
+            setIsEmailButtonClicked(prevState => !prevState);
+        }
     };
 
     const handleInputChange = (event) => {
@@ -113,10 +120,10 @@ const handleDeleteAccount = () => {
 
                             <div className="profile-column col">
 
-                                <div className="full-name-profile">
+                            <div className={`name-profile ${isNameButtonClicked ? '' : 'name-profile-click'}`}>
                                     {editingField === 'name'
                                         ? <div>
-                                            <input className="full-name-profile-input" type="text" name="name" value={user.name} onChange={handleInputChange} />
+                                            <input className="name-profile-input" type="text" name="name" value={user.name} onChange={handleInputChange} />
                                             {errorMessages.name && <div className="error-message-style">{errorMessages.name}</div>}
                                         </div>
                                         : <>
@@ -132,7 +139,7 @@ const handleDeleteAccount = () => {
                                     }
                                 </div>
 
-                                <div className="email-name-profile">
+                                <div className={`email-name-profile ${isEmailButtonClicked ? '' : 'email-name-profile-click'}`}>
                                     {editingField === 'email'
                                         ? <div>
                                             <input className="email-profile-input" type="email" name="email" value={user.email} onChange={handleInputChange} />
@@ -156,7 +163,7 @@ const handleDeleteAccount = () => {
                                 </div>
 
                                 <div>
-                                    <button onClick={() => setIsModalOpen(true)}>Change Password</button>
+                                    <button className="change-password-style" onClick={() => setIsModalOpen(true)}>Cambiar contraseña</button>
                                     <PasswordModal
                                         isOpen={isModalOpen}
                                         onClose={() => setIsModalOpen(false)}
@@ -164,7 +171,7 @@ const handleDeleteAccount = () => {
                                     />
                                 </div>
 
-                                <button onClick={handleDeleteAccount}>Eliminar cuenta</button>
+                                <button className="delete-count-style" onClick={handleDeleteAccount}>Eliminar cuenta</button>
 
                             </div>
                         </div>

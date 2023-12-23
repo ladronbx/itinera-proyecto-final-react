@@ -1,103 +1,161 @@
 .container-main-profile {
+  height: 89vh;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  position: relative;
+  flex-wrap: wrap;
+  /*propiedad para no poder hacer scroll*/
+  overflow: hidden;
 }
 
 .container-profile {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 80%;
-  margin: auto;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  border-radius: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: rgb(243, 253, 157);
+
 }
 
 .container-left-img-profile {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  flex: 1;
+  padding: 1em;
+  box-sizing: border-box;
 }
 
 .profile-image {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  object-fit: cover;
+  width: 100%;
+  height: auto;
 }
 
 .profile-column {
+  flex: 1;
+  padding: 1em;
+  box-sizing: border-box;
+  padding-left: 10em;
+}
+
+.name-profile,
+.email-name-profile{
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 13em;
+  font-size: 1.6em;
+  position: relative;
+  padding: 0.6em;
+  border-radius: 0.3em;
+  margin-bottom: 1em;
 }
 
-.full-name-profile,
-.email-name-profile,
-.password-profile {
-  margin-bottom: 20px;
+.email-name-profile-click,
+.name-profile-click {
+
+  border-left: 0.1em solid #000000;
+  border-bottom: 0.1em solid #000000;
+
 }
 
-.full-name-profile-input,
-.email-profile-input,
-.password-profile-input {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-}
-
-.button-edit {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    margin: 10px 0;
-    border: none;
-    cursor: pointer;
-    text-align: center;
-    display: inline-block;
-    font-size: 16px;
-    transition-duration: 0.4s;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-}
-
-.button-edit:hover {
-    background-color: white;
-    color: black;
-    border: 2px solid #4CAF50;
-}
-
-.button-update-profile,
-.button-update-password {
-    background-color: #008CBA;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    transition-duration: 0.4s;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-}
-
-.button-update-profile:hover,
-.button-update-password:hover {
-    background-color: white;
-    color: black;
-    border: 2px solid #008CBA;
+.name-profile-input,
+.email-profile-input {
+  border-radius: 0.5em;
+  background-color: rgba(255, 255, 255, 0);
+  color: #000000;
+  border-color: #000000;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  width: 13em;
+  margin: 0em;
 }
 
 .error-message-style {
   color: red;
-  font-size: 14px;
+  font-size: 0.8em;
+}
+
+.button-edit {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.button-update-profile-container {
+  width: 17em;
+  margin-top: 1em;
+  background-color: #000000;
+  border-radius: 0.5em;
+  margin: 2em 0em 4em 0em;
+}
+
+.button-update-profile {
+  background-color: #000000;
+  color: #fff;
+  padding: 0.5em 1em;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 0.5em;
+  width: 17em;
+}
+
+.change-password-style, .delete-count-style {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #bb3939;
+  text-decoration: underline;
+  font-size: 1.2em;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+  .container-main-profile {
+    height: 100%;
+    width: 100%;
+  }
+
+  .container-profile {
+    flex-direction: column;
+    padding: 3em;
+    width: 100%;
+  }
+
+  .name-profile,
+  .email-name-profile {
+    font-size: 1.2em;
+      width: 12em;
+  }
+
+  .name-profile-input,
+  .email-profile-input {
+    margin-top: 0.4em;
+    width: 100%;
+  }
+
+  .container-left-img-profile,
+  .profile-column {
+    flex: 1;
+    max-width: 100%;
+  }
+
+  .button-update-profile-container {
+    width: 15em;
+  }
+  
+  .button-update-profile {
+    width: 15em;
+  }
+
+  .profile-column {
+    padding-left: 0em;
+  }
+  .change-password-style, .delete-count-style {
+    font-size: 1em;
+  }
 }
