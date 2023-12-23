@@ -175,6 +175,15 @@ export const createLocation = (body, rdxToken) => {
     });
 }
 
+export const getAllActivities = (rdxToken) => {
+    return axios.get(`${BASE_URL}activities`, {
+        headers: {
+            Authorization: `Bearer ${rdxToken}`,
+        },
+    });
+}
+
+
 
 //no la he usado 
 export const getMembersTrip = (tripId, rdxToken) => {
