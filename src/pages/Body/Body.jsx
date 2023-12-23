@@ -27,8 +27,8 @@ export const Body = () => {
                 <Route path="/trips" element={<TripSuper />}/>
                 <Route path='/my-trip/:id' element={<TripDetail />}/>
                 <Route path='/users' element={<GetAllUsers />}/>
-                <Route path="/activities" element={<ActivitySuper/>}/>
-                <Route path="/location-create" element={<LocationSuper/>}/>
+                <Route path="/activities-super" element={<ActivitySuper/>}/>
+                <Route path="/locations-super" element={<LocationSuper/>}/>
             </Routes>
          </>
      )

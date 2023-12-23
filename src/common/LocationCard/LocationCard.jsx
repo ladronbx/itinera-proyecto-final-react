@@ -1,7 +1,8 @@
 import React from "react";
 import "./LocationCard.css";
+import { RemoveButtonLocationSuper } from "../RemoveButtonLocationSuper/RemoveButtonLocationSuper";
 
-export const LocationCard = ({ name, description, image_1, onClick }) => {
+export const LocationCard = ({ id, name, description, image_1, onClick, isSuperAdmin,rdxToken, onLocationRemoved }) => {
     let roleText = "";
 
     return (
@@ -13,6 +14,7 @@ export const LocationCard = ({ name, description, image_1, onClick }) => {
             <div className="card-all-locations__content col">
                 <p className="card-all-locations__title">{name}</p>
                 <p className="card-all-locations__description">{description}</p>
+                {isSuperAdmin && <RemoveButtonLocationSuper locationId={id} rdxToken={rdxToken} onLocationRemoved={onLocationRemoved} />}
             </div>
         </div>
     );
