@@ -143,8 +143,8 @@ export const getAllTrips = (rdxToken) => {
     });
 }
 
-export const getAllUsers = (rdxToken) => {
-    return axios.get(`${BASE_URL}users`, {
+export const getAllUsers = (rdxToken, page) => {
+    return axios.get(`${BASE_URL}users?page=${page}`, {
         headers: {
             Authorization: `Bearer ${rdxToken}`,
         },
