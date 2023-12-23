@@ -112,7 +112,7 @@ export const Header = () => {
 
                     <LinkButton
                       classButton={"link-button-style"}
-                      path={"/activity-create"}
+                      path={"/activities"}
                       title={"Gestionar actividades"}
                     />
 

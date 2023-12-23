@@ -175,8 +175,18 @@ export const createLocation = (body, rdxToken) => {
     });
 }
 
+
+
 export const getAllActivities = (rdxToken) => {
     return axios.get(`${BASE_URL}activities`, {
+        headers: {
+            Authorization: `Bearer ${rdxToken}`,
+        },
+    });
+}
+
+export const deleteActivity = (id, rdxToken) => {
+    return axios.delete(`${BASE_URL}activity-remove/${id}`, {
         headers: {
             Authorization: `Bearer ${rdxToken}`,
         },
