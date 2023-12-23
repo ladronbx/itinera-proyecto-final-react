@@ -1,25 +1,25 @@
 import React from 'react';
-import './RemoveButtonActivitySuper.css';
+import './RemoveButtonLocationSuper.css';
 import { Modal } from 'antd';
-import { deleteActivity } from '../../services/apiCall';
+import { deleteLocation } from '../../services/apiCall';
 
-export const RemoveButtonActivitySuper = ({ activityId, rdxToken, onActivityRemoved }) => {
-    const handleRemoveActivitySuper = async () => {
+export const RemoveButtonLocationSuper = ({ locationId, rdxToken, onLocationRemoved }) => {
+    const handleRemoveLocationSuper = async () => {
         try {
-            await deleteActivity(activityId, rdxToken);
+            await deleteLocation(locationId, rdxToken);
             Modal.success({
-                content: 'Actividad eliminada con éxito',
+                content: 'Destino eliminado con éxito',
             });
-            onActivityRemoved();
+            onLocationRemoved();
         } catch (error) {
             Modal.error({
-                content: 'Error al eliminar actividad',
+                content: 'Error al eliminar destino',
             });
         }
     };
 
     return (
-        <div className="common-remove-button" onClick={handleRemoveActivitySuper}>
+        <div className="common-remove-button" onClick={handleRemoveLocationSuper}>
             <span className="common-remove-text">Remove</span>
             <span className="common-remove-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">

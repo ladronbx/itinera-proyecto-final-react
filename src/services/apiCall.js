@@ -193,6 +193,14 @@ export const deleteActivity = (id, rdxToken) => {
     });
 }
 
+export const deleteLocation = (id, rdxToken) => {
+    return axios.delete(`${BASE_URL}location-remove/${id}`, {
+        headers: {
+            Authorization: `Bearer ${rdxToken}`,
+        },
+    });
+}
+
 
 
 //no la he usado 
