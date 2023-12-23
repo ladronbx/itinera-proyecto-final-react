@@ -12,11 +12,11 @@ export const ActivitySuper = () => {
   const rdxToken = useSelector(selectToken);
   const navigate = useNavigate();
   const [activities, setActivities] = useState([])
-
+  const [currentPage, setCurrentPage] = useState(1); 
   useEffect(() => {
     const decoded = jwtDecode(rdxToken);
     if (rdxToken && decoded.role === "is_super_admin") {
-      getAllActivitiesSuper(rdxToken)
+      getAllActivitiesSuper(rdxToken, currentPage)
         .then((res) => {
           setActivities(res.data.data)
         })
@@ -26,16 +26,20 @@ export const ActivitySuper = () => {
     } else {
       navigate("/");
     }
-  }, [rdxToken]);
+  }, [rdxToken, currentPage]); 
 
   const handleActivityRemoved = () => {
-    getAllActivitiesSuper(rdxToken)
+    getAllActivitiesSuper(rdxToken, currentPage) 
       .then((res) => {
         setActivities(res.data.data)
       })
       .catch((err) => {
         console.log('err:', err);
       })
+  };
+  
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
   };
 
   return (
@@ -64,6 +68,8 @@ export const ActivitySuper = () => {
                     />
                   ))
                 }
+                <button onClick={() => handlePageChange(currentPage - 1)}>Previous page</button>
+                <button onClick={() => handlePageChange(currentPage + 1)}>Next page</button>
               </div>
             ) : (
               <div>Loading ...</div>
