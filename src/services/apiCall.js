@@ -207,6 +207,13 @@ export const deleteLocation = (id, rdxToken) => {
     });
 }
 
+export const deleteUser = (id, rdxToken) => {
+    return axios.delete(`${BASE_URL}user-delete/${id}`, {
+        headers: {
+            Authorization: `Bearer ${rdxToken}`,
+        },
+    });
+}
 
 
 //no la he usado 
