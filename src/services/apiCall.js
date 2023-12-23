@@ -175,6 +175,7 @@ export const createLocation = (body, rdxToken) => {
     });
 }
 
+
 //no la he usado 
 export const getMembersTrip = (tripId, rdxToken) => {
     return axios.get(`${BASE_URL}my-trip/${tripId}/get-members`, {

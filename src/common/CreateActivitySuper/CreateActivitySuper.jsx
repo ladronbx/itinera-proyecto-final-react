@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import "./CreateLocationSuper.css";
+import "./CreateActivitySuper.css";
+import { checker } from "../../services/checker";
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
-import { selectToken } from "../userSlice";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
-import { createLocation } from "../../services/apiCall";
 import { jwtDecode } from 'jwt-decode';
-import { checker } from "../../services/checker";
+import { createActivity } from "../../services/apiCall";
+import { selectToken } from "../../pages/userSlice";
 
-export const CreateLocationSuper = () => {
+export const CreateActivitySuper = () => {
     const rdxToken = useSelector(selectToken);
     const navigate = useNavigate();
 
@@ -18,13 +18,13 @@ export const CreateLocationSuper = () => {
         }
     }, []);
 
-
     const [elements, setElements] = useState({
         name: "",
         description: "",
         image_1: "",
         image_2: "",
-        image_3: "",
+        duration: "",
+        location_id: "",
     });
 
     const [elementsError, setElementsError] = useState({
@@ -32,7 +32,8 @@ export const CreateLocationSuper = () => {
         descriptionError: "",
         image_1Error: "",
         image_2Error: "",
-        image_3Error: "",
+        durationError: "",
+        location_idError: "",
     })
 
     const [message, setMessage] = useState("");
@@ -43,10 +44,9 @@ export const CreateLocationSuper = () => {
             [e.target.name]: e.target.value
         }));
     };
-
     const errorCheck = (e) => {
         let error = "";
-        if (e.target.name !== "image_1" && e.target.name !== "image_2" && e.target.name !== "image_3") {
+        if (e.target.name !== "image_1" && e.target.name !== "image_2") {
             error = checker(e.target.name, e.target.value);
         }
         
@@ -55,27 +55,28 @@ export const CreateLocationSuper = () => {
             [e.target.name + 'Error']: error,
         }));
     };
-    useEffect(() => {
-        if (rdxToken) {
-            const decoded = jwtDecode(rdxToken);
-            console.log('rdxToken:', rdxToken);
-            console.log('decoded.role:', decoded.role);
-            if (decoded.role !== "is_super_admin") {
-                navigate("/");
-            }
-        } else {
+
+useEffect(() => {
+    if (rdxToken) {
+        const decoded = jwtDecode(rdxToken);
+        console.log('rdxToken:', rdxToken);
+        console.log('decoded.role:', decoded.role);
+        if (decoded.role !== "is_super_admin") {
             navigate("/");
         }
-    }, [rdxToken]);
+    } else {
+        navigate("/");
+    }
+}, [rdxToken]);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        createLocation(elements, rdxToken)
-            .then((response) => {
-                console.log(response)
-            })
-            .catch((error) => console.log(error));
-    };
+const handleSubmit = (e) => {
+    e.preventDefault();
+    createActivity(elements, rdxToken)
+        .then((response) => {
+            console.log(response)
+        })
+        .catch((error) => console.log(error));
+};
     return (
         <div className="login-style-container-create-activity">
             <CustomInput
@@ -116,13 +117,21 @@ export const CreateLocationSuper = () => {
 
             <CustomInput
                 design={"inputStyle"}
-                type={"image_3"}
-                name={"image_3"}
-                placeholder={"Image 3"}
+                type={"duration"}
+                name={"duration"}
+                placeholder={"Duration"}
                 functionProp={functionHandler}
                 functionBlur={errorCheck}
             />
 
+            <CustomInput
+                design={"inputStyle"}
+                type={"location_id"}
+                name={"location_id"}
+                placeholder={"Location ID"}
+                functionProp={functionHandler}
+                functionBlur={errorCheck}
+            />
             <button onClick={handleSubmit}>Crear actividad</button>
         </div>
     )

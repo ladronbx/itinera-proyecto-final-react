@@ -113,13 +113,13 @@ export const Header = () => {
                     <LinkButton
                       classButton={"link-button-style"}
                       path={"/activity-create"}
-                      title={"Create activity"}
+                      title={"Gestionar actividades"}
                     />
 
                     <LinkButton
                       classButton={"link-button-style"}
                       path={"/location-create"}
-                      title={"Create location"}
+                      title={"Gestionar location"}
                     />
                   </>
                 )}

@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import "./CreateActivitySuper.css";
+import "./CreateLocationSuper.css";
 import { checker } from "../../services/checker";
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
-import { selectToken } from "../userSlice";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
-import { createActivity } from "../../services/apiCall";
 import { jwtDecode } from 'jwt-decode';
+import { createLocation } from "../../services/apiCall";
+import { selectToken } from "../../pages/userSlice";
 
-export const CreateActivitySuper = () => {
+export const CreateLocationSuper = () => {
     const rdxToken = useSelector(selectToken);
     const navigate = useNavigate();
 
@@ -18,13 +18,13 @@ export const CreateActivitySuper = () => {
         }
     }, []);
 
+
     const [elements, setElements] = useState({
         name: "",
         description: "",
         image_1: "",
         image_2: "",
-        duration: "",
-        location_id: "",
+        image_3: "",
     });
 
     const [elementsError, setElementsError] = useState({
@@ -32,8 +32,7 @@ export const CreateActivitySuper = () => {
         descriptionError: "",
         image_1Error: "",
         image_2Error: "",
-        durationError: "",
-        location_idError: "",
+        image_3Error: "",
     })
 
     const [message, setMessage] = useState("");
@@ -44,9 +43,10 @@ export const CreateActivitySuper = () => {
             [e.target.name]: e.target.value
         }));
     };
+
     const errorCheck = (e) => {
         let error = "";
-        if (e.target.name !== "image_1" && e.target.name !== "image_2") {
+        if (e.target.name !== "image_1" && e.target.name !== "image_2" && e.target.name !== "image_3") {
             error = checker(e.target.name, e.target.value);
         }
         
@@ -55,28 +55,27 @@ export const CreateActivitySuper = () => {
             [e.target.name + 'Error']: error,
         }));
     };
-
-useEffect(() => {
-    if (rdxToken) {
-        const decoded = jwtDecode(rdxToken);
-        console.log('rdxToken:', rdxToken);
-        console.log('decoded.role:', decoded.role);
-        if (decoded.role !== "is_super_admin") {
+    useEffect(() => {
+        if (rdxToken) {
+            const decoded = jwtDecode(rdxToken);
+            console.log('rdxToken:', rdxToken);
+            console.log('decoded.role:', decoded.role);
+            if (decoded.role !== "is_super_admin") {
+                navigate("/");
+            }
+        } else {
             navigate("/");
         }
-    } else {
-        navigate("/");
-    }
-}, [rdxToken]);
+    }, [rdxToken]);
 
-const handleSubmit = (e) => {
-    e.preventDefault();
-    createActivity(elements, rdxToken)
-        .then((response) => {
-            console.log(response)
-        })
-        .catch((error) => console.log(error));
-};
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        createLocation(elements, rdxToken)
+            .then((response) => {
+                console.log(response)
+            })
+            .catch((error) => console.log(error));
+    };
     return (
         <div className="login-style-container-create-activity">
             <CustomInput
@@ -117,21 +116,13 @@ const handleSubmit = (e) => {
 
             <CustomInput
                 design={"inputStyle"}
-                type={"duration"}
-                name={"duration"}
-                placeholder={"Duration"}
+                type={"image_3"}
+                name={"image_3"}
+                placeholder={"Image 3"}
                 functionProp={functionHandler}
                 functionBlur={errorCheck}
             />
 
-            <CustomInput
-                design={"inputStyle"}
-                type={"location_id"}
-                name={"location_id"}
-                placeholder={"Location ID"}
-                functionProp={functionHandler}
-                functionBlur={errorCheck}
-            />
             <button onClick={handleSubmit}>Crear actividad</button>
         </div>
     )
