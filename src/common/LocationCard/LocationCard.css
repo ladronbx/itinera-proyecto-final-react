@@ -1,34 +1,45 @@
 .container-location {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 2em;
+  margin: 2em;
+  background-color: rgb(0, 0, 0);
+
 }
 
+
 .card-all-locations {
+  margin: 1em;
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 1em;
-  margin: 1em;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: stretch;
   transition: box-shadow 0.3s ease;
-  height: 40em;
-  background-color: rgb(17, 83, 107);
+  height: 41em;
+  background-color: rgb(255, 255, 255);
 }
+
 
 .card-all-locations:hover {
   box-shadow: 0 0 0.625em rgba(0, 0, 0, 0.1);
 }
 
 .card-all-location-container-image {
-  flex: 0 0 100%;
-  margin-right: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 0.5em;
+  height: 17em;
+  width: 100%;
 }
 
 .card-all-locations-image {
-  max-width: 100%;
+  max-height: 10%;
+  width: 100%;
   border-radius: 0.5em;
 }
 
@@ -36,18 +47,19 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .card-all-locations__title {
   font-size: 2.5em;
   font-weight: bold;
   margin-bottom: 0.5em;
+  margin-top: 1em;
 }
 
 .card-all-locations__description {
-  font-size: 1.5em;
-  color:  #ffffff;
-  margin-bottom: 1em;
+  font-size: 1.3em;
+  color: #000000;
   flex: 1;
 }
 
@@ -69,7 +81,14 @@
 }
 
 
-.select-date-container{
+.select-date-container {
   margin-bottom: 3em;
 
+}
+
+/*diseño responsice para smartphone*/
+@media screen and (max-width: 768px) {
+  .container-location {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

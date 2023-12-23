@@ -52,7 +52,7 @@ export const LocationSuper = () => {
     <div className="location-super-container-main">hola
 
       <CreateLocationSuper />
-      <div className="container">
+      <div className="container-location">
 
         <div className="pagination-container">
           <PaginationButton

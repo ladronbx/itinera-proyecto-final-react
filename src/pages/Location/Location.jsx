@@ -68,7 +68,7 @@ export const Location = () => {
 
   return (
     <div className="cards-locations-container-main">
-      <div className="container">
+      <div className="container-location">
         {
           locations.length > 0
             ? (
@@ -79,6 +79,8 @@ export const Location = () => {
                   description={location.description}
                   email={location.email}
                   image_1={location.image_1}
+                  image_2={location.image_2}
+                  image_3={location.image_3}
                   onClick={() => handleDestinationClick(location)}
                 />
               ))
