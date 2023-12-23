@@ -2,8 +2,9 @@ import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import "./ActivityCard.css";
 import { addActivity, selectActivities } from "../../pages/tripSlice";
+import { RemoveButtonActivitySuper } from "../RemoveButtonActivitySuper/RemoveButtonActivitySuper";
 
-export const ActivityCard = ({ id, name, description, image_1, image_2, location, isSuperAdmin }) => {
+export const ActivityCard = ({ id, name, description, image_1, image_2, location, isSuperAdmin, rdxToken, onActivityRemoved }) => {
     const dispatch = useDispatch();
     const selectedActivities = useSelector(selectActivities);
 
@@ -17,11 +18,6 @@ export const ActivityCard = ({ id, name, description, image_1, image_2, location
         dispatch(addActivity(id));
     };
 
-    const handleRemoveActivity = () => {
-        console.log('Removing activity:', id);
-        //to do: agregar deleteActivitie
-    };
-
     let isSelected = selectedActivities.includes(id);
 
     return (
@@ -31,9 +27,9 @@ export const ActivityCard = ({ id, name, description, image_1, image_2, location
                 <img className="card-all-activities-image" src={image_2} alt={name} />
                 {isSelected
                     ? <div className="selected-message">Actividad seleccionada</div>
-                    : <button className="button-activities" onClick={handleAddActivity}>Agregar</button>
+                    : !isSuperAdmin && <button className="button-activities" onClick={handleAddActivity}>Agregar</button>
                 }
-                {isSuperAdmin && <button className="button-activities" onClick={handleRemoveActivity}>Eliminar</button>}
+                {isSuperAdmin && <RemoveButtonActivitySuper activityId={id} rdxToken={rdxToken} onActivityRemoved={onActivityRemoved} />}
             </div>
             <div className="card-all-activities__content col">
                 <p className="card-all-activities__title">{name}</p>
@@ -41,6 +37,8 @@ export const ActivityCard = ({ id, name, description, image_1, image_2, location
 
             </div>
             <p className="card-all-activities__location">{location}</p>
+
+            
         </div>
 
     );

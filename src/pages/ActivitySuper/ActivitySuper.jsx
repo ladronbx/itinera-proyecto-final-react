@@ -12,6 +12,7 @@ export const ActivitySuper = () => {
   const rdxToken = useSelector(selectToken);
   const navigate = useNavigate();
   const [activities, setActivities] = useState([])
+
   useEffect(() => {
     const decoded = jwtDecode(rdxToken);
     if (rdxToken && decoded.role === "is_super_admin") {
@@ -26,6 +27,16 @@ export const ActivitySuper = () => {
       navigate("/");
     }
   }, [rdxToken]);
+
+  const handleActivityRemoved = () => {
+    getAllActivities(rdxToken)
+      .then((res) => {
+        setActivities(res.data.data)
+      })
+      .catch((err) => {
+        console.log('err:', err);
+      })
+  };
 
   return (
     <div className="activity-super-container-main">hola
@@ -46,6 +57,9 @@ export const ActivitySuper = () => {
                     image_1={activity.image_1}
                     image_2={activity.image_2}
                     location={activity.location}
+                    isSuperAdmin={true}
+                    rdxToken={rdxToken}
+                    onActivityRemoved={handleActivityRemoved}
                   />
                 ))
               }
