@@ -21,7 +21,7 @@ function PasswordModal({ isOpen, onClose, rdxToken }) {
     updatePassword(password, rdxToken)
       .then((response) => {
         if (response.data.success) {
-          console.log(response.data);
+          // console.log(response.data);
           getProfile(rdxToken)
             .then((response) => {
               console.log(response.data);

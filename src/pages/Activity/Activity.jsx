@@ -28,7 +28,6 @@ export const Activity = () => {
           }
         })
     } else {
-      console.log("Redirigiendo a la página de inicio");
       navigate("/");
     }
     return () => {
@@ -37,7 +36,7 @@ export const Activity = () => {
   }, [dates, selectedLocation.id, navigate, rdxToken, dispatch]);
 
   const handleAddActivity = (activityId) => {
-    console.log('Adding activity ID:', activityId);
+    // console.log('Adding activity ID:', activityId);
     dispatch(addActivity(activityId));
   };
 
@@ -46,7 +45,7 @@ export const Activity = () => {
   };
 
   useEffect(() => {
-    console.log('Selected activities:', selectedActivities);
+    // console.log('Selected activities:', selectedActivities);
   }, [selectedActivities]);
 
   const handleCreateTrip = () => {
@@ -80,10 +79,10 @@ export const Activity = () => {
         activities: selectedActivities
       };
 
-      console.log('tripData:', tripData);
+      // console.log('tripData:', tripData);
       createTrip(tripData, rdxToken)
         .then(response => {
-          console.log('Trip created successfully:', response.data);
+          // console.log('Trip created successfully:', response.data);
           navigate("/my-trips");
         })
         .catch(error => {

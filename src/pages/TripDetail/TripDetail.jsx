@@ -103,7 +103,7 @@ export const TripDetail = () => {
         const tripId = id;
         addActivityFromTrip(tripId, activityId, rdxToken)
             .then(response => {
-                console.log(response);
+                // console.log(response);
                 getMyTripById(id, rdxToken)
                     .then((response) => {
                         setTrip(response.data.data);
@@ -193,7 +193,7 @@ export const TripDetail = () => {
                         )
                 }
                 <h2>Actividades:</h2>
-                {console.log(trip.activities)}
+                {/* {console.log(trip.activities)} */}
 
                 {
                     <div>

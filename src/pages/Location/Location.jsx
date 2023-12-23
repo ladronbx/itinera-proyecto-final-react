@@ -23,7 +23,7 @@ export const Location = () => {
         .then((response) => {
           if (Array.isArray(response.data.data)) {
             setTimeout(() => {
-              console.log("ubicciones: ", response.data.data);
+              // console.log("ubicciones: ", response.data.data);
               setLocations(response.data.data);
             }, 200)
           }
@@ -35,7 +35,7 @@ export const Location = () => {
   }, [rdxToken, navigate]);
 
   const handleDestinationClick = (location) => {
-    console.log("id de lea ubicación seleccionada: ", location.id);
+    // console.log("id de lea ubicación seleccionada: ", location.id);
     dispatch(setLocation(location));
     Modal.confirm({
       title: 'Seleccione las fechas de su viaje',

@@ -10,11 +10,11 @@ export const ActivityCard = ({ id, name, description, image_1, image_2, location
 
     const handleAddActivity = () => {
         let isSelected = selectedActivities.includes(id);
-        if (isSelected) {
-            console.log('Activity already selected:', id);
-            return;
-        }
-        console.log('Adding activity:', id);
+        // if (isSelected) {
+        //     console.log('Activity already selected:', id);
+        //     return;
+        // }
+        // console.log('Adding activity:', id);
         dispatch(addActivity(id));
     };
 

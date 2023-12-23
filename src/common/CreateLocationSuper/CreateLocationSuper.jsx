@@ -58,8 +58,8 @@ export const CreateLocationSuper = () => {
     useEffect(() => {
         if (rdxToken) {
             const decoded = jwtDecode(rdxToken);
-            console.log('rdxToken:', rdxToken);
-            console.log('decoded.role:', decoded.role);
+            // console.log('rdxToken:', rdxToken);
+            // console.log('decoded.role:', decoded.role);
             if (decoded.role !== "is_super_admin") {
                 navigate("/");
             }
