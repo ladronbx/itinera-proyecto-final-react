@@ -59,12 +59,12 @@ export const GetAllUsers = () => {
     <div className="card-user-container-main">
     <div className="pagination-container">
       <PaginationButton
-        classPagination="previous-artist"
+        classPagination="previous-user"
         text={"<< Previous"}
         changePagination={() => changePageDown()}
       />
       <PaginationButton
-        classPagination="next-artist "
+        classPagination="next-user "
         text={"Next >>"}
         changePagination={() => changePageUp()}
       />

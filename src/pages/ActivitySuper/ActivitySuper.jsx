@@ -7,18 +7,24 @@ import { useNavigate } from "react-router-dom";
 import { CreateActivitySuper } from "../../common/CreateActivitySuper/CreateActivitySuper";
 import { getAllActivitiesSuper } from "../../services/apiCall";
 import { ActivityCard } from "../../common/ActivityCard/ActivityCard";
+import { PaginationButton } from "../../common/PaginationButton/PaginationButton";
 
 export const ActivitySuper = () => {
   const rdxToken = useSelector(selectToken);
   const navigate = useNavigate();
   const [activities, setActivities] = useState([])
-  const [currentPage, setCurrentPage] = useState(1); 
+  const [currentPage, setCurrentPage] = useState(1);
+
   useEffect(() => {
     const decoded = jwtDecode(rdxToken);
     if (rdxToken && decoded.role === "is_super_admin") {
       getAllActivitiesSuper(rdxToken, currentPage)
         .then((res) => {
-          setActivities(res.data.data)
+          if (Array.isArray(res.data.data) && res.data.data.length > 0) {
+            setActivities(res.data.data)
+          } else {
+            setCurrentPage(currentPage - 1)
+          }
         })
         .catch((err) => {
           console.log('err:', err);
@@ -26,10 +32,10 @@ export const ActivitySuper = () => {
     } else {
       navigate("/");
     }
-  }, [rdxToken, currentPage]); 
+  }, [rdxToken, currentPage]);
 
   const handleActivityRemoved = () => {
-    getAllActivitiesSuper(rdxToken, currentPage) 
+    getAllActivitiesSuper(rdxToken, currentPage)
       .then((res) => {
         setActivities(res.data.data)
       })
@@ -37,7 +43,7 @@ export const ActivitySuper = () => {
         console.log('err:', err);
       })
   };
-  
+
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
   };
@@ -47,6 +53,19 @@ export const ActivitySuper = () => {
 
       <CreateActivitySuper />
       <div className="container">
+
+        <div className="pagination-container">
+          <PaginationButton
+            classPagination="previous-activity"
+            text={"<< Previous"}
+            changePagination={() => handlePageChange(currentPage - 1)}
+          />
+          <PaginationButton
+            classPagination="next-activity "
+            text={"Next >>"}
+            changePagination={() => handlePageChange(currentPage + 1)}
+          />
+        </div>
 
         {
           activities.length > 0
@@ -68,8 +87,7 @@ export const ActivitySuper = () => {
                     />
                   ))
                 }
-                <button onClick={() => handlePageChange(currentPage - 1)}>Previous page</button>
-                <button onClick={() => handlePageChange(currentPage + 1)}>Next page</button>
+
               </div>
             ) : (
               <div>Loading ...</div>
