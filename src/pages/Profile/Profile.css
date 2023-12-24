@@ -6,7 +6,7 @@
   position: relative;
   flex-wrap: wrap;
   overflow: hidden;
-  background-color: rgba(133, 203, 228, 0.433);
+  background-color: rgb(255, 255, 255);
 }
 
 .container-profile-basic {
@@ -28,7 +28,8 @@
   font-size: 2em;
   font-weight: bold;
   margin-bottom: 0.5em;
-  color: rgb(68, 168, 205);
+  color: rgb(0, 0, 0);
+    background-color: rgb(243, 253, 157);
 }
 
 .container-profile {
@@ -36,10 +37,13 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  background-color: rgb(243, 253, 157);
+  background-color: rgb(255, 255, 255);
   height: 70%;
   border-radius: 2em;
-  box-shadow: -0.3em 0.3em 0.3em 0.3em rgb(68, 168, 205);
+  /* border-left: 0.5em solid #000000;
+  border-bottom: 0.5em solid #000000;
+  border-top: 0.1em solid #000000;
+  border-right: 0.1em solid #000000; */
 }
 
 
@@ -49,6 +53,8 @@
   padding: 1em;
   box-sizing: border-box;
   padding: 7em;
+  border-radius: 1em;
+  padding: 0em;
 }
 
 .profile-image {
@@ -143,6 +149,25 @@
   border-radius: 0.5em;
   width: 17em;
 }
+.button-update-profile-container:hover {
+  width: 17em;
+  margin-top: 1em;
+  background-color: rgb(243, 253, 157);
+  border-radius: 0.5em;
+  margin: 2em 0em 4em 0em;
+}
+
+.button-update-profile:hover {
+  background-color: rgb(243, 253, 157);
+  color: #000000;
+  padding: 0.5em 1em;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 0.5em;
+  width: 17em;
+  font-weight: bold;
+}
 
 .change-password-style,
 .delete-count-style {
@@ -172,15 +197,15 @@
     position: relative;
     flex-wrap: wrap;
     overflow: hidden;
-    background-color: rgb(243, 253, 157);
+    background-color: rgb(255, 255, 255);
   }
 
   .container-profile {
     flex-direction: column;
     padding: 0em;
     margin: 0em;
+    border-radius: 1em;
     width: 80%;
-    box-shadow: 0 0 2em #a8ea7f00;
   }
 
   .name-profile,
@@ -203,6 +228,8 @@
     flex: 1;
     max-width: 100%;
     padding: 1.5em;
+    border-radius: 1em;
+    padding: 0em;
 
   }
 

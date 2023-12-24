@@ -38,7 +38,7 @@ border-radius: 0.5em;
   display: flex;
   justify-content: center;
   --color-text: #000000;
-  --color-background:rgb(215, 239, 58);
+  --color-background:rgb(36, 161, 161);
   --color-outline: #47ff1480;
   --color-shadow: #00000080;
 }

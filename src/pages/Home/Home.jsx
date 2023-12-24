@@ -72,7 +72,7 @@ export const Home = () => {
             <div className="btn-conteiner">
               <a className="btn-content">
               <LinkButton
-                  classButton={"btn-title"}
+                  classButton={"btn-title-trip"}
                   path={"/login"}
                   title={"Explorar destinos"}
                 />
