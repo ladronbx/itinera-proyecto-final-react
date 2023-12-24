@@ -9,7 +9,7 @@
 
 .detail-card-all-activities .carousel-item img {
     width: 100%;
-    height: 20em; /* Ajusta este valor según tus necesidades */
+    height: 20em;
     object-fit: cover;
     border-bottom: 0.0625em solid #eee;
 }

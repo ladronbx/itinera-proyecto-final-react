@@ -61,95 +61,97 @@ export const Header = () => {
   const toggleMenu = () => {
     setMenuOpened(!menuOpened);
   };
-
+  const headerClass = decodedToken && decodedToken.role === "is_super_admin" ? "navbar-header-style super-admin" : "navbar-header-style";
   return (
-    <div className="navbar-header-style">
-      <div className="logo-container-header">
-        <LinkButton
-          classButton={"link-button-logo-style"}
-          path={"/"}
-          title={<img src={logo} alt="Logo" className="logo-image" />}
-        />
-      </div>
+    <div className={headerClass}>
+      <div className="navbar-header-style">
+        <div className="logo-container-header">
+          <LinkButton
+            classButton={"link-button-logo-style"}
+            path={"/"}
+            title={<img src={logo} alt="Logo" className="logo-image" />}
+          />
+        </div>
 
-      <div className="navbar-container-header">
-        <div className={`header-style ${menuOpened ? "menu-opened" : ""}`}>
-          <div className="burger-icon" onClick={toggleMenu}>
-            <div className="menu-icon">
-              <span></span>
-              <span></span>
-              <span></span>
+        <div className="navbar-container-header">
+          <div className={`header-style ${menuOpened ? "menu-opened" : ""}`}>
+            <div className="burger-icon" onClick={toggleMenu}>
+              <div className="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
             </div>
-          </div>
 
-          <div className={`link-buttons ${menuOpened ? "menu-links" : ""}`}>
-            {rdxToken ? (
-              <>
-                <LinkButton
-                  classButton={"link-button-style"}
-                  path={"/my-trips"}
-                  title={"Mis viajes"}
-                />
-                <LinkButton
-                  classButton={"link-button-style-profile background-color-profile"}
-                  path={"/profile"}
-                  title={<img src={imgProfile} alt="Perfil" />}
-                />
-
-                {decodedToken && decodedToken.role === "is_super_admin" && (
-                  <>
-                    <LinkButton
-                      classButton={"link-button-style"}
-                      path={"/trips"}
-                      title={"All trips"}
-                    />
-
-                    <LinkButton
-                      classButton={"link-button-style"}
-                      path={"/users"}
-                      title={"All users"}
-                    />
-
-                    <LinkButton
-                      classButton={"link-button-style"}
-                      path={"/activities-super"}
-                      title={"Gestión actividades"}
-                    />
-
-                    <LinkButton
-                      classButton={"link-button-style"}
-                      path={"/locations-super"}
-                      title={"Gestión location"}
-                    />
-                  </>
-                )}
-
-                <div onClick={logOutMe}>
-                  <LogOutButton
+            <div className={`link-buttons ${menuOpened ? "menu-links" : ""}`}>
+              {rdxToken ? (
+                <>
+                  <LinkButton
                     classButton={"link-button-style"}
-                    path={"/"}
-                    title={"Log Out"}
+                    path={"/my-trips"}
+                    title={"Mis viajes"}
                   />
-                </div>
+                  <LinkButton
+                    classButton={"link-button-style-profile background-color-profile"}
+                    path={"/profile"}
+                    title={<img src={imgProfile} alt="Perfil" />}
+                  />
 
-                {decodedToken && decodedToken.role === "is_super_admin" && (
-                  <div className="superadmin-style">Panel de Control del Superadministrador</div>
-                )}
-              </>
-            ) : (
-              <>
-                <LinkButton
-                  classButton={"link-button-style"}
-                  path={"/login"}
-                  title={"Login"}
-                />
-                <LinkButton
-                  classButton={"link-button-style"}
-                  path={"/register"}
-                  title={"Register"}
-                />
-              </>
-            )}
+                  {decodedToken && decodedToken.role === "is_super_admin" && (
+                    <>
+                      <LinkButton
+                        classButton={"link-button-style"}
+                        path={"/trips"}
+                        title={"All trips"}
+                      />
+
+                      <LinkButton
+                        classButton={"link-button-style"}
+                        path={"/users"}
+                        title={"All users"}
+                      />
+
+                      <LinkButton
+                        classButton={"link-button-style"}
+                        path={"/activities-super"}
+                        title={"Gestión actividades"}
+                      />
+
+                      <LinkButton
+                        classButton={"link-button-style"}
+                        path={"/locations-super"}
+                        title={"Gestión location"}
+                      />
+                    </>
+                  )}
+
+                  <div onClick={logOutMe}>
+                    <LogOutButton
+                      classButton={"link-button-style"}
+                      path={"/"}
+                      title={"Log Out"}
+                    />
+                  </div>
+
+                  {decodedToken && decodedToken.role === "is_super_admin" && (
+                    <div className="superadmin-style">Panel de gestión</div>
+                  )}
+                </>
+              ) : (
+                <>
+                  <LinkButton
+                    classButton={"link-button-style"}
+                    path={"/login"}
+                    title={"Login"}
+                  />
+                  <LinkButton
+                    classButton={"link-button-style"}
+                    path={"/register"}
+                    title={"Register"}
+                  />
+                </>
+              )}
+            </div>
           </div>
         </div>
       </div>

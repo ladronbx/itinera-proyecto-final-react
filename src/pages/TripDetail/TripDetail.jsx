@@ -204,11 +204,7 @@ export const TripDetail = () => {
                     }
                 </div>
                 <div className="container-trip-detail-activities">
-
-
                     <h2 className="info-viajeros-style">Actividades:</h2>
-                    {/* {console.log(trip.activities)} */}
-
                     {
                         <div>
                             <select name="activities" onChange={e => setSelectedActivity(e.target.value)}>
@@ -219,12 +215,9 @@ export const TripDetail = () => {
                                     ))
                                 }
                             </select>
-
                             <button onClick={handleAddActivity}>Añadir actividad</button>
                         </div>
-
                     }
-
                     <div className="trip-detail-activities-container">
                         {
                             trip.activities.map((activity, index) => (
