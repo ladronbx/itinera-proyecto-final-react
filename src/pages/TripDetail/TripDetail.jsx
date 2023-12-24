@@ -161,42 +161,47 @@ export const TripDetail = () => {
                     <h1 className="title-trip-detail-style">Viaje a {trip.locations[0].name}</h1>
                     <div className="dates-trip-detail">Fecha de inicio : {new Date(trip.start_date).toLocaleDateString()}</div>
                     <div className="dates-trip-detail">  - Fecha de fin : {new Date(trip.end_date).toLocaleDateString()}</div>
-                    <img className="trip-detail-image" src={trip.locations[0].image_1} alt={trip.locations[0].name} />
+                    <div className="trip-detail-image-container">
+                        <img className="trip-detail-image" src={trip.locations[0].image_1} alt={trip.locations[0].name} />
+                    </div>
                 </div>
                 <div className="trip-detail-description">{trip.locations[0].description_location}</div>
-
                 <div className="trip-detail-description-calendar"><TripCalendar trip={trip} /></div>
-                <h2>Información del viaje:</h2>
+                <h2 className="info-viajeros-style">Información del grupo de viaje:</h2>
+                <div className="trip-detail-container-down">
 
-                <p>Número de viajeros: {trip.members_group}</p>
-                <h2>Viajeros :</h2>
-                <input type="email" value={emailInput} onChange={e => setEmailInput(e.target.value)} />
-                {errorMessage && <div className="error-message">{errorMessage}</div>}
-                <button onClick={handleAddMembers}>Añadir viajero</button>
-                {
-                    trip.members.length > 0
-                        ? (
-                            <div className="trip-members">
-                                {
-                                    trip.members.map((member, index) => (
-                                        <TripCardDetailMember
-                                            key={index}
-                                            name={member.name}
-                                            email={member.email}
-                                            image={member.image}
-                                            tripId={id}
-                                            userId={member.id}
-                                            rdxToken={rdxToken}
-                                            onMemberRemoved={handleMemberRemoved}
-                                        />
-                                    ))
-                                }
-                            </div>
-                        )
-                        : (
-                            <div>No hay miembros en el grupo</div>
-                        )
-                }
+                    <div className="viajeros-trip-detail">
+                        <h3>Número total de viajeros: {trip.members_group}</h3>
+                        <input className="style-input-trip-detail" type="email" value={emailInput} onChange={e => setEmailInput(e.target.value)} />
+                        {errorMessage && <div className="error-message">{errorMessage}</div>}
+                        <button className="add-viajero-button" onClick={handleAddMembers}>Añadir viajero</button>
+                    </div>
+
+                    {
+                        trip.members.length > 0
+                            ? (
+                                <div className="trip-members">
+                                    {
+                                        trip.members.map((member, index) => (
+                                            <TripCardDetailMember
+                                                key={index}
+                                                name={member.name}
+                                                email={member.email}
+                                                image={member.image}
+                                                tripId={id}
+                                                userId={member.id}
+                                                rdxToken={rdxToken}
+                                                onMemberRemoved={handleMemberRemoved}
+                                            />
+                                        ))
+                                    }
+                                </div>
+                            )
+                            : (
+                                <div>No hay miembros en el grupo</div>
+                            )
+                    }
+                </div>
                 <h2>Actividades:</h2>
                 {/* {console.log(trip.activities)} */}
 
@@ -235,6 +240,7 @@ export const TripDetail = () => {
                         ))
                     }
                 </div>
+
             </div>
         ) : (
             <div>Loading...</div>
