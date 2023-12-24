@@ -1,4 +1,8 @@
-import React from 'react'; import FullCalendar from '@fullcalendar/react'; import timeGridPlugin from '@fullcalendar/timegrid';
+import React from 'react'; 
+import FullCalendar from '@fullcalendar/react';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import './FullCalendarOverrides.css';
+import esLocale from '@fullcalendar/core/locales/es';
 
 export default class TripCalendar extends React.Component {
     render() {
@@ -30,7 +34,9 @@ export default class TripCalendar extends React.Component {
             return {
                 title: activity.name,
                 start: start.toISOString(),
-                end: end.toISOString()
+                end: end.toISOString(),
+                backgroundColor: 'black',
+                borderColor: 'yellow',
             };
         });
 
@@ -48,6 +54,7 @@ export default class TripCalendar extends React.Component {
                 events={events}
                 slotMinTime="09:00:00"
                 slotMaxTime="19:00:00"
+                locale={esLocale}
             />
         )
     }

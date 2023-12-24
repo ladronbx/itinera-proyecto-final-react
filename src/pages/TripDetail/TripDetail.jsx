@@ -156,15 +156,20 @@ export const TripDetail = () => {
 
     return (
         trip ? (
-            <div>
-                <h1>Viaje a {trip.locations[0].name}</h1>
-                <div className="dates-trip-detail">{new Date(trip.start_date).toLocaleDateString()} - {new Date(trip.end_date).toLocaleDateString()}</div>
-                <img className="location_image" src={trip.locations[0].image} alt={trip.locations[0].name} />
+            <div className="trip-detail-style" >
+                <div className="trip-detail-container-top">
+                    <h1 className="title-trip-detail-style">Viaje a {trip.locations[0].name}</h1>
+                    <div className="dates-trip-detail">Fecha de inicio : {new Date(trip.start_date).toLocaleDateString()}</div>
+                    <div className="dates-trip-detail">  - Fecha de fin : {new Date(trip.end_date).toLocaleDateString()}</div>
+                    <img className="trip-detail-image" src={trip.locations[0].image_1} alt={trip.locations[0].name} />
+                </div>
+                <div className="trip-detail-description">{trip.locations[0].description_location}</div>
 
-                <TripCalendar trip={trip} />
+                <div className="trip-detail-description-calendar"><TripCalendar trip={trip} /></div>
+                <h2>Información del viaje:</h2>
 
                 <p>Número de viajeros: {trip.members_group}</p>
-                <h2>Miembros del grupo:</h2>
+                <h2>Viajeros :</h2>
                 <input type="email" value={emailInput} onChange={e => setEmailInput(e.target.value)} />
                 {errorMessage && <div className="error-message">{errorMessage}</div>}
                 <button onClick={handleAddMembers}>Añadir viajero</button>

@@ -32,8 +32,8 @@ export const TripCard = ({ id, location, memberscount, start_date, end_date, ima
                 </Carousel>
             </div>
             <div className="location-card-all-trips__content">
-                <p className="location-card-all-trips__date">{start_date}</p>
-                <p className="location-card-all-trips__date">{end_date}</p>
+                <p className="location-card-all-trips__date">{new Date(start_date).toLocaleDateString()} - </p>
+                <p className="location-card-all-trips__date">{new Date(end_date).toLocaleDateString()}</p>
                 <p className="location-card-all-trips__description">Viajeros: {memberscount}</p>
             </div>
         </div>

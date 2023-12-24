@@ -1,6 +1,104 @@
-.dates-trip-detail{
+.trip-detail-style {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    flex-wrap: wrap;
+}
+.trip-detail-container-top{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+    margin-bottom: 2em;
+}
+
+.title-trip-detail-style{
+    text-align: center;
+    font-size: 4em;
+    font-weight: bold;
+    margin-bottom: 1em;
+    /* color: rgb(95, 24, 24); */
+}
+
+.trip-detail-image{
+    border-radius: 0.7em;
+    width: 70em;
+    height: 40em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.trip-detail-description{
+    text-align: center;
+    font-size: 2em;
+    margin: 1em;
+    margin-bottom: 4em;
+
+}
+
+.dates-trip-detail {
     margin-bottom: 20px;
-    font-size: 3em;
+    font-size: 2.3em;
     text-align: center;
     font-weight: bold;
+    background-color: rgb(243, 253, 157);
 }
+
+.trip-detail-description-calendar{
+    font-size: 1.3em;
+    margin: 5em;
+    margin-bottom: 4em;
+    height: 50em;
+    width: 50em;
+    overflow: auto ;
+
+}
+
+@media (max-width: 768px) {
+    .trip-detail-style {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .trip-detail-container-top,
+    .trip-detail-description,
+    .trip-detail-description-calendar {
+        width: 90%;
+    }
+
+    .title-trip-detail-style {
+        font-size: 2em;
+    }
+
+    .trip-detail-image {
+        width: 100%;
+        height: auto;
+    }
+
+    .trip-detail-description {
+        font-size: 1em;
+    }
+
+    .dates-trip-detail {
+        font-size: 1.5em;
+    }
+
+    .trip-detail-description-calendar{
+        font-size: 0.7em;
+        margin: 5em;
+        margin-bottom: 4em;
+        height: 50em;
+        width: 100%;
+        overflow: auto ;
+    }
+}
+  
+  @media (max-width: 1024px) {
+
+  }
