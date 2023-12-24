@@ -6,7 +6,7 @@ export const TripCardDetailMember = ({ name, image, email, tripId, userId, rdxTo
     let roleText = "";
 
     return (
-        <div className="card-allusers row">
+        <div className="card-allusers">
             <div className="card-alluser-container-image">
                 <img className="card-allusers-image" src={image} alt={name} />
             </div>

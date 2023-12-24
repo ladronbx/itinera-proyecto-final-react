@@ -10,9 +10,10 @@
 }
 
 .info-viajeros-style{
-    font-size: 2em;
+    font-size: 3em;
     text-align: center;
     margin: 1em;
+    background-color: rgb(243, 253, 157);
 }
 .trip-detail-container-top{
     width: 100%;
