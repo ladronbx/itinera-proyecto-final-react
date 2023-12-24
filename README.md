@@ -76,6 +76,22 @@ Este frontend proporciona una interfaz de usuario amigable y funcional para la a
    </div>    
 </p>
 
+- Register:
+<p>
+   <div align="center">
+      <img src="img/register.png" style="max-width: 100%;" width="">
+   </div>    
+</p>
+
+
+- Login:
+<p>
+   <div align="center">
+      <img src="img/login.png" style="max-width: 100%;" width="">
+   </div>    
+</p>
+
+
 - Profile:
 <p>
    <div align="center">
@@ -114,18 +130,22 @@ Este frontend proporciona una interfaz de usuario amigable y funcional para la a
       <img src="img/img-mis-viajes.png" style="max-width: 100%;" width="500">
    </div>    
 </p>
-- Mis viajes:
+
+- Mi viaje en detalle:
 
 <p>
    <div align="center">
-      <img src="img/img-mis-viajes.png" style="max-width: 100%;" width="500">
-   </div>    
+      <img src="img/viaje-detalle-1.png" style="max-width: 100%;" width="300">
+      <img src="img/img-calendario.png" style="max-width: 100%;" width="300">
+      <img src="img/informacion-grupo.png" style="max-width: 100%;" width="300">
+      <img src="img/agregar-actividades-detalles.png" style="max-width: 100%;" width="300">
+   </div>  
 </p>
 
 - Mi viaje en detalle:
 <p>
    <div align="center">
-      <img src="img/img-calendario.png" style="max-width: 100%;" width="500">
+      <img src="img/img-calendario.png" style="max-width: 100%;" width="300">
    </div>    
 </p>
 
