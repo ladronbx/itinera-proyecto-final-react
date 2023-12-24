@@ -68,7 +68,6 @@
     text-align: center;
     font-weight: bold;
     background-color: rgb(243, 253, 157);
-    /*evitar scroll horizontal*/
     overflow-x: hidden;
 }
 .trip-detail-description-calendar {
@@ -126,6 +125,43 @@
     margin: 1em;
     padding: 1em;
     margin-bottom: 4em;
+    padding: 1em;
+}
+
+
+.container-trip-detail-activities {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2em;
+    padding: 1em;
+    background-color: rgb(255, 255, 255);
+}
+
+.container-trip-detail-activities select {
+    margin: 1em;
+    padding: 0.5em;
+    font-size: 1em;
+    border: 1px solid #000000;
+    border-radius: 0.5em;
+}
+
+.container-trip-detail-activities button {
+    font-size: 1em;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    border-radius: 0.3em;
+}
+
+.trip-detail-activities-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
     padding: 1em;
 }
 

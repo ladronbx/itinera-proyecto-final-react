@@ -171,7 +171,8 @@ export const TripDetail = () => {
                 <div className="trip-detail-container-down">
 
                     <div className="viajeros-trip-detail">
-                        <h3>Número total de viajeros: {trip.members_group}</h3>
+                        <h3>Número total de viajeros: </h3>
+                        {trip.members_group}
                         <input className="style-input-trip-detail" type="email" value={emailInput} onChange={e => setEmailInput(e.target.value)} />
                         {errorMessage && <div className="error-message">{errorMessage}</div>}
                         <button className="add-viajero-button" onClick={handleAddMembers}>Añadir viajero</button>
@@ -202,43 +203,47 @@ export const TripDetail = () => {
                             )
                     }
                 </div>
-                <h2>Actividades:</h2>
-                {/* {console.log(trip.activities)} */}
+                <div className="container-trip-detail-activities">
 
-                {
-                    <div>
-                        <select name="activities" onChange={e => setSelectedActivity(e.target.value)}>
-                            <option>Agrega actividades</option>
-                            {
-                                activitiesByLocation.map((activity, index) => (
-                                    <option key={index} value={activity.id}>{activity.name}</option>
-                                ))
-                            }
-                        </select>
 
-                        <button onClick={handleAddActivity}>Añadir actividad</button>
-                    </div>
+                    <h2 className="info-viajeros-style">Actividades:</h2>
+                    {/* {console.log(trip.activities)} */}
 
-                }
-
-                <div className="trip-detail-activities-container">
                     {
-                        trip.activities.map((activity, index) => (
-                            <ActivityCardDetail
-                                key={index}
-                                name={activity.name}
-                                description={activity.description}
-                                image_1={activity.image_1}
-                                image_2={activity.image_2}
-                                location={activity.location}
-                                duration={activity.duration}
-                                tripId={id}
-                                activityId={activity.trip_activity_id}
-                                rdxToken={rdxToken}
-                                onActivityRemoved={handleActivityRemoved}
-                            />
-                        ))
+                        <div>
+                            <select name="activities" onChange={e => setSelectedActivity(e.target.value)}>
+                                <option>Agrega actividades</option>
+                                {
+                                    activitiesByLocation.map((activity, index) => (
+                                        <option key={index} value={activity.id}>{activity.name}</option>
+                                    ))
+                                }
+                            </select>
+
+                            <button onClick={handleAddActivity}>Añadir actividad</button>
+                        </div>
+
                     }
+
+                    <div className="trip-detail-activities-container">
+                        {
+                            trip.activities.map((activity, index) => (
+                                <ActivityCardDetail
+                                    key={index}
+                                    name={activity.name}
+                                    description={activity.description}
+                                    image_1={activity.image_1}
+                                    image_2={activity.image_2}
+                                    location={activity.location}
+                                    duration={activity.duration}
+                                    tripId={id}
+                                    activityId={activity.trip_activity_id}
+                                    rdxToken={rdxToken}
+                                    onActivityRemoved={handleActivityRemoved}
+                                />
+                            ))
+                        }
+                    </div>
                 </div>
 
             </div>

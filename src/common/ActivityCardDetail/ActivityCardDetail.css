@@ -3,37 +3,44 @@
     flex-wrap: wrap;
 }
 
-.detail-card-all-activities {
-    margin: 2em;
-    border: 0.0625em solid #ccc;
-    border-radius: 0.5em;
-    overflow: hidden;
-    transition: box-shadow 0.3s ease-in-out;
-}
-
 .detail-card-all-activities .carousel {
     max-height: 30em;
 }
 
 .detail-card-all-activities .carousel-item img {
     width: 100%;
+    height: 20em; /* Ajusta este valor según tus necesidades */
     object-fit: cover;
     border-bottom: 0.0625em solid #eee;
 }
 
-.detail-card-all-activities__content {
-    padding: 1em;
+.detail-card-all-activities {
+    display: flex;
+    flex-direction: column;
+    margin: 2em;
+    border: 0.0625em solid #ccc;
+    border-radius: 0.5em;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease-in-out;
+    width: 20em;
+    height: 50em;
 }
 
+.detail-card-all-activities__content {
+    flex: 1;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 .detail-card-all-activities__title {
-    padding-top: 5em;
     font-size: 2em;
     font-weight: bold;
     margin-bottom: 0.5em;
 }
 
 .detail-card-all-activities__description {
-    margin-bottom: 1em;
+    margin-bottom: 0em;
 }
 
 .detail-card-all-activities__duration {
@@ -48,6 +55,9 @@
     font-weight: bold;
 }
 
+.remove-button-trip-detail-activities{
+    padding: 1em;
+}
 @media (min-width: 576px) {
     .detail-card-all-activities {
         flex: 0 0 15em;

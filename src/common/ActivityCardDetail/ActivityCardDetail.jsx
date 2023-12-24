@@ -23,7 +23,7 @@ export const ActivityCardDetail = ({ name, description, image_1, image_2, locati
 
             <p className="detail-card-all-activities__location">{location}</p>
 
-            <div className="remove-button">
+            <div className="remove-button-trip-detail-activities">
                 <RemoveButtonActivity tripId={tripId} activityId={activityId} rdxToken={rdxToken} onActivityRemoved={onActivityRemoved} />
             </div>
         </div>

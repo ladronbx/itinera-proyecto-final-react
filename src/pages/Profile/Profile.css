@@ -24,7 +24,6 @@
 }
 
 .saludo-profile{
-  margin-top: 1em;
   font-size: 2em;
   font-weight: bold;
   margin-bottom: 0.5em;
@@ -38,7 +37,8 @@
   align-items: center;
   justify-content: space-between;
   background-color: rgb(255, 255, 255);
-  height: 70%;
+  width: 80%;
+  height: auto;
   border-radius: 2em;
   /* border-left: 0.5em solid #000000;
   border-bottom: 0.5em solid #000000;
