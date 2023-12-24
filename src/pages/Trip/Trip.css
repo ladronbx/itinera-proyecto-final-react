@@ -10,13 +10,13 @@
 }
 
 .container-without-trips {
-  width: 100%;
+
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   box-shadow: 0px 0px 400px rgb(181, 170, 170);
-  border-radius: 1em;
+  border-radius: 0em;
   background-color: rgb(255, 255, 255);
   padding: 3em;
 }
@@ -27,13 +27,13 @@
 
 @media only screen and (max-width: 480px) {
   .trip-style {
-    height: 89vh;
+    height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(31, 135, 147);
     flex-wrap: wrap;
   }
   

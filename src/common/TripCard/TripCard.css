@@ -1,14 +1,14 @@
 .location-card-all-trips {
   margin: 1em;
   padding: 1em;
-  width: 47%;
+  width: 40em;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: rgb(255, 255, 255);
-  border-radius: 0.3em;
-  height: 74em;
+  border-radius: 2em;
+  height: 70em;
 }
 
 .location-card-all-trips__title {
@@ -74,14 +74,16 @@
 }
 
 .buttons-container-style-trip{
-  justify-content: space-between;
-  width: 100%;
   display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  width: 100%;
   margin-top: 2em;
-  padding: 3em;
+  padding-bottom: 2em;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 985px) {
   .buttons-container-style-trip{
     justify-content: space-between;
     width: 100%;
@@ -110,7 +112,10 @@
 
 @media (max-width: 1024px) {
   .location-card-all-trips {
-    height: 70em;
+    border-radius: 1em;
+    padding-top: 0em;
+    margin: 1em;
+    height: 50em;
   }
   .location-card-all-trips {
     width: 100%;

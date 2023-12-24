@@ -13,10 +13,6 @@ export const TripCard = ({ id, location, memberscount, start_date, end_date, ima
 
     return (
         <div className="location-card-all-trips">
-            <div className="buttons-container-style-trip">
-                <div className="delete-my-trip-style" ><RemoveButtonTrip tripId={tripId} rdxToken={rdxToken} onTripRemoved={onTripRemoved} /></div>
-                <button className="location-card-all-trips__button" onClick={handleClick}>Ver detalles</button>
-            </div>
             <h1 className="location-card-all-trips__title">{location}</h1>
             <div className="location-card-all-trips__image-container">
                 <Carousel interval={null}>
@@ -31,7 +27,11 @@ export const TripCard = ({ id, location, memberscount, start_date, end_date, ima
                     </Carousel.Item>
                 </Carousel>
             </div>
-            <div className="location-card-all-trips__content">
+            <div className="buttons-container-style-trip">
+                <div className="delete-my-trip-style" ><RemoveButtonTrip tripId={tripId} rdxToken={rdxToken} onTripRemoved={onTripRemoved} /></div>
+                <button className="location-card-all-trips__button" onClick={handleClick}>Ver detalles</button>
+            </div>
+            <div className="location-card-all-trips__content">  
                 <p className="location-card-all-trips__date">{new Date(start_date).toLocaleDateString()} - </p>
                 <p className="location-card-all-trips__date">{new Date(end_date).toLocaleDateString()}</p>
                 <p className="location-card-all-trips__description">Viajeros: {memberscount}</p>
