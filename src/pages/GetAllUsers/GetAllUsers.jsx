@@ -50,47 +50,48 @@ export const GetAllUsers = () => {
     getAllUsers(rdxToken)
       .then(
         user => {
-            setusers(user.data.data)
+          setusers(user.data.data)
         })
       .catch((error) => console.log(error));
   }
 
   return (
-    <div className="card-user-container-main">
-    <div className="pagination-container">
-      <PaginationButton
-        classPagination="previous-user"
-        text={"<< Previous"}
-        changePagination={() => changePageDown()}
-      />
-      <PaginationButton
-        classPagination="next-user "
-        text={"Next >>"}
-        changePagination={() => changePageUp()}
-      />
-    </div>
+    <div className="super">
+      <div className="pagination-container">
+        <PaginationButton
+          classPagination="previous-user"
+          text={"<< Previous"}
+          changePagination={() => changePageDown()}
+        />
+        <PaginationButton
+          classPagination="next-user "
+          text={"Next >>"}
+          changePagination={() => changePageUp()}
+        />
+      </div>
       {
         users.length > 0
           ? (
-            <div className="card-user-container">
+            <div className="super-card-user-container-main">
               {users.map((user) => (
-                <CardUser
-                  key={user.id}
-                  name={user.name}
-                  image={user.image}
-                  email={user.email}
-                  is_active={user.is_active}
-                  role_id={user.role_id}
-                  userId={user.id}
-                  rdxToken={rdxToken}
-                  onUserRemoved={handleRemoveUser}
-
-                />
+                <div key={user.id} className="super-card-allusers">
+                  <CardUser
+                    name={user.name}
+                    image={user.image}
+                    email={user.email}
+                    is_active={user.is_active}
+                    role_id={user.role_id}
+                    userId={user.id}
+                    rdxToken={rdxToken}
+                    onUserRemoved={handleRemoveUser}
+                  />
+                </div>
               ))}
             </div>
           ) : (
             <div>Loading ...</div>
-          )}
+          )
+      }
     </div>
   );
 };

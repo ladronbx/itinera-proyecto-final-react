@@ -10,15 +10,15 @@ export const TripCardSuper = ({ id, location, memberscount, start_date, end_date
     };
 
     return (
-        <div className="card-all-trips row" onClick={handleClick}>
-            <div className="card-all-trip-container-image">
-                <p className="card-all-trips__title">{location}</p>
-                <img className="card-all-trips__image" src={image_1} alt={image_1} />
+        <div className="location-card-all-trips row" onClick={handleClick}>
+            <div className="location-card-all-trips__image-container">
+                <p className="location-card-all-trips__title">{location}</p>
+                <img className="location-card-all-trips__image" src={image_1} alt={image_1} />
             </div>
-            <div className="card-all-trips__content col">
-                <p className="card-all-trips__date">{start_date}</p>
-                <p className="card-all-trips__date">{end_date}</p>
-                <p className="card-all-trips__description">Viajeros : {memberscount}</p>
+            <div className="location-card-all-trips__content col">
+                <p className="location-card-all-trips__date">{start_date}</p>
+                <p className="location-card-all-trips__date">{end_date}</p>
+                <p className="location-card-all-trips__description">Viajeros : {memberscount}</p>
                 <RemoveButtonTripSuper tripId={tripId} rdxToken={rdxToken} onTripRemoved={onTripRemoved} />
             </div>
         </div>

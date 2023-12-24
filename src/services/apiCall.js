@@ -135,8 +135,8 @@ export const deleteMyTripById = (id, rdxToken) => {
 }
 
 //SUPERADMIN
-export const getAllTrips = (rdxToken) => {
-    return axios.get(`${BASE_URL}trips`, {
+export const getAllTrips = (rdxToken, page) => {
+    return axios.get(`${BASE_URL}trips?page=${page}`, {
         headers: {
             Authorization: `Bearer ${rdxToken}`,
         },

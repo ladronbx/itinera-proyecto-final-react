@@ -21,16 +21,16 @@ export const CardUser = ({ name, image, email, is_active, role_id, userId, rdxTo
     }
 
     return (
-        <div className="card-allusers row">
-            <div className="card-alluser-container-photo">
-                <img className="card-allusers-photo" src={image} alt={name} />
+        <div className="super-card-alluserss">
+            <div className="super-card-alluser-container-photo">
+                <img className="super-card-allusers-photo" src={image} alt={name} />
             </div>
 
-            <div className="card-allusers__content col">
-                <p className="card-allusers__title">{name}</p>
-                <p className="card-allusers__description">{email}</p>
-                <p className="card-allusers__description">{activeText}</p>
-                <p className="card-allusers__description">{roleText}</p>
+            <div className="super-card-allusers__content col">
+                <p className="super-card-allusers__title">{name}</p>
+                <p className="super-card-allusers__description">{email}</p>
+                <p className="super-card-allusers__description">{activeText}</p>
+                <p className="super-card-allusers__description">{roleText}</p>
                 <RemoveButtonUserSuper userId={userId} rdxToken={rdxToken} onUserRemoved={onUserRemoved} />
             </div>
         </div>

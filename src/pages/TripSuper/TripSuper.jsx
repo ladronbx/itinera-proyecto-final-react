@@ -7,22 +7,24 @@ import { selectToken } from "../userSlice";
 import { LinkButton } from "../../common/LinkButton/LinkButton";
 import { jwtDecode } from 'jwt-decode';
 import { TripCardSuper } from "../../common/TripCardSuper/TripCardSuper";
+import { PaginationButton } from "../../common/PaginationButton/PaginationButton";
 
 export const TripSuper = () => {
   const rdxToken = useSelector(selectToken);
   const navigate = useNavigate();
   const [trips, setTrips] = useState([]);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     if (rdxToken) {
       const decoded = jwtDecode(rdxToken);
       if (decoded.role === "is_super_admin") {
-        getAllTrips(rdxToken)
+        getAllTrips(rdxToken, page)
           .then((response) => {
             if (Array.isArray(response.data.data)) {
-              setTimeout(() => {
-                setTrips(response.data.data);
-              }, 200)
+              setTrips(response.data.data);
+            } else {
+              setPage(page - 1);
             }
           })
           .catch((error) => console.log(error));
@@ -32,7 +34,7 @@ export const TripSuper = () => {
     } else {
       navigate("/");
     }
-  }, [rdxToken]);
+  }, [rdxToken, page]);
 
   const handleRemoveTripSuper = (id) => {
     deleteTrip(id, rdxToken)
@@ -48,8 +50,30 @@ export const TripSuper = () => {
       })
   };
 
+  const changePageUp = () => {
+    setPage(page + 1);
+  }
+
+  const changePageDown = () => {
+    if (page !== 0) {
+      setPage(page - 1);
+    }
+  }
+
   return (
     <div className="cards-trips-container-main">
+      <div className="pagination-container">
+        <PaginationButton
+          classPagination="previous-trip"
+          text={"<< Previous"}
+          changePagination={() => changePageDown()}
+        />
+        <PaginationButton
+          classPagination="next-trip"
+          text={"Next >>"}
+          changePagination={() => changePageUp()}
+        />
+      </div>
       <div className="trip-style">
         {
           trips.length > 0
@@ -92,12 +116,7 @@ export const TripSuper = () => {
               </div>
             )
         }
-
       </div>
     </div>
-
-
-
-
   );
 };
