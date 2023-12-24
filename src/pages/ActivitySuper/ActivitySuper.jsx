@@ -49,9 +49,11 @@ export const ActivitySuper = () => {
   };
 
   return (
-    <div className="activity-super-container-main">hola
+    <div className="location-super-container-main">
+      <div className="super-container-create-location">
 
       <CreateActivitySuper />
+      </div>
       <div className="container">
 
         <div className="pagination-container">
@@ -70,7 +72,9 @@ export const ActivitySuper = () => {
         {
           activities.length > 0
             ? (
-              <div className="activity-super-container">
+              <div className="location-super-container-cards">
+              <div className="cards-locations-container-main">
+                <div className="container-location">
                 {
                   activities.map((activity) => (
                     <ActivityCard
@@ -88,6 +92,8 @@ export const ActivitySuper = () => {
                   ))
                 }
 
+              </div>
+              </div>
               </div>
             ) : (
               <div>Loading ...</div>

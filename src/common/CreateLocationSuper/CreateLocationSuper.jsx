@@ -49,7 +49,7 @@ export const CreateLocationSuper = () => {
         if (e.target.name !== "image_1" && e.target.name !== "image_2" && e.target.name !== "image_3") {
             error = checker(e.target.name, e.target.value);
         }
-        
+
         setElementsError((prevState) => ({
             ...prevState,
             [e.target.name + 'Error']: error,
@@ -137,7 +137,9 @@ export const CreateLocationSuper = () => {
             />
             <div className='error-style'>{elementsError.image_3Error}</div>
 
-            <button onClick={handleSubmit}>Crear ubicación</button>
+            <div className="container-button-super">
+                <button className="location-card-all-super__button" onClick={handleSubmit}>Crear ubicación</button>
+            </div>
             <Modal title="Ubicación creada" visible={isModalVisible} onOk={() => setIsModalVisible(false)} onCancel={() => setIsModalVisible(false)}>
                 <p>La ubicación se ha creado con éxito.</p>
             </Modal>

@@ -23,11 +23,8 @@ export const LocationCard = ({ id, name, description, image_1, image_2, image_3,
                 </Carousel>
             </div>
 
-
-
-
             <div className="card-all-locations__content col">
-                <button className="card-all-locations__button" onClick={onClick}>Seleccionar</button>
+                {!isSuperAdmin && <button className="card-all-locations__button" onClick={onClick}>Seleccionar</button>}
                 <p className="card-all-locations__title">{name}</p>
                 <p className="card-all-locations__description">{description}</p>
                 {isSuperAdmin && <RemoveButtonLocationSuper locationId={id} rdxToken={rdxToken} onLocationRemoved={onLocationRemoved} />}

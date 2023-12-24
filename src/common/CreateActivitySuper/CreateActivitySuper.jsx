@@ -155,7 +155,10 @@ export const CreateActivitySuper = () => {
                 functionBlur={errorCheck}
             />
                 <div className='error-style'>{elementsError.location_nameError}</div>
-            <button onClick={handleSubmit}>Crear actividad</button>
+                <div className="container-button-super">
+                <button className="location-card-all-super__button" onClick={handleSubmit}>Crear actividad</button>
+            </div>
+
             <Modal title="Actividad creada" visible={isModalVisible} onOk={() => setIsModalVisible(false)} onCancel={() => setIsModalVisible(false)}>
                 <p>La actividad se ha creado con éxito.</p>
             </Modal>

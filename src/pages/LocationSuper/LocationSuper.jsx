@@ -49,10 +49,11 @@ export const LocationSuper = () => {
   };
 
   return (
-    <div className="location-super-container-main">hola
-
-      <CreateLocationSuper />
-      <div className="container-location">
+    <div className="location-super-container-main">
+      <div className="super-container-create-location">
+        <CreateLocationSuper />
+      </div>
+      <div className="super-container-location">
 
         <div className="pagination-container">
           <PaginationButton
@@ -66,28 +67,34 @@ export const LocationSuper = () => {
             changePagination={() => handlePageChange(currentPage + 1)}
           />
         </div>
-        {
-          locations.length > 0
-            ? (
-              locations.map((location) => (
-                <LocationCard
-                  key={location.id}
-                  id={location.id}
-                  name={location.name}
-                  description={location.description}
-                  email={location.email}
-                  image_1={location.image_1}
-                  locatioId={location.id}
-                  isSuperAdmin={true}
-                  rdxToken={rdxToken}
-                  onLocationRemoved={handleLocationRemoved}
-                />
-              ))
-            )
-            : (
-              <div>Loading ...</div>
-            )
-        }
+        <div className="location-super-container-cards">
+          <div className="cards-locations-container-main">
+            <div className="container-location">
+              {
+                locations.length > 0
+                  ? (
+                    locations.map((location) => (
+                      <LocationCard
+                        key={location.id}
+                        id={location.id}
+                        name={location.name}
+                        description={location.description}
+                        email={location.email}
+                        image_1={location.image_1}
+                        locatioId={location.id}
+                        isSuperAdmin={true}
+                        rdxToken={rdxToken}
+                        onLocationRemoved={handleLocationRemoved}
+                      />
+                    ))
+                  )
+                  : (
+                    <div>Loading ...</div>
+                  )
+              }
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
