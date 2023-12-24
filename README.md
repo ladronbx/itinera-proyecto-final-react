@@ -69,6 +69,8 @@ Este frontend proporciona una interfaz de usuario amigable y funcional para la a
 ## Vistas
 👀 
 
+### Vistas user
+
 - Home:
 <p>
    <div align="center">
@@ -142,10 +144,44 @@ Este frontend proporciona una interfaz de usuario amigable y funcional para la a
    </div>  
 </p>
 
-- Mi viaje en detalle:
+
+### Vistas Super Admin
+
+- Header dinámico
 <p>
    <div align="center">
-      <img src="img/img-calendario.png" style="max-width: 100%;" width="300">
+      <img src="img/header-super.png" style="max-width: 100%;" width="500">
+   </div>    
+</p>
+
+
+- Gestión viajes
+<p>
+   <div align="center">
+      <img src="img/gestion-viaje.png" style="max-width: 100%;" width="300">
+   </div>    
+</p>
+
+- Gestión usuarios
+<p>
+   <div align="center">
+      <img src="img/gestion-user.png" style="max-width: 100%;" width="300">
+   </div>    
+</p>
+
+- Gestión actividades
+<p>
+   <div align="center">
+      <img src="img/gestion-actividades-1.png" style="max-width: 100%;" width="300">
+      <img src="img/gestion-actividades-2.png" style="max-width: 100%;" width="300">
+   </div>    
+</p>
+
+- Gestión destinos
+<p>
+   <div align="center">
+      <img src="img/gestion-destinos-1.png" style="max-width: 100%;" width="300">
+      <img src="img/gestion-destinos-2.png" style="max-width: 100%;" width="300">
    </div>    
 </p>
 
@@ -493,12 +529,13 @@ Claro, aquí están las ramas numeradas y formateadas en Markdown:
 
 ## Enlaces Importantes
 
-🌐 Mediante estos enlaces puedes acceder a ellos:
+🌐 Puedes acceder a documentación importante a través de estos enlaces:
 
-- **[Documentación de Laravel](https://laravel.com/docs)**
-- **[laravel/passport Documentation](https://laravel.com/docs/8.x/passport)**
+- **[Documentación de React](https://es.reactjs.org/docs/getting-started.html)**
+- **[Redux Documentation](https://redux.js.org/)**
+- **[React Router Documentation](https://reactrouter.com/)**
+- **[Bootstrap Documentation](https://getbootstrap.com/docs/5.0/getting-started/introduction/)**
 - **[GeeksHubs Academy](https://www.geekshubsacademy.com/)**
-
 
 
 ## Cómo Contribuir
