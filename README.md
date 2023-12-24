@@ -26,6 +26,12 @@ Desarrollado como parte del Bootcamp de Full Stack Developer de Geekshubs Academ
 <p>
 Esta aplicación web está pensada para ofrecer una solución cómoda a aquellos usuarios que quieren viajar y no tienen experiencia o tiempo para planificar sus viajes, brindándole una solución  predefinida, rápida y fácil. Para ello se tendrá en cuenta el destino y las fechas del viaje. Además también podrán modificar la agenda de viaje, en el caso de que la primera propuesta no fuese de su agrado, actuando así como una agenda de viaje totalmente personalizada.
 
+<p>
+   <div align="center">
+      <img src="img/gif-marca.gif" style="max-width: 100%;" width="500">
+   </div>    
+</p>
+
 El proyecto consiste en desarrollar una aplicación web llamada " Itinera”, que te sugerirá a partir de un destino y unas fechas seleccionadas previamente, un itinerario y unas actividades diarias. Además permitirá a los usuarios planificar, organizar y seguir sus viajes de manera personalizada. La aplicación se centrará en proporcionar una experiencia intuitiva y social, permitiendo a los usuarios explorar destinos, modificar su agenda de viaje y compartir experiencias.
 
 Para Visualizar el Back puedes acceder haciendo click aquí :
