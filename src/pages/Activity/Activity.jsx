@@ -60,7 +60,7 @@ export const Activity = () => {
         console.error('Start date or end date is missing');
         return;
       }
-      
+
       const startDate = new Date(dates.start_date);
       const endDate = new Date(dates.end_date);
 
@@ -92,44 +92,52 @@ export const Activity = () => {
   };
 
   return (
-    <div className="cards-activities-container-main">
-      <h2>¡Es hora de seleccionar las actividades que te gustaría realizar en {selectedLocation.name}!</h2>
-      <button className="button-reset-activities" onClick={handleResetActivities}>Reiniciar actividades</button>
-      <button className="button-select-activities" onClick={handleCreateTrip}>Ya tengo todas mis actividades CONTINUAR</button>
-      <div className="container container-activities">
-        {
-          activities.length > 0
-            ? (
-              activities.map((activity) => {
-                let isSelected = false;
-                for (let i = 0; i < selectedActivities.length; i++) {
-                  if (selectedActivities[i].id === activity.id) {
-                    isSelected = true;
-                    break;
+    <div className="activity-style">
+     
+        <div className="container-activities-top">
+          <h1>¡Genial! Ya casi terminamos</h1>
+          <h2>¡Es hora de seleccionar las actividades que te gustaría realizar en {selectedLocation.name}!</h2>
+          <div className="container-activities-buttons">
+            <button className="button-reset-activities" onClick={handleResetActivities}>Reiniciar actividades</button>
+            <button className="button-create-trip" onClick={handleCreateTrip}>Crear viaje</button>
+          </div>
+        </div>
+        <div className="container-activities">
+          {
+            activities.length > 0
+              ? (
+                activities.map((activity) => {
+                  let isSelected = false;
+                  for (let i = 0; i < selectedActivities.length; i++) {
+                    if (selectedActivities[i].id === activity.id) {
+                      isSelected = true;
+                      break;
+                    }
                   }
-                }
-                return (
-                  <ActivityCard
-                    key={activity.id}
-                    id={activity.id}
-                    name={activity.name}
-                    description={activity.description}
-                    image_1={activity.image_1}
-                    image_2={activity.image_2}
-                    location={activity.location}
-                    onClick={() => handleAddActivity(activity.id)}
-                    isSelected={isSelected}
-                  />
-                );
-              })
-            )
-            : (
-              <div>Loading ...</div>
-            )
-        }
-      </div>
-      <button className="button-reset-activities" onClick={handleResetActivities}>Reiniciar actividades</button>
-      <button className="button-select-activities" onClick={handleCreateTrip}>Ya tengo todas mis actividades CONTINUAR</button>
+                  return (
+                    <ActivityCard
+                      key={activity.id}
+                      id={activity.id}
+                      name={activity.name}
+                      description={activity.description}
+                      image_1={activity.image_1}
+                      image_2={activity.image_2}
+                      location={activity.location}
+                      onClick={() => handleAddActivity(activity.id)}
+                      isSelected={isSelected}
+                    />
+                  );
+                })
+              )
+              : (
+                <div>Loading ...</div>
+              )
+          }
+        </div>
+        <div className="container-activities-buttons">
+            <button className="button-reset-activities" onClick={handleResetActivities}>Reiniciar actividades</button>
+            <button className="button-create-trip" onClick={handleCreateTrip}>Crear viaje</button>
+        </div>
     </div>
   );
 };

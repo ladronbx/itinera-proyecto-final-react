@@ -63,27 +63,27 @@ export const Profile = () => {
         setUser({ ...user, [name]: value });
     };
 
-const handleDeleteAccount = () => {
-    Modal.confirm({
-        title: '¿Estás seguro de que quieres eliminar tu cuenta?',
-        content: 'Esta acción no puede deshacerse.',
-        okText: 'Sí',
-        okType: 'danger',
-        cancelText: 'No',
-        onOk() {
-            countDelete(rdxToken)
-                .then((response) => {
-                    if (response.data.success) {
-                        dispatch(logout());
-                        navigate("/");
-                    }
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
-        },
-    });
-};
+    const handleDeleteAccount = () => {
+        Modal.confirm({
+            title: '¿Estás seguro de que quieres eliminar tu cuenta?',
+            content: 'Esta acción no puede deshacerse.',
+            okText: 'Sí',
+            okType: 'danger',
+            cancelText: 'No',
+            onOk() {
+                countDelete(rdxToken)
+                    .then((response) => {
+                        if (response.data.success) {
+                            dispatch(logout());
+                            navigate("/");
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+            },
+        });
+    };
     const handleUpdateProfile = () => {
         const updatedUser = { [editingField]: user[editingField] };
         if (editingField === 'name' || editingField === 'email' || editingField === 'image') {
@@ -120,7 +120,7 @@ const handleDeleteAccount = () => {
 
                             <div className="profile-column col">
 
-                            <div className={`name-profile ${isNameButtonClicked ? '' : 'name-profile-click'}`}>
+                                <div className={`name-profile ${isNameButtonClicked ? '' : 'name-profile-click'}`}>
                                     {editingField === 'name'
                                         ? <div>
                                             <input className="name-profile-input" type="text" name="name" value={user.name} onChange={handleInputChange} />

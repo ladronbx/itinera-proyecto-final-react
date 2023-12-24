@@ -7,6 +7,7 @@
   position: relative;
   flex-wrap: wrap;
   overflow: hidden;
+  background-color: #a8ea7f;
 }
 
 .container-profile {
@@ -14,8 +15,8 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  width: 100%;
   background-color: rgb(243, 253, 157);
+  background-color: #a8ea7f;
 
 }
 
@@ -23,6 +24,7 @@
   flex: 1;
   padding: 1em;
   box-sizing: border-box;
+  background-color: #a8ea7f;
 }
 
 .profile-image {
@@ -35,6 +37,15 @@
   padding: 1em;
   box-sizing: border-box;
   padding-left: 10em;
+  border-left: 0.3em solid #000000;
+  border-bottom: 0.3em solid #000000;
+  border-top: 0.1em solid #000000;
+  border-right: 0.1em solid #000000;
+  background-color: #ffffff;
+  border-radius: 1em;
+  width: 30em;
+  height: 30em;
+  padding: 3em;
 }
 
 .name-profile,
@@ -54,6 +65,7 @@
 
   border-left: 0.1em solid #000000;
   border-bottom: 0.1em solid #000000;
+
 
 }
 
