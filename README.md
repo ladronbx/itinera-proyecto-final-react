@@ -2,7 +2,7 @@
 
 
 
-<p align="center">Proyecto 7 - Frontend Itinera PHP + Laravel</p>
+<p align="center">Proyecto 7 - Frontend Itinera React + CSS</p>
 
 <p align="center">Frontend de una Web App con temática de viajes, realizado por Bienve Ladrón.
 <br>
@@ -65,7 +65,7 @@ Para Visualizar el Back puedes acceder haciendo click aquí :
 
 ## Introducción
 
-🚀 En este proyecto, he creado un Frontend completo para una aplicación web llamada "Itinera", centrada en la planificación de viajes. Como parte de mi formación en el Bootcamp de Full Stack Developer de Geekshubs Academy, he empleado tecnologías como PHP, Laravel, MySQL, GIT y GitHub en el desarrollo del servidor.
+🚀 En este proyecto, he creado un Frontend completo con React y CSS para una aplicación web llamada "Itinera", centrada en la planificación de viajes. Como parte de mi formación en el Bootcamp de Full Stack Developer de Geekshubs Academy, he empleado tecnologías como PHP, Laravel, MySQL, GIT y GitHub en el desarrollo del servidor.
 
 Este frontend proporciona una interfaz de usuario amigable y funcional para la aplicación web Itinera. A continuación, encontrarás información sobre la estructura del proyecto, su funcionalidad principal, y cómo puedes contribuir o realizar la configuración del entorno de desarrollo utilizando Docker.
 
