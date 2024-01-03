@@ -40,6 +40,12 @@ export const Activity = () => {
     dispatch(addActivity(activityId));
   };
 
+  useEffect(() => {
+    if (dates.start_date && dates.end_date) {
+      navigate(`/activities-location/${selectedLocation.id}`);
+    }
+  }, [dates, selectedLocation]);
+
   const handleResetActivities = () => {
     dispatch(resetActivities());
   };

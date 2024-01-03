@@ -16,6 +16,7 @@ export const Location = () => {
   const [locations, setLocations] = useState([]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [okClicked, setOkClicked] = useState(false);
 
   useEffect(() => {
     if (rdxToken || locations) {
@@ -23,7 +24,6 @@ export const Location = () => {
         .then((response) => {
           if (Array.isArray(response.data.data)) {
             setTimeout(() => {
-              // console.log("ubicciones: ", response.data.data);
               setLocations(response.data.data);
             }, 200)
           }
@@ -35,7 +35,6 @@ export const Location = () => {
   }, [rdxToken, navigate]);
 
   const handleDestinationClick = (location) => {
-    // console.log("id de lea ubicación seleccionada: ", location.id);
     dispatch(setLocation(location));
     Modal.confirm({
       title: 'Seleccione las fechas de su viaje',
@@ -45,24 +44,24 @@ export const Location = () => {
     });
   };
 
+  const [localDates, setLocalDates] = useState({ start_date: null, end_date: null });
+
+  let dateObjects;
+
   const handleDateChange = (dates, location) => {
-    console.log('dates:', dates);
-    const dateObjects = {
-      start_date: dates.start_date ? new Date(dates.start_date) : null,
-      end_date: dates.end_date ? new Date(dates.end_date) : null
+    dateObjects = {
+      start_date: dates.start_date ? format(new Date(dates.start_date), 'yyyy-MM-dd') : null,
+      end_date: dates.end_date ? format(new Date(dates.end_date), 'yyyy-MM-dd') : null
     };
-    dispatch(setDates(dateObjects));
+    setLocalDates(dateObjects);
   };
-  
+
   const handleOk = async (location) => {
-    console.log('dates:', dates);
-    if (location.id && dates) {
-      const formattedDates = {
-        start_date: dates.start_date,
-        end_date: dates.end_date
-      };
-      await dispatch(setDates(formattedDates));
-      navigate(`/activities-location/${location.id}`);
+    if (location.id && dateObjects.start_date && dateObjects.end_date) {
+      await dispatch(setDates(dateObjects));
+      setOkClicked(true);
+      navigate(`/activities-location/${selectedLocation.id}`);
+      setOkClicked(false);
     }
   };
 
