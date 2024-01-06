@@ -23,7 +23,14 @@ Desarrollado como parte del Bootcamp de Full Stack Developer en Geekshubs Academ
 <p align="center">_______________________________________________</p>
 
 
-Visita el proyecto [aquí](https://main.d289g6zzo4cj9d.amplifyapp.com/)
+## Visualización Front-end y Back-end
+
+El front-end ha sido deployado en AWS:
+- Puedes acceder [aquí](https://main.d289g6zzo4cj9d.amplifyapp.com/)
+
+El back-end aún no ha sido deployado, pero puedes explorar el código en el siguiente Repositorio GitHub [aquí](https://github.com/ladronbx/itinera-proyecto-final.git).
+
+
 
 ## ¿Qué es Itinera?
 <p>
@@ -36,9 +43,6 @@ Esta aplicación web está pensada para ofrecer una solución cómoda a aquellos
 </p>
 
 El proyecto consiste en desarrollar una aplicación web llamada " Itinera”, que te sugerirá a partir de un destino y unas fechas seleccionadas previamente, un itinerario y unas actividades diarias. Además permitirá a los usuarios planificar, organizar y seguir sus viajes de manera personalizada. La aplicación se centrará en proporcionar una experiencia intuitiva y social, permitiendo a los usuarios explorar destinos, modificar su agenda de viaje y compartir experiencias.
-
-Para Visualizar el Back puedes acceder haciendo click aquí :
-- Back → PHP + Laravel: [Repositorio GitHub Back](https://github.com/ladronbx/itinera-proyecto-final.git)
 
 ---
 
@@ -433,4 +437,3 @@ Espero que disfrutes explorando y utilizando este Frontend. Si tienes alguna pre
    </div>
 
 </p>
-
