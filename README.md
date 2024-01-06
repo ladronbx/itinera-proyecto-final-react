@@ -4,9 +4,11 @@
 
 <p align="center">Proyecto 7 - Frontend Itinera React + CSS</p>
 
+
+
 <p align="center">Frontend de una Web App con temática de viajes, realizado por Bienve Ladrón.
 <br>
-Desarrollado como parte del Bootcamp de Full Stack Developer de Geekshubs Academy.</p>
+Desarrollado como parte del Bootcamp de Full Stack Developer en Geekshubs Academy, Valencia.</p>
 
 <p>
    <div align="center">
@@ -16,11 +18,12 @@ Desarrollado como parte del Bootcamp de Full Stack Developer de Geekshubs Academ
 
 <p>
    <div align="center">
-      <em><b>Bienvenido a mi proyecto final</b></em>
+      <em><b>Bienvenid@ a mi proyecto final</b></em>
    </div>   
 <p align="center">_______________________________________________</p>
 
 
+Visita el proyecto [aquí](https://main.d289g6zzo4cj9d.amplifyapp.com/)
 
 ## ¿Qué es Itinera?
 <p>
@@ -41,9 +44,6 @@ Para Visualizar el Back puedes acceder haciendo click aquí :
 
 ## Tabla de Contenidos
 
-<details>
-
-  <summary>📋 Apartados</summary>
 <ol>
     <li>🚀 <a href="#introducción">Introducción</a></li>
     <li>🎯 <a href="#descripción-del-proyecto">Descripción del proyecto</a></li>
@@ -60,8 +60,6 @@ Para Visualizar el Back puedes acceder haciendo click aquí :
     <li>👏 <a href="#agradecimientos">Agradecimientos</a></li>
     
   </ol>
-
-</details>
 
 ## Introducción
 
