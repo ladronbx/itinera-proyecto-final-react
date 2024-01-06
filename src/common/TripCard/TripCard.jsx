@@ -29,12 +29,15 @@ export const TripCard = ({ id, location, memberscount, start_date, end_date, ima
             </div>
             <div className="buttons-container-style-trip">
                 <div className="delete-my-trip-style" ><RemoveButtonTrip tripId={tripId} rdxToken={rdxToken} onTripRemoved={onTripRemoved} /></div>
-                <button className="location-card-all-trips__button" onClick={handleClick}>Ver detalles</button>
+                <button className="location-card-all-trips__button" onClick={handleClick}>
+                    <span className="button-text">Ver detalles</span>
+                    <span className="emoji">👀</span>
+                </button>
             </div>
-            <div className="location-card-all-trips__content">  
+            <div className="location-card-all-trips__content">
                 <p className="location-card-all-trips__date">{new Date(start_date).toLocaleDateString()} - </p>
                 <p className="location-card-all-trips__date">{new Date(end_date).toLocaleDateString()}</p>
-                <p className="location-card-all-trips__description">Viajeros: {memberscount}</p>
+                <p className="location-card-all-trips__description">Nº total viajeros: {memberscount}</p>
             </div>
         </div>
     );
