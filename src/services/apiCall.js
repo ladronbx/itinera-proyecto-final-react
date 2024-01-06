@@ -1,14 +1,4 @@
 import axios from 'axios';
-import e from 'cors';
-
-// to do : averiguar si es necesario o no en mi caso
-
-// Configura axios para incluir el token CSRF en las cabeceras de las solicitudes
-// Obtén el token CSRF de la metaetiqueta
-// const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-// Configura axios para incluir el token CSRF en las cabeceras de las solicitudes
-// axios.defaults.headers.common['X-CSRF-TOKEN'] = token;
-
 
 const BASE_URL = 'http://localhost:8000/api/';
 

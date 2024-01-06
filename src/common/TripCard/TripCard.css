@@ -8,12 +8,17 @@
   align-items: center;
   background-color: rgb(255, 255, 255);
   border-radius: 2em;
-  height: 70em;
+  height: 60em;
+  border: 1px solid #ccc;
 }
 
 .location-card-all-trips__title {
-  font-size: 5em;
-  color: #000;
+  margin-bottom: 20px;
+  font-size: 4em;
+  text-align: center;
+  font-weight: bold;
+  background-color: rgb(243, 253, 157);
+  overflow-x: hidden;
 }
 
 .location-card-all-trips__image-container {
@@ -24,8 +29,8 @@
 
 .location-card-all-trips__image {
   border-radius: 1em;
-  width: 100%;
-  height: 30em;
+  width: auto;
+  height: 20em;
 }
 
 .location-card-all-trips__content {
@@ -37,13 +42,13 @@
 }
 
 .location-card-all-trips__date {
-  font-size: 4em;
+  font-size: 3em;
   font-weight: bold;
   margin-bottom: 0.5em;
 }
 
 .location-card-all-trips__description {
-  font-size: 3em;
+  font-size: 2em;
   margin-bottom: 0.5em;
 }
 
