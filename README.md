@@ -235,7 +235,6 @@ El proyecto ha sido deployado utilizando servicios de AWS.
 
 🍃 Este proyecto se ha desarrollado en las siguientes ramas:
 
-Claro, aquí están las ramas numeradas y formateadas en Markdown:
 
 1. **Master**: 
     - Considerada como la rama principal, en ella únicamente se ha iniciado y finalizado el proyecto para poder hacer el deploy.
